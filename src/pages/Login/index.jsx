@@ -5,8 +5,11 @@ import Classes from "./login.module.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { useForm, Controller } from "react-hook-form";
+// import { useForm, Controller } from "react-hook-form";
+import Autocomplete from '@mui/material/Autocomplete';
 import axios from "axios"
+import Stack from '@mui/material/Stack';
+
 
 const useStyles = makeStyles({
   root: {
@@ -27,14 +30,19 @@ const useStyles = makeStyles({
 });
 export default function InstitutionalLogin() {
   const classes = useStyles();
-  const { handleSubmit, control, reset } = useForm({
-    defaultValues: {
-      institution: "",
-    },
-  });
-  const onSubmit = (data) =>{
+
+  const handleSubmit = (data) => {
     // axios.post()
   }
+  const top100Films = [
+    { title: 'The Shawshank Redemption', year: 1994 },
+    { title: 'The Godfather', year: 1972 },
+    { title: 'The Godfather: Part II', year: 1974 },
+    { title: 'The Dark Knight', year: 2008 },
+    { title: '12 Angry Men', year: 1957 },
+    { title: "Schindler's List", year: 1993 },
+    { title: 'Pulp Fiction', year: 1994 },
+  ]
   return (
     <div className={Classes.loginContainer}>
       <Card className={classes.root}>
@@ -42,57 +50,44 @@ export default function InstitutionalLogin() {
           <div className={Classes.loginHeader}>
             <div className={Classes.loginMainHeader}>Vani Prakashan Group</div>
             <div className={Classes.loginSubheader}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, faucibus tempor mauris massa. 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, faucibus tempor mauris massa.
             </div>
             <div className={Classes.instututionalloginSubheader}>
-            Institutional Login 
+              Institutional Login
             </div>
           </div>
           <div className={Classes.formContainer}>
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit}
               className={`${classes.root} ${Classes.formMain}`}
             >
               <div>
                 <div className={Classes.maaa}>
-                  <Controller
-                    name="institution"
-                    control={control}
-                    rules={{ required: true }}
-                    sx={{borderRadius:'30px'}}
-                    render={({ field }) => (
-                      <TextField
-                        {...field}
-                        // id="outlined-basic"
-                        label="Search for your insitute here"
-                        variant="outlined"
-                        className={Classes.userField}
-                        sx={{borderRadius:'30px'}}
+                <Stack spacing={2} sx={{ width: 300 }}>
+                      <Autocomplete
+                        id="free-solo-demo"
+                        freeSolo
+                        options={top100Films.map((option) => option.title)}
+                        renderInput={(params) => <TextField {...params} label="Search for your insitute here" variant="outlined" />}
                       />
-                    )}
-                  />
+
+                  </Stack>
                 </div>
               </div>
               <div className={Classes.SignupButton}>
-                <Controller
-                  className={Classes.loginField}
-                  name="password"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
                     <Button
                       variant="contained"
-                      style={{ background: "#0298BF", height: '30px',
-                      width: '130px',
-                      borderRadius: '8px' }}
+                      style={{
+                        background: "#0298BF", height: '30px',
+                        width: '130px',
+                        borderRadius: '8px'
+                      }}
                       type="submit"
                       color="primary"
-                      {...field}
                     >
                       Next
                     </Button>
-                  )}
-                />
+
               </div>
             </form>
             <div className={Classes.backForgotPassword}>

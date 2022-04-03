@@ -3,12 +3,12 @@ import HomePage from "./pages/homePage/homePage.component";
 import WebRoutes from "./pages/RouteSeperator/webRoutes.component";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import BooksDetail from "./pages/BooksDetail/BooksDetail.component";
-import InstitutionalLogin from "./pages/InstitutionalLogin";
 import Login from "./pages/Login";
+import { MainHome } from "./pages/homePage/Main/MainHome";
 
 export default function RouteSeperater() {
   return (
-    <div>
+    <>
       <Router>
         <Routes>
           <Route element={<WebRoutes />}>
@@ -16,9 +16,10 @@ export default function RouteSeperater() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/BookDetail" element={<BooksDetail />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/MainHome" element={<MainHome />} />
           </Route>
         </Routes>
       </Router>
-    </div>
+    </>
   );
 }

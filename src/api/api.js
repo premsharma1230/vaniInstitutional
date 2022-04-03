@@ -69,4 +69,42 @@ const GetHomePageLogos=()=>{
     return error
   }
 }
-export { HomeBanner, AuthorList ,TrendingAuthorAndBook,LatestestBookList,GetHomePageLogos};
+const GetCollegeLists=()=>{
+  const slug="/auth/college_list/"
+  const url=`${baseRoute}${slug}`
+  try{
+    const response=axios.get(url).then((response)=>{
+      return response.data;
+    });
+    return response
+  }
+  catch (error){
+
+    return error
+  }
+}
+const studentLogin=(data)=>{
+  const body = {
+    college:data?.slug?.slug,
+    email: data.username,
+    password: data.password,
+
+  }
+  const slug="/auth/user/login/"
+  const url=`${baseRoute}${slug}`
+  try{
+    const response=axios({
+      method:'post',
+      url: url,
+      data:body
+    }).then((response)=>{
+      return response.data;
+    });
+    return response
+  }
+  catch (error){
+
+    return error
+  }
+}
+export { HomeBanner, AuthorList ,TrendingAuthorAndBook,LatestestBookList,GetHomePageLogos, GetCollegeLists, studentLogin};

@@ -5,11 +5,9 @@ import Classes from "./login.module.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-// import { useForm, Controller } from "react-hook-form";
-import Autocomplete from '@mui/material/Autocomplete';
-import axios from "axios"
-import Stack from '@mui/material/Stack';
-
+import { useForm, Controller } from "react-hook-form";
+import { useLocation  } from "react-router-dom";
+import {studentLogin} from '../../api/api';
 
 const useStyles = makeStyles({
   root: {
@@ -28,70 +26,94 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
 });
-export default function InstitutionalLogin() {
+export default function Login() {
   const classes = useStyles();
-
-  const handleSubmit = (data) => {
-    // axios.post()
-  }
-  const top100Films = [
-    { title: 'The Shawshank Redemption', year: 1994 },
-    { title: 'The Godfather', year: 1972 },
-    { title: 'The Godfather: Part II', year: 1974 },
-    { title: 'The Dark Knight', year: 2008 },
-    { title: '12 Angry Men', year: 1957 },
-    { title: "Schindler's List", year: 1993 },
-    { title: 'Pulp Fiction', year: 1994 },
-  ]
+  const {state} = useLocation();
+  const slug = state?.selectedInstitutionalData?.[0];
+  const { handleSubmit, control, reset } = useForm({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
+  const onSubmit = (data) => {
+    const finalData = Object.assign(data,{slug: slug});
+    studentLogin(finalData).then((res) =>  console.log("login successful....", res));
+  };
   return (
     <div className={Classes.loginContainer}>
       <Card className={classes.root}>
         <CardContent>
           <div className={Classes.loginHeader}>
-            <div className={Classes.loginMainHeader}>Vani Prakashan Group</div>
+            <div className={Classes.loginMainHeader}>Login</div>
             <div className={Classes.loginSubheader}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, faucibus tempor mauris massa.
-            </div>
-            <div className={Classes.instututionalloginSubheader}>
-              Institutional Login
+              Logging in into Vani Prakashan Group eBook Library
             </div>
           </div>
           <div className={Classes.formContainer}>
             <form
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               className={`${classes.root} ${Classes.formMain}`}
             >
               <div>
-                <div className={Classes.maaa}>
-                <Stack spacing={2} sx={{ width: 300 }}>
-                      <Autocomplete
-                        id="free-solo-demo"
-                        freeSolo
-                        options={top100Films.map((option) => option.title)}
-                        renderInput={(params) => <TextField {...params} label="Search for your insitute here" variant="outlined" />}
+                <div>
+                  <Controller
+                    name="username"
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        // id="outlined-basic"
+                        label="username"
+                        variant="outlined"
+                        className={Classes.userField}
                       />
-
-                  </Stack>
+                    )}
+                  />
+                </div>
+                <div className={Classes.passwordFieldMargin}>
+                  <Controller
+                    name="password"
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        // id="outlined-basic"
+                        label="password"
+                        variant="outlined"
+                        className={Classes.passwordField}
+                      />
+                    )}
+                  />
                 </div>
               </div>
               <div className={Classes.SignupButton}>
+                <Controller
+                  className={Classes.loginField}
+                  name="password"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field }) => (
                     <Button
                       variant="contained"
-                      style={{
-                        background: "#0298BF", height: '30px',
-                        width: '130px',
-                        borderRadius: '8px'
-                      }}
+                      style={{ background: "#0298BF", height: '30px',
+                      width: '130px',
+                      borderRadius: '8px' }}
                       type="submit"
                       color="primary"
+                      {...field}
                     >
-                      Next
+                      Login
                     </Button>
-
+                  )}
+                />
               </div>
             </form>
             <div className={Classes.backForgotPassword}>
               <div className={Classes.back}>Back</div>
+              <div className={Classes.forgotPassword}>Forgot Password</div>
             </div>
           </div>
         </CardContent>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HomeBanner } from "../../api/api";
-import Login from "../Login";
+import InstitutionalLogin from "../InstitutionalLogin";
  
 
 class HomePage extends Component {
@@ -27,7 +27,7 @@ class HomePage extends Component {
     
     return (
       <div>
-        <Login />
+        <InstitutionalLogin />
       </div>
     );
   }

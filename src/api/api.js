@@ -69,4 +69,18 @@ const GetHomePageLogos=()=>{
     return error
   }
 }
-export { HomeBanner, AuthorList ,TrendingAuthorAndBook,LatestestBookList,GetHomePageLogos};
+const GetBookListApi = () => {
+  const slug="/institude_home_page/inst_home_list/xyz-university/?category=2"
+  const url=`${baseRoute}${slug}`;
+  try{
+    const response=axios.get(url).then((response)=>{
+      return response.data;
+    });
+    return response
+  }
+  catch (error){
+
+    return error
+  }
+}
+export { HomeBanner, AuthorList ,TrendingAuthorAndBook,LatestestBookList,GetHomePageLogos,GetBookListApi};

@@ -94,6 +94,26 @@ const GetBookList = (data, token) => {
     return error;
   }
 };
+const GetBookListSearch = (data, token) => {
+  const body = {
+    search_word: data,
+  };
+  const slug =
+    "/institude_home_page/inst_search_result/xyz-university/" + body + "/";
+  const url = `${baseRoute}${slug}`;
+  try {
+    const response = axios({
+      method: "get",
+      url: url,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
 
 const studentLogin = data => {
   const body = {
@@ -128,4 +148,5 @@ export {
   GetCollegeLists,
   studentLogin,
   GetBookList,
+  GetBookListSearch,
 };

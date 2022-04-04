@@ -6,16 +6,22 @@ import { GetBookListDetails } from "../../api/api";
 
 export const Description = () => {
   const { state } = useLocation();
+  let navigate = useNavigate();
   const [bookDetails, setBookDetails] = useState();
   const college_slug = state?.college_slug
   const book_slug = state?.bookDetail?.slug
   const token = state?.token;
   useEffect(() => {
     GetBookListDetails(college_slug, token, book_slug).then(res => {
-      console.log(res, ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;")
       setBookDetails(res.data);
     });
   }, [])
+  const readNow = (e) => {
+    console.log(e,"e______________________________________")
+    navigate("/readbook", {
+      state: { readme: e }
+    });
+  }
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div className="container">
@@ -60,7 +66,7 @@ export const Description = () => {
                   </li>
                 </ul>
                 <div className="description-Group-btn">
-                  <button className="read_btn">
+                  <button onClick={() =>readNow(bookDetails?.original_ebook)} className="read_btn">
                     <a href="#">
                       <i class="fas fa-book-open"></i> READ NOW
                     </a>

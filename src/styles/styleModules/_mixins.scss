@@ -5,12 +5,42 @@
   justify-content: $justifyContent;
 }
 
-// @mixin flex {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-wrap: wrap;
-// }
+@mixin bookGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3rem 1rem;
+  .Grid-item {
+    figure {
+      text-align: center;
+      img {
+        max-width: 100%;
+        object-fit: cover;
+      }
+    }
+    figcaption {
+      text-align: center;
+      padding: 0.2rem 1rem;
+      h3 {
+        font-size: 1em;
+        text-transform: capitalize;
+        font-weight: bold;
+        line-height: 1.3;
+        letter-spacing: 0.3;
+        word-spacing: 0.3;
+        padding: 0.66rem 0;
+      }
+      strong {
+        color: $star;
+        font-size: 0.9em;
+        text-transform: capitalize;
+        font-weight: bold;
+        line-height: 1.3;
+        letter-spacing: 0.3;
+        word-spacing: 0.3;
+      }
+    }
+  }
+}
 
 h1,
 h2,
@@ -18,14 +48,13 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: ""; //"Poppins", sans-serif;
-  // font-family: 'Gotham Pro regular';
+  font-family: "Lora";
 }
 
-// .container {
-//   width: 90%;
-//   margin: 0 auto;
-// }
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
 
 html {
   scroll-behavior: smooth;

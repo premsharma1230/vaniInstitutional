@@ -107,7 +107,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "";
+  font-family: "Lora";
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
 }
 
 html {
@@ -124,7 +129,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "";
+  font-family: "Lora";
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
 }
 
 html {
@@ -147,5 +157,208 @@ a {
 
 .BookList_MainWrappe .Filter-Categories_Wrapper {
   background: #f3f3f3;
+}
+
+.LoginWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.Main_HomeWrapper {
+  padding: 5rem 0 0;
+  background: #fff;
+}
+
+.Main_HomeWrapper .Banner_Wrapper {
+  background: url(/src/assets/banner.png);
+  background-size: cover;
+  height: 420px;
+  width: 100%;
+  position: relative;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.Main_HomeWrapper .Banner_Wrapper .Banner_Content {
+  position: absolute;
+  top: 20%;
+  right: 2rem;
+  width: 30%;
+}
+
+.Main_HomeWrapper .Banner_Wrapper .Banner_Content h1 {
+  font-size: 2.5em;
+  text-transform: capitalize;
+  line-height: 1.3;
+  word-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  color: #0298bf;
+  font-weight: 700;
+}
+
+.Main_HomeWrapper .Banner_Wrapper .Banner_Content p {
+  padding: 1rem 0 0;
+  font-size: 1em;
+  text-transform: capitalize;
+  letter-spacing: 0.2px;
+  line-height: 1.66;
+  color: #4e4e4e;
+}
+
+.Main_HomeWrapper .Search_Wrapper {
+  position: relative;
+}
+
+.Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  left: 30%;
+  top: -49px;
+}
+
+.Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .Search-child_wrap {
+  background: #ffffff;
+  padding: 0.5rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  position: relative;
+}
+
+.Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .Search-child_wrap .search_content {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1rem;
+  -ms-grid-columns: 300px max-content;
+      grid-template-columns: 300px -webkit-max-content;
+      grid-template-columns: 300px max-content;
+}
+
+.Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .Search-child_wrap .search_content input {
+  outline: none;
+  border: none;
+  border-bottom: 1.2px solid #4e4e4e;
+  padding: 0.5rem 0.5rem 0.5rem 2.1rem;
+}
+
+.Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .Search-child_wrap .search_content button {
+  height: 38px;
+  width: 137px;
+  border-radius: 8px;
+  background: #0298bf;
+  border: none;
+  color: #ffffff;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .Search-child_wrap .search_content button:hover {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.89;
+  cursor: pointer;
+}
+
+.Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .Search-child_wrap img {
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  left: 8px;
+  top: 16px;
+}
+
+.Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .rect_Wrp {
+  width: 100%;
+  height: 30px;
+  background: rgba(2, 152, 191, 0.5);
+  border-radius: 0px 0px 16px 16px;
+}
+
+.Main_HomeWrapper .Category_Wrapper {
+  width: 85%;
+  margin: 0 auto;
+  padding: 6rem 0 1rem;
+}
+
+.Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp {
+  padding: 4rem 0 1rem;
+}
+
+.Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp .category_Grid_Content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3rem 1rem;
+}
+
+.Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp .category_Grid_Content .Grid-item figure {
+  text-align: center;
+}
+
+.Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp .category_Grid_Content .Grid-item figure img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp .category_Grid_Content .Grid-item figcaption {
+  text-align: center;
+  padding: 0.2rem 1rem;
+}
+
+.Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp .category_Grid_Content .Grid-item figcaption h3 {
+  font-size: 1em;
+  text-transform: capitalize;
+  font-weight: bold;
+  line-height: 1.3;
+  letter-spacing: 0.3;
+  word-spacing: 0.3;
+  padding: 0.66rem 0;
+}
+
+.Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp .category_Grid_Content .Grid-item figcaption strong {
+  color: #fe4365;
+  font-size: 0.9em;
+  text-transform: capitalize;
+  font-weight: bold;
+  line-height: 1.3;
+  letter-spacing: 0.3;
+  word-spacing: 0.3;
+}
+
+.Main_HomeWrapper .Category_Wrapper .Pagination_wrp {
+  padding: 2rem 0 1rem;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Main_HomeWrapper .Category_Wrapper .Pagination_wrp .MuiPagination-ul .MuiPaginationItem-previousNext {
+  color: #fe4365 !important;
+}
+
+.Main_HomeWrapper .Category_Wrapper .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+  height: 1rem !important;
+}
+
+.Main_HomeWrapper .Category_Wrapper .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-color: #0298bf !important;
 }
 /*# sourceMappingURL=style.css.map */

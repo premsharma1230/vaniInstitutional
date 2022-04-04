@@ -446,4 +446,89 @@ a {
   color: #fe4365;
   font-size: 1.1em;
 }
+
+.Description_wrapper .Description_Content {
+  padding: 6rem 0 2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 300px 1fr;
+      grid-template-columns: 300px 1fr;
+  grid-gap: 2rem;
+  width: 91%;
+  margin: 0 auto 2rem;
+  border-bottom: 1px solid #0298bf;
+}
+
+.Description_wrapper .Description_Content .Description_Left figure {
+  max-width: 100%;
+}
+
+.Description_wrapper .Description_Content .Description_Right .About_Book .About-book-title h2 {
+  color: #4e4e4e;
+  font-size: 2.2em;
+  font-weight: 700;
+  line-height: 46px;
+  letter-spacing: 0.20000000298023224px;
+}
+
+.Description_wrapper .Description_Content .Description_Right .About_Book .About-book-title h5 {
+  padding: 0.5rem 0;
+  font-size: 1.2;
+  font-weight: 700;
+  line-height: 23px;
+  color: #4e4e4e;
+  letter-spacing: 0.20000000298023224px;
+}
+
+.Description_wrapper .Description_Content .Description_Right .About_Book figcaption {
+  padding: 0.8rem 0;
+  border-top: 1px solid #0298bf;
+  border-bottom: 1px solid #0298bf;
+}
+
+.Description_wrapper .Description_Content .Description_Right .About_Book figcaption p {
+  font-size: 0.89em;
+  color: #000;
+  font-weight: normal;
+  line-height: 18px;
+  letter-spacing: 0.20000000298023224px;
+}
+
+.Description_wrapper .Description_Content .Description_Right .About-book-detail {
+  padding: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  grid-gap: 1rem;
+}
+
+.Description_wrapper .Description_Content .Description_Right .About-book-detail > ul li {
+  list-style-type: none;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (max-content)[2];
+      grid-template-columns: repeat(2, -webkit-max-content);
+      grid-template-columns: repeat(2, max-content);
+  grid-gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.Description_wrapper .Description_Content .Description_Right .About-book-detail > ul li span {
+  font-size: 0.89em;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.20000000298023224px;
+  color: #333333;
+}
+
+.Description_wrapper .Description_Content .Description_Right .About-book-detail > ul li strong {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 20px;
+  color: #434242;
+  letter-spacing: 0.20000000298023224px;
+}
 /*# sourceMappingURL=style.css.map */

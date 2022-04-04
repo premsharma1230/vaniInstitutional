@@ -8,7 +8,7 @@ import grid from "../../../assets/grid1.png";
 import Typography from "@mui/material/Typography";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { GetBookList } from "../../../api/api";
 
 export const MainHome = () => {
@@ -82,13 +82,15 @@ export const MainHome = () => {
               <div className="category_Grid_Content">
                 {bookList?.map((ele, index) => (
                   <div className="Grid-item" key={index}>
-                    <figure>
-                      <img src={ele?.image} alt="book" />
-                    </figure>
-                    <figcaption>
-                      <h3>{ele?.title_and_author?.title}</h3>
-                      <strong>{ele?.title_and_author?.authors[0]}</strong>
-                    </figcaption>
+                    <Link to="/Description">
+                      <figure>
+                        <img src={ele?.image} alt="book" />
+                      </figure>
+                      <figcaption>
+                        <h3>{ele?.title_and_author?.title}</h3>
+                        <strong>{ele?.title_and_author?.authors[0]}</strong>
+                      </figcaption>
+                    </Link>
                   </div>
                 ))}
               </div>

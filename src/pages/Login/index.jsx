@@ -6,8 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { useForm, Controller } from "react-hook-form";
-import { useLocation  } from "react-router-dom";
-import {studentLogin} from '../../api/api';
+import { useLocation } from "react-router-dom";
+import { studentLogin } from '../../api/api';
 
 const useStyles = makeStyles({
   root: {
@@ -28,17 +28,20 @@ const useStyles = makeStyles({
 });
 export default function Login() {
   const classes = useStyles();
-  const {state} = useLocation();
+  const { state } = useLocation();
   const slug = state?.selectedInstitutionalData?.[0];
-  const { handleSubmit, control, reset } = useForm({
+  const { handleSubmit, control, reset, formState: { errors }, register } = useForm({
     defaultValues: {
       username: "",
       password: "",
     },
   });
   const onSubmit = (data) => {
-    const finalData = Object.assign(data,{slug: slug});
-    studentLogin(finalData).then((res) =>  console.log("login successful....", res));
+    const finalData = Object.assign(data, { slug: slug });
+    studentLogin(finalData).then((res) => {
+    }).catch((err) => {
+      console.log("err", err);
+    });
   };
   return (
     <div className={Classes.loginContainer}>
@@ -57,58 +60,46 @@ export default function Login() {
             >
               <div>
                 <div>
-                  <Controller
+                  <TextField
+                    label="Username"
+                    variant="outlined"
+                    fullWidth
+                    className={classes.userField}
                     name="username"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <TextField
-                        {...field}
-                        // id="outlined-basic"
-                        label="username"
-                        variant="outlined"
-                        className={Classes.userField}
-                      />
-                    )}
+                    {...register("username", {
+                      required: "username is required",
+                    })}
+                    error={Boolean(errors?.username)}
+                    helperText={errors.username?.message}
                   />
                 </div>
                 <div className={Classes.passwordFieldMargin}>
-                  <Controller
-                    name="password"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => (
-                      <TextField
-                        {...field}
-                        // id="outlined-basic"
-                        label="password"
-                        variant="outlined"
-                        className={Classes.passwordField}
-                      />
-                    )}
+                  <TextField
+                    label="Password"
+                    variant="outlined"
+                    className={Classes.passwordField}
+                    {...register("password", {
+                      required: "password is required",
+                    })}
+                    error={Boolean(errors?.password)}
+                    helperText={errors.password?.message}
                   />
+
                 </div>
               </div>
               <div className={Classes.SignupButton}>
-                <Controller
-                  className={Classes.loginField}
-                  name="password"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <Button
-                      variant="contained"
-                      style={{ background: "#0298BF", height: '30px',
-                      width: '130px',
-                      borderRadius: '8px' }}
-                      type="submit"
-                      color="primary"
-                      {...field}
-                    >
-                      Login
-                    </Button>
-                  )}
-                />
+                <Button
+                  variant="contained"
+                  style={{
+                    background: "#0298BF", height: '30px',
+                    width: '130px',
+                    borderRadius: '8px'
+                  }}
+                  type="submit"
+                  color="primary"
+                >
+                  Login
+                </Button>
               </div>
             </form>
             <div className={Classes.backForgotPassword}>

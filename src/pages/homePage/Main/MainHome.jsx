@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useLocation, Link } from "react-router-dom";
-import { GetBookList } from "../../../api/api";
+import { GetBookList, GetBookListCategory, GetBookListSearch } from "../../../api/api";
 
 export const MainHome = () => {
   const { state } = useLocation();
@@ -17,16 +17,16 @@ export const MainHome = () => {
   const token = state?.UserLogin?.data?.token;
   const [page, setPage] = useState();
   const [bookList, setBookList] = useState([]);
-  console.log(slug, "slug +++++++");
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
     GetBookList(slug, token).then(res => {
-      console.log(res, "res+++++++++++++");
       setBookList(res?.results);
     });
+    GetBookListCategory(slug, token).then(res => {
+      setCategory(res);
+    });
   }, []);
-
-  console.log(bookList, "+++++++++++");
 
   const top100Films = [{ title: "The Psychology of Money" }];
 
@@ -44,6 +44,12 @@ export const MainHome = () => {
   // };
 
   // ---pagination---->
+  const searchData = (e) => {
+    const body = e.target.value
+    GetBookListSearch(body,slug,token).then(res => {
+      setBookList(res?.results);
+    });
+  }
 
   return (
     <>
@@ -55,7 +61,7 @@ export const MainHome = () => {
               <div className="Search-child_wrap">
                 <img src={search} />
                 <div className="search_content">
-                  <input type="text" placeholder="type here to search" />
+                  <input type="text" onChange={searchData} placeholder="type here to search" />
                   <button>Search</button>
                 </div>
               </div>
@@ -67,11 +73,9 @@ export const MainHome = () => {
             <div className="CategorySearch_wrp">
               <Autocomplete
                 id="category"
-                options={options.sort(
-                  (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
-                )}
-                groupBy={option => option.firstLetter}
-                getOptionLabel={option => option.title}
+                options={category}
+                // groupBy={option => option.genres__value}
+                getOptionLabel={option => option.genres__value}
                 sx={{ width: 300 }}
                 renderInput={params => (
                   <TextField {...params} label="select any categories" />

@@ -5,10 +5,10 @@
     grid-template-columns: 300px 1fr;
     grid-gap: 2rem;
     width: 91%;
-    margin: 0 auto 2rem;
+    margin: 0 auto;
     border-bottom: 1px solid $skysolid;
     .Description_Left {
-      figure {
+      figure img {
         max-width: 100%;
       }
     }
@@ -78,6 +78,76 @@
           }
         }
       }
+      .description-Group-btn {
+        display: flex;
+        align-items: flex-end;
+        button {
+          width: 270px;
+          height: 44.54px;
+          background: #0298bf;
+          border-radius: 8px;
+          margin: 0.5rem;
+          display: block;
+          outline: none;
+          border: none;
+          transition: $transition;
+          &:hover {
+            transition: $transition;
+            opacity: 0.9;
+          }
+          a {
+            display: grid;
+            grid-gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: repeat(2, max-content);
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: 700;
+            line-height: 23px;
+            letter-spacing: 0px;
+          }
+          &:nth-child(2) {
+            border: 1px solid $skysolid !important;
+            background: transparent !important;
+            a {
+              color: $skysolid !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  .Otherbook_Wrapper {
+    width: 91%;
+    margin: 0 auto;
+    padding: 0rem 0 3rem;
+    .Otherbook-Heading {
+      padding: 1.5rem 0;
+      h2 {
+        padding: 0 0 0 1.5rem;
+        font-size: 1.5em;
+        text-transform: capitalize;
+        font-weight: 700;
+        line-height: 31px;
+        letter-spacing: 0.20000000298023224px;
+      }
+    }
+    .Grid_Carousel_wrp {
+      @include bookGrid;
+      .Grid-item {
+        a {
+          text-decoration: none;
+          &:visited {
+            color: currentColor;
+          }
+        }
+        figure {
+          height: max-content !important;
+        }
+      }
     }
   }
 }
+
+// \{[...Array(4).keys()].map(index => (

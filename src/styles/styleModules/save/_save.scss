@@ -1,0 +1,71 @@
+.SaveMain_Wrapper {
+  width: 100%;
+  .Save_Content_wrp {
+    padding: 6rem 0 3rem;
+    width: 91%;
+    margin: 0 auto;
+    .Save_Content {
+      height: 100vh;
+      .Save_heading {
+        display: grid;
+        align-items: center;
+        grid-template-columns: max-content 1fr;
+        grid-gap: 1.5rem;
+        padding: 0 0 2rem;
+        figure {
+          .fa-bookmark,
+          .fa-book-open {
+            font-size: 1.8em;
+            color: $skysolid;
+          }
+        }
+        figcaption {
+          border-bottom: 1px solid $skysolid;
+          h3 {
+            font-size: 1.2em;
+            font-weight: 700;
+            line-height: 46px;
+            letter-spacing: 0.20000000298023224px;
+          }
+        }
+      }
+      .SaveBook_Grid {
+        @include bookGrid;
+        .Grid-item {
+          figure {
+            height: 300px !important;
+            overflow: hidden;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// -----?Continue-----Reading---Start--here--->>>>>>
+.ContinueReading_Wrapper {
+  .Grid-item {
+    .continue_btn {
+      width: 200px;
+      height: 32.99px;
+      background: $skysolid;
+      color: #fff;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      transition: all 0.3s ease-in-out;
+      margin: 1rem 0 0;
+      display: block;
+      font-size: 1.1em;
+      text-transform: capitalize;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.9;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
+// -----?Continue-----Reading---end--here----->>>>>>>>

@@ -55,7 +55,12 @@
             display: grid;
             grid-template-columns: repeat(2, max-content);
             grid-gap: 1rem;
-            padding: 0.5rem 0;
+            padding: 0.3rem 0;
+            &:nth-child(1) {
+              strong {
+                color: $span;
+              }
+            }
             span {
               font-size: 0.89em;
               font-weight: 500;

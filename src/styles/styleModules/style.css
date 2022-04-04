@@ -513,7 +513,11 @@ a {
       grid-template-columns: repeat(2, -webkit-max-content);
       grid-template-columns: repeat(2, max-content);
   grid-gap: 1rem;
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
+}
+
+.Description_wrapper .Description_Content .Description_Right .About-book-detail > ul li:nth-child(1) strong {
+  color: #020056;
 }
 
 .Description_wrapper .Description_Content .Description_Right .About-book-detail > ul li span {

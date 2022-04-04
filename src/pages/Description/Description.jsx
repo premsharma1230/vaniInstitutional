@@ -81,6 +81,13 @@ export const Description = () => {
             </div>
           </div>
         </div>
+        {/* Other-Books */}
+        <div className="Otherbook_Wrapper">
+             <div>
+                 
+             </div>
+        </div>
+        {/* end-here--Other-Books */}
       </div>
       <Footer />
     </section>

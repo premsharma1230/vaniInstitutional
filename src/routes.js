@@ -16,8 +16,6 @@ export default function RouteSeperater() {
             <Route path="/" exact element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/BookDetail" element={<BooksDetail />} />
-            <Route path="/Login" element={<InstitutionalLogin />} />
-            <Route path="/EbookList" element={<EbookList />} />
             <Route path="/login" element={<Login />} />
             <Route path="/MainHome" element={<MainHome />} />
             <Route path="/Description" element={<Description />} />

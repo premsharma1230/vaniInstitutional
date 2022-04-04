@@ -126,6 +126,22 @@ const GetBookListCategory = (college_slug, token) => {
     return error;
   }
 };
+const GetBookListDetails = (college_slug, token,book_slug) => {
+  const slug =`/institude_home_page/inst_book_details/${college_slug}/${book_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  try {
+    const response = axios({
+      method: "get",
+      url: url,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
 
 const studentLogin = data => {
   const body = {
@@ -161,5 +177,6 @@ export {
   studentLogin,
   GetBookList,
   GetBookListSearch,
-  GetBookListCategory
+  GetBookListCategory,
+  GetBookListDetails
 };

@@ -42,13 +42,11 @@ export default function Login() {
     const finalData = Object.assign(data, { slug: slug });
     studentLogin(finalData)
       .then(res => {
-        console.log("login successful....", res);
         navigate("/MainHome", {
           state: { UserLogin: res },
         });
       })
       .catch(err => {
-        console.log("login error....", err);
         // swal("Your imaginary file is safe!");
       });
   };

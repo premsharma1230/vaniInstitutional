@@ -39,7 +39,6 @@ export default function InstitutionalLogin() {
     const loadData = () => {
       GetCollegeLists().then(res => {
         const response = res;
-        console.log(response);
         setInstitutionsLists(response);
       });
     };
@@ -50,10 +49,6 @@ export default function InstitutionalLogin() {
     e.preventDefault();
     const selectedInstitutionalData = institutionsLists.filter(
       item => item.name === selectedInstitute
-    );
-    console.log(
-      "selectedInstitutionalData++++++++++",
-      selectedInstitutionalData
     );
     navigate("/login", {
       state: { selectedInstitutionalData: selectedInstitutionalData },

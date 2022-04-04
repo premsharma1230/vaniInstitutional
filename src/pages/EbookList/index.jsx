@@ -35,7 +35,6 @@ export default function EbookList() {
     const getBookList = () => {
         GetBookListApi().then(res => {
             const response = res;
-            console.log(response,"********************************************")
             setEBookList(response.data);
           });
     }

@@ -8,11 +8,12 @@ import grid from "../../../assets/grid1.png";
 import Typography from "@mui/material/Typography";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link,useNavigate } from "react-router-dom";
 import { GetBookList, GetBookListCategory, GetBookListSearch } from "../../../api/api";
 
 export const MainHome = () => {
   const { state } = useLocation();
+  let navigate = useNavigate();
   const slug = state?.UserLogin?.data?.college_slug;
   const token = state?.UserLogin?.data?.token;
   const [page, setPage] = useState();
@@ -28,15 +29,15 @@ export const MainHome = () => {
     });
   }, []);
 
-  const top100Films = [{ title: "The Psychology of Money" }];
+  // const top100Films = [{ title: "The Psychology of Money" }];
 
-  const options = top100Films.map(option => {
-    const firstLetter = option.title[0].toUpperCase();
-    return {
-      firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
-      ...option,
-    };
-  });
+  // const options = top100Films.map(option => {
+  //   const firstLetter = option.title[0].toUpperCase();
+  //   return {
+  //     firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
+  //     ...option,
+  //   };
+  // });
 
   // paginations ---
   // const handleChange = (event, value) => {
@@ -48,6 +49,11 @@ export const MainHome = () => {
     const body = e.target.value
     GetBookListSearch(body,slug,token).then(res => {
       setBookList(res?.results);
+    });
+  }
+  const goToBookDetailsPage = (e) => {
+    navigate("/Description", {
+      state: { bookDetail: e,college_slug : slug,token : token },
     });
   }
 
@@ -85,8 +91,8 @@ export const MainHome = () => {
             <div className="Category_Grid_Wrp">
               <div className="category_Grid_Content">
                 {bookList?.map((ele, index) => (
-                  <div className="Grid-item" key={index}>
-                    <Link to="/Description">
+                  <div onClick={() =>goToBookDetailsPage(ele)} className="Grid-item" key={index}>
+                    <div>
                       <figure>
                         <img src={ele?.image} alt="book" />
                       </figure>
@@ -94,7 +100,7 @@ export const MainHome = () => {
                         <h3>{ele?.title_and_author?.title}</h3>
                         <strong>{ele?.title_and_author?.authors[0]}</strong>
                       </figcaption>
-                    </Link>
+                    </div>
                   </div>
                 ))}
               </div>

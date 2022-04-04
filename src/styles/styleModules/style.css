@@ -303,6 +303,7 @@ a {
 
 .Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp .category_Grid_Content .Grid-item figure {
   text-align: center;
+  height: 225px;
 }
 
 .Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp .category_Grid_Content .Grid-item figure img {
@@ -360,5 +361,89 @@ a {
 
 .Main_HomeWrapper .Category_Wrapper .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border-color: #0298bf !important;
+}
+
+.Footer_Wrapper {
+  width: 100%;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  width: 100%;
+  -webkit-box-shadow: 0px -1px 11px 5px #00000017;
+          box-shadow: 0px -1px 11px 5px #00000017;
+}
+
+.Footer_Wrapper .Footer_Content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 14rem;
+  padding: 1rem 0 1.5rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.Footer_Wrapper .Footer_Content .foot_item .Heading_wrp h2 {
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.3;
+  word-spacing: 0.3;
+  color: #4e4e4e;
+  padding: 1rem 0 1.1rem 0;
+  font-weight: 500;
+}
+
+.Footer_Wrapper .Footer_Content .foot_item ul li {
+  padding: 0.5rem 0;
+  list-style-type: none;
+}
+
+.Footer_Wrapper .Footer_Content .foot_item ul li a {
+  text-decoration: none;
+  font-size: 0.89em;
+  letter-spacing: 0.3;
+  word-spacing: 0.3;
+  color: #4e4e4e;
+  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 1.4;
+  display: block;
+  -webkit-transition: "all .3s ease-in-out";
+  transition: "all .3s ease-in-out";
+}
+
+.Footer_Wrapper .Footer_Content .foot_item ul li a:hover {
+  opacity: 0.9;
+  -webkit-transition: "all .3s ease-in-out";
+  transition: "all .3s ease-in-out";
+}
+
+.Footer_Wrapper .Footer_Content .foot_item ul .WhatsApp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-gap: 1rem;
+}
+
+.Footer_Wrapper .Footer_Content .foot_item ul .WhatsApp a > .fa-whatsapp {
+  color: #fe4365;
+}
+
+.Footer_Wrapper .Footer_Content .foot_item ul .Social_Content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (max-content)[4];
+      grid-template-columns: repeat(4, -webkit-max-content);
+      grid-template-columns: repeat(4, max-content);
+  grid-gap: 1rem;
+}
+
+.Footer_Wrapper .Footer_Content .foot_item ul .Social_Content li {
+  list-style-type: none;
+}
+
+.Footer_Wrapper .Footer_Content .foot_item ul .Social_Content li svg {
+  color: #fe4365;
+  font-size: 1.1em;
 }
 /*# sourceMappingURL=style.css.map */

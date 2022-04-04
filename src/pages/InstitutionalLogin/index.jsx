@@ -51,6 +51,10 @@ export default function InstitutionalLogin() {
     const selectedInstitutionalData = institutionsLists.filter(
       item => item.name === selectedInstitute
     );
+    console.log(
+      "selectedInstitutionalData++++++++++",
+      selectedInstitutionalData
+    );
     navigate("/login", {
       state: { selectedInstitutionalData: selectedInstitutionalData },
     });

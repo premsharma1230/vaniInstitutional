@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import BooksDetail from "./pages/BooksDetail/BooksDetail.component";
 import Login from "./pages/Login";
 import { MainHome } from "./pages/homePage/Main/MainHome";
+import { Description } from "./pages/Description/Description";
 
 export default function RouteSeperater() {
   return (
@@ -19,6 +20,7 @@ export default function RouteSeperater() {
             <Route path="/EbookList" element={<EbookList />} />
             <Route path="/login" element={<Login />} />
             <Route path="/MainHome" element={<MainHome />} />
+            <Route path="/Description" element={<Description />} />
           </Route>
         </Routes>
       </Router>

@@ -6,7 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { useForm, Controller } from "react-hook-form";
-import { studentLogin } from '../../api/api';
+import { studentLogin } from "../../api/api";
+// import swal from "sweetalert";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -39,11 +40,17 @@ export default function Login() {
   });
   const onSubmit = (data) => {
     const finalData = Object.assign(data, { slug: slug });
-    studentLogin(finalData).then((res) => {
-      navigate("/MainHome");
-    }).catch((err) => {
-      console.log("err", err);
-    });
+    studentLogin(finalData)
+      .then(res => {
+        console.log("login successful....", res);
+        navigate("/MainHome", {
+          state: { UserLogin: res },
+        });
+      })
+      .catch(err => {
+        console.log("login error....", err);
+        // swal("Your imaginary file is safe!");
+      });
   };
 
   return (

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Banner } from "./Banner";
+import { Footer } from "../../Footer/Footer";
 import search from "../../../assets/search.png";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -7,10 +8,25 @@ import grid from "../../../assets/grid1.png";
 import Typography from "@mui/material/Typography";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { useLocation, Link } from "react-router-dom";
+import { GetBookList } from "../../../api/api";
 
 export const MainHome = () => {
-  // const classes = useStyles();
+  const { state } = useLocation();
+  const slug = state?.UserLogin?.data?.college_slug;
+  const token = state?.UserLogin?.data?.token;
   const [page, setPage] = useState();
+  const [bookList, setBookList] = useState([]);
+  console.log(slug, "slug +++++++");
+
+  useEffect(() => {
+    GetBookList(slug, token).then(res => {
+      console.log(res, "res+++++++++++++");
+      setBookList(res?.results);
+    });
+  }, []);
+
+  console.log(bookList, "+++++++++++");
 
   const top100Films = [{ title: "The Psychology of Money" }];
 
@@ -30,7 +46,7 @@ export const MainHome = () => {
   // ---pagination---->
 
   return (
-    <div>
+    <>
       <div className="Main_HomeWrapper">
         <Banner />
         <div className="container">
@@ -64,15 +80,17 @@ export const MainHome = () => {
             </div>
             <div className="Category_Grid_Wrp">
               <div className="category_Grid_Content">
-                {[...Array(12).keys()].map(index => (
+                {bookList?.map((ele, index) => (
                   <div className="Grid-item" key={index}>
-                    <figure>
-                      <img src={grid} alt="book" />
-                    </figure>
-                    <figcaption>
-                      <h3>The Psychology of Money</h3>
-                      <strong>Morgan housel</strong>
-                    </figcaption>
+                    <Link to="/Description">
+                      <figure>
+                        <img src={ele?.image} alt="book" />
+                      </figure>
+                      <figcaption>
+                        <h3>{ele?.title_and_author?.title}</h3>
+                        <strong>{ele?.title_and_author?.authors[0]}</strong>
+                      </figcaption>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -85,8 +103,10 @@ export const MainHome = () => {
             </div>
           </div>
           {/* category--search--end--here */}
-        </div>
+        </div>{" "}
+        {/* Footer */}
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };

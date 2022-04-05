@@ -9,7 +9,6 @@ export default function ReadBook (){
   const tocRef = useRef(null)
   const { state } = useLocation();
   const readme = state?.readme
-  console.log(readme,"readme__________________________________________")
   const locationChanged = (epubcifi) => {
     if (renditionRef.current && tocRef.current) {
       const { displayed, href } = renditionRef.current.location.start

@@ -28,7 +28,7 @@ export const Description = () => {
         <div className="Description_Content">
           <div className="Description_Left">
             <figure>
-              <img src={bookDetails?.book_details?.image} alt="book" />
+              <img src={bookDetails?.book_details?.image} alt="book" style={{width:'18rem', height:'24rem'}} />
             </figure>
           </div>
           <div className="Description_Right">

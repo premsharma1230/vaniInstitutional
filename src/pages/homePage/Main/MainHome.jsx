@@ -8,7 +8,7 @@ import grid from "../../../assets/grid1.png";
 import Typography from "@mui/material/Typography";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { useLocation, Link,useNavigate } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { GetBookList, GetBookListCategory, GetBookListSearch } from "../../../api/api";
 
 export const MainHome = () => {
@@ -21,7 +21,8 @@ export const MainHome = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    GetBookList(slug, token).then(res => {
+    const categoryRes = -1
+    GetBookList(slug, token,categoryRes).then(res => {
       setBookList(res?.results);
     });
     GetBookListCategory(slug, token).then(res => {
@@ -47,13 +48,19 @@ export const MainHome = () => {
   // ---pagination---->
   const searchData = (e) => {
     const body = e.target.value
-    GetBookListSearch(body,slug,token).then(res => {
+    GetBookListSearch(body, slug, token).then(res => {
       setBookList(res?.results);
     });
   }
   const goToBookDetailsPage = (e) => {
     navigate("/Description", {
-      state: { bookDetail: e,college_slug : slug,token : token },
+      state: { bookDetail: e, college_slug: slug, token: token },
+    });
+  }
+  const categoryItem = (e,value) => {
+    const categoryRes = value?.genres
+    GetBookList(slug, token,categoryRes).then(res => {
+      setBookList(res?.results);
     });
   }
 
@@ -80,6 +87,7 @@ export const MainHome = () => {
               <Autocomplete
                 id="category"
                 options={category}
+                onChange={categoryItem}
                 // groupBy={option => option.genres__value}
                 getOptionLabel={option => option.genres__value}
                 sx={{ width: 300 }}
@@ -91,7 +99,7 @@ export const MainHome = () => {
             <div className="Category_Grid_Wrp">
               <div className="category_Grid_Content">
                 {bookList?.map((ele, index) => (
-                  <div onClick={() =>goToBookDetailsPage(ele)} className="Grid-item" key={index}>
+                  <div onClick={() => goToBookDetailsPage(ele)} className="Grid-item" key={index}>
                     <div>
                       <figure>
                         <img src={ele?.image} alt="book" />
@@ -105,8 +113,9 @@ export const MainHome = () => {
                 ))}
               </div>
               <div className="Pagination_wrp">
-                <Stack spacing={2}>
-                  {/* onChange={handleChange}  */}
+                <Stack
+                  // onChange={handleChange}  
+                  spacing={2}>
                   <Pagination count={10} page={page} />
                 </Stack>
               </div>

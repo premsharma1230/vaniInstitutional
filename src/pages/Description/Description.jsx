@@ -9,31 +9,35 @@ export const Description = () => {
   let navigate = useNavigate();
   const [bookDetails, setBookDetails] = useState();
   const [booklist, setBooklist] = useState([]);
-  const college_slug = state?.college_slug
-  const book_slug = state?.bookDetail?.slug
-  const booklistId = state?.bookDetail?.id
+  const college_slug = state?.college_slug;
+  const book_slug = state?.bookDetail?.slug;
+  const booklistId = state?.bookDetail?.id;
   const token = state?.token;
-  const bookList = state?.allBookList
+  const bookList = state?.allBookList;
   useEffect(() => {
     GetBookListDetails(college_slug, token, book_slug).then(res => {
       setBookDetails(res.data);
     });
-    const data = bookList?.filter((ele) => ele.id != booklistId)
-    console.log(data,"+++++++++++++++++++++++++++++++++++++++++++++")
-    setBooklist(data)
-  }, [])
-  const readNow = (e) => {
+    const data = bookList?.filter(ele => ele.id != booklistId);
+    console.log(data, "+++++++++++++++++++++++++++++++++++++++++++++");
+    setBooklist(data);
+  }, []);
+  const readNow = e => {
     navigate("/readbook", {
-      state: { readme: e }
+      state: { readme: e },
     });
-  }
+  };
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div className="container">
         <div className="Description_Content">
           <div className="Description_Left">
             <figure>
-              <img src={bookDetails?.book_details?.image} alt="book" style={{width:'18rem', height:'24rem'}} />
+              <img
+                src={bookDetails?.book_details?.image}
+                alt="book"
+                style={{ width: "18rem", height: "24rem" }}
+              />
             </figure>
           </div>
           <div className="Description_Right">
@@ -43,9 +47,7 @@ export const Description = () => {
                 <h5>By {bookDetails?.book_details?.book_authors}</h5>
               </div>
               <figcaption>
-                <p>
-                  {bookDetails?.book_details?.description}
-                </p>
+                <p>{bookDetails?.book_details?.description}</p>
               </figcaption>
               <div className="About-book-detail">
                 <ul className="book-list-left">
@@ -59,7 +61,9 @@ export const Description = () => {
                   </li>
                   <li>
                     <span>Publication Date : </span>
-                    <strong>{bookDetails?.book_details?.publications_year}</strong>
+                    <strong>
+                      {bookDetails?.book_details?.publications_year}
+                    </strong>
                   </li>
                   <li>
                     <span>Language :</span>
@@ -72,7 +76,10 @@ export const Description = () => {
                 </ul>
                 <div className="description-Group-btn">
                   <div className="description_content">
-                    <button onClick={() =>readNow(bookDetails?.original_ebook)} className="read_btn">
+                    <button
+                      onClick={() => readNow(bookDetails?.original_ebook)}
+                      className="read_btn"
+                    >
                       <Link to="/ContinueReading">
                         <i class="fas fa-book-open"></i>
                         <span>READ NOW</span>
@@ -91,26 +98,27 @@ export const Description = () => {
           </div>
         </div>
         {/* Other-Books */}
-       
+
         <div className="Otherbook_Wrapper">
           <div className="Otherbook-Heading">
             <h2>Other Books</h2>
           </div>
-          {booklist.length > 0  && booklist?.map((ele) =>
           <div className="Grid_Carousel_wrp">
-            <div className="Grid-item">
-              <Link to="/Description">
-                <figure>
-                  <img src={ele.image} alt="book" />
-                </figure>
-                <figcaption>
-                  <h3>{ele.title_and_author.title}</h3>
-                  <strong>{ele.title_and_author.authors}</strong>
-                </figcaption>
-              </Link>
-            </div>
+            {booklist.length > 0 &&
+              booklist?.map(ele => (
+                <div className="Grid-item">
+                  <Link to="/Description">
+                    <figure>
+                      <img src={ele.image} alt="book" />
+                    </figure>
+                    <figcaption>
+                      <h3>{ele.title_and_author.title}</h3>
+                      <strong>{ele.title_and_author.authors}</strong>
+                    </figcaption>
+                  </Link>
+                </div>
+              ))}{" "}
           </div>
-          )}
         </div>
         {/* end-here--Other-Books */}
       </div>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,OAAO,CAAC,iEAAI;AAEZ,AACI,uBADmB,CACnB,MAAM,CAAA;EACF,KAAK,EAAE,iBACX;CAAC;;AAKL,kDAAkD",
+    "sources": [
+        "ebookReader.module.scss"
+    ],
+    "names": [],
+    "file": "ebookReader.module.css"
+}

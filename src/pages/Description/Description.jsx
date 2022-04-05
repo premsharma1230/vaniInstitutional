@@ -66,18 +66,20 @@ export const Description = () => {
                   </li>
                 </ul>
                 <div className="description-Group-btn">
-                  <button onClick={() =>readNow(bookDetails?.original_ebook)} className="read_btn">
-                    <a href="#">
-                      <i class="fas fa-book-open"></i> READ NOW
-                    </a>
-                  </button>
-                  {bookDetails?.is_in_save_list &&
-                    <button className="Save_btn">
-                      <a href="#">
-                        <i class="fas fa-bookmark"></i> save
-                      </a>
+                  <div className="description_content">
+                    <button onClick={() =>readNow(bookDetails?.original_ebook)} className="read_btn">
+                      <Link to="/ContinueReading">
+                        <i class="fas fa-book-open"></i>
+                        <span>READ NOW</span>
+                      </Link>
                     </button>
-                  }
+                    <button className="Save_btn">
+                      <Link to="/Save">
+                        <i class="fas fa-bookmark"></i>
+                        <span>save</span>
+                      </Link>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -85,8 +87,21 @@ export const Description = () => {
         </div>
         {/* Other-Books */}
         <div className="Otherbook_Wrapper">
-          <div>
-
+          <div className="Otherbook-Heading">
+            <h2>Other Books</h2>
+          </div>
+          <div className="Grid_Carousel_wrp">
+            <div className="Grid-item">
+              <Link to="/Description">
+                <figure>
+                  <img src={book} alt="book" />
+                </figure>
+                <figcaption>
+                  <h3>The Psychology of Money</h3>
+                  <strong>Morgan Housel</strong>
+                </figcaption>
+              </Link>
+            </div>
           </div>
         </div>
         {/* end-here--Other-Books */}

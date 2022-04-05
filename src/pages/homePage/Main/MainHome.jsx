@@ -54,7 +54,7 @@ export const MainHome = () => {
   }
   const goToBookDetailsPage = (e) => {
     navigate("/Description", {
-      state: { bookDetail: e, college_slug: slug, token: token },
+      state: { bookDetail: e, college_slug: slug, token: token ,allBookList : bookList},
     });
   }
   const categoryItem = (e,value) => {

@@ -8,16 +8,21 @@ export const Description = () => {
   const { state } = useLocation();
   let navigate = useNavigate();
   const [bookDetails, setBookDetails] = useState();
+  const [booklist, setBooklist] = useState([]);
   const college_slug = state?.college_slug
   const book_slug = state?.bookDetail?.slug
+  const booklistId = state?.bookDetail?.id
   const token = state?.token;
+  const bookList = state?.allBookList
   useEffect(() => {
     GetBookListDetails(college_slug, token, book_slug).then(res => {
       setBookDetails(res.data);
     });
+    const data = bookList?.filter((ele) => ele.id != booklistId)
+    console.log(data,"+++++++++++++++++++++++++++++++++++++++++++++")
+    setBooklist(data)
   }, [])
   const readNow = (e) => {
-    console.log(e,"e______________________________________")
     navigate("/readbook", {
       state: { readme: e }
     });
@@ -86,23 +91,26 @@ export const Description = () => {
           </div>
         </div>
         {/* Other-Books */}
+       
         <div className="Otherbook_Wrapper">
           <div className="Otherbook-Heading">
             <h2>Other Books</h2>
           </div>
+          {booklist.length > 0  && booklist?.map((ele) =>
           <div className="Grid_Carousel_wrp">
             <div className="Grid-item">
               <Link to="/Description">
                 <figure>
-                  <img src={book} alt="book" />
+                  <img src={ele.image} alt="book" />
                 </figure>
                 <figcaption>
-                  <h3>The Psychology of Money</h3>
-                  <strong>Morgan Housel</strong>
+                  <h3>{ele.title_and_author.title}</h3>
+                  <strong>{ele.title_and_author.authors}</strong>
                 </figcaption>
               </Link>
             </div>
           </div>
+          )}
         </div>
         {/* end-here--Other-Books */}
       </div>

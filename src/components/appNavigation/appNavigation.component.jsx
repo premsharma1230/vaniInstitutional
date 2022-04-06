@@ -7,8 +7,8 @@ import Typography from "@mui/material/Typography";
 import LogogSection from "./logoSection.component";
 import NavigationSection from "./naviagtionSection.component";
 import ApplicationArea from "./applicationArea.component";
-
 import Classes from "./_appNavigation.module.scss";
+import Profile from "./Profile";
 
 class AppNavigation extends Component {
   render() {
@@ -29,6 +29,9 @@ class AppNavigation extends Component {
                   <LogogSection />
                 </div>
               </Typography>
+              <div className="Profile">
+                <Profile />
+              </div>
               {/* <NavigationSection /> */}
               {/* <ApplicationArea /> */}
             </Toolbar>

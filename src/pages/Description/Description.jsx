@@ -27,6 +27,9 @@ export const Description = () => {
       state: { readme: e },
     });
   };
+
+  console.log(bookDetails, "+bookDetailsbookDetails");
+
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div className="container">

@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { ReactReader, ReactReaderStyle } from "react-reader";
 import ss from "./Around_the_World_in_28_Languages (2).epub";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
+import book1 from "../../assets/grid1.png";
 
-export default function ReadBook() {
+export default function ReadBook(props) {
   const [page, setPage] = useState("");
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
@@ -29,34 +30,42 @@ export default function ReadBook() {
       // transform: 'translate(10px, 6px)'
     },
   };
+
+  // fontsize---->
+  const [size, setSize] = useState(100);
+  const changeSize = newSize => {
+    setSize(newSize);
+  };
+  useEffect(() => {
+    if (renditionRef.current) {
+      renditionRef.current.themes.fontSize(`${size}%`);
+    }
+  }, [size]);
+  //<------------fontsize--end--here-->
+
   return (
     <>
-      {/* <div className="About-book-title">
-        <h2 style={{}}>{'The Psychology of Money'}</h2>
-        <h5>{"By Morgan Housel"}</h5>
-      </div> */}
       <div className="Main_HomeWrapper Ebook_Wrapper">
+        <div className="Ebook_Heading">
+          <div className="About_Book">
+            <figure>
+              {" "}
+              <img src={book1} alt="book" />{" "}
+            </figure>
+            <div className="About-book-title">
+              <h2>Heading</h2>
+              <h5>By Author</h5>
+            </div>
+          </div>
+        </div>
         <div className="Ebook_Content">
-          <div
-            style={{
-              height: "70vh",
-              width: "38vw",
-              margin: "auto",
-              marginTop: "8rem",
-              boxShadow: "0px 0px 27px rgb(0 0 0 / 25%)",
-            }}
-            className="ebook-reader-container"
-          >
+          <div className="ebook-reader-container Ebook-Content_Wrp">
             <ReactReader
               locationChanged={locationChanged}
               url={readme}
               epubInitOptions={{
                 openAs: "epub",
               }}
-              // epubOptions={{
-              //   flow: "scrolled",
-              //   manager: "continuous"
-              // }}
               getRendition={rendition => (renditionRef.current = rendition)}
               tocChanged={toc => (tocRef.current = toc)}
               showToc={false}
@@ -64,17 +73,39 @@ export default function ReadBook() {
             />
           </div>
           <div
+            className="PageCount"
             style={{
-              position: "absolute",
-              bottom: "7.1rem",
+              bottom: "0.4rem",
               right: "1rem",
-              left: "1rem",
+              left: "0rem",
               textAlign: "center",
               zIndex: 1,
+              fontSize: "1.1em",
+              color: "#020056",
+              fontWeight: "bold",
+              position: "relative",
             }}
           >
-            {page}
+            <span
+              className="Counter-page"
+              style={{
+                position: "absolute",
+                top: "-1.2rem",
+              }}
+            >
+              {page}
+            </span>
           </div>
+          {/* Font--size */}
+          <div className="MagnifierFont_Btn">
+            <button onClick={() => changeSize(Math.max(90, size - 10))}>
+              <i class="fas fa-search-minus"></i>
+            </button>
+            <button onClick={() => changeSize(Math.min(230, size + 10))}>
+              <i className="fas fa-search-plus"></i>
+            </button>
+          </div>
+          {/* font-size */}
         </div>
         <Footer />
       </div>

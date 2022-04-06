@@ -8,9 +8,9 @@ export const Description = () => {
   const { state } = useLocation();
   let navigate = useNavigate();
   const [bookDetails, setBookDetails] = useState();
-  const college_slug = state?.college_slug
-  const book_slug = state?.bookDetail?.slug
-  const token = state?.token;
+  const college_slug = JSON.parse(sessionStorage.getItem("studentLogin")).college_slug;
+  const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
+  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
   useEffect(() => {
     GetBookListDetails(college_slug, token, book_slug).then(res => {
       setBookDetails(res.data);

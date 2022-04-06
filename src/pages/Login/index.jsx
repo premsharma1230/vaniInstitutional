@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Classes from "./_login.module.scss";
@@ -29,24 +29,31 @@ const useStyles = makeStyles({
 });
 export default function Login() {
   const classes = useStyles();
-  const { state } = useLocation();
   let navigate = useNavigate();
-  const slug = state?.selectedInstitutionalData?.[0];
   const { handleSubmit, control, reset, formState: { errors }, register } = useForm({
     defaultValues: {
       username: "",
       password: "",
     },
   });
+  
+  useEffect(() => {
+    const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+   if(token){
+     navigate("/MainHome")
+   }
+  },[window.location.pathname])
+
   const onSubmit = (data) => {
-    const finalData = Object.assign(data, { slug: slug });
+    const selectedInstitute = JSON.parse(sessionStorage.getItem("selectedInstitution"));
+    const finalData = Object.assign(data, { slug: selectedInstitute?.[0].slug });
     studentLogin(finalData)
       .then(res => {
-        navigate("/MainHome", {
-          state: { UserLogin: res },
-        });
+        sessionStorage.setItem("studentLogin",JSON.stringify(res?.data))
+        navigate("/MainHome");
       })
       .catch(err => {
+        console.log("err", err)
         // swal("Your imaginary file is safe!");
       });
   };

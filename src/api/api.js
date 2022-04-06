@@ -146,7 +146,7 @@ const GetBookListDetails = (college_slug, token,book_slug) => {
 const studentLogin = data => {
   const body = {
     user: {
-      college: data?.slug?.slug,
+      college: data?.slug,
       email: data.username,
       password: data.password,
     },

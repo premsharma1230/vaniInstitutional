@@ -11,13 +11,18 @@ export const Description = () => {
   const college_slug = JSON.parse(sessionStorage.getItem("studentLogin")).college_slug;
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  const [booklist, setBooklist] = useState([]);
+  const booklistId = JSON.parse(sessionStorage.getItem("bookDetail")).id;
+  const bookListFIlter = JSON.parse(sessionStorage.getItem("filterbokLists"))?.results;
   useEffect(() => {
     GetBookListDetails(college_slug, token, book_slug).then(res => {
       setBookDetails(res.data);
     });
+    const data = bookListFIlter?.filter((ele) => ele.id != booklistId)
+    console.log(data,"+++++++++++++++++++++++++++++++++++++++++++++")
+    setBooklist(data)
   }, [])
   const readNow = (e) => {
-    console.log(e,"e______________________________________")
     navigate("/readbook", {
       state: { readme: e }
     });
@@ -86,23 +91,26 @@ export const Description = () => {
           </div>
         </div>
         {/* Other-Books */}
+       
         <div className="Otherbook_Wrapper">
           <div className="Otherbook-Heading">
             <h2>Other Books</h2>
           </div>
+          {booklist.length > 0  && booklist?.map((ele) =>
           <div className="Grid_Carousel_wrp">
             <div className="Grid-item">
               <Link to="/Description">
                 <figure>
-                  <img src={book} alt="book" />
+                  <img src={ele.image} alt="book" />
                 </figure>
                 <figcaption>
-                  <h3>The Psychology of Money</h3>
-                  <strong>Morgan Housel</strong>
+                  <h3>{ele.title_and_author.title}</h3>
+                  <strong>{ele.title_and_author.authors}</strong>
                 </figcaption>
               </Link>
             </div>
           </div>
+          )}
         </div>
         {/* end-here--Other-Books */}
       </div>

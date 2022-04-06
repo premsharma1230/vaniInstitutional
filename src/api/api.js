@@ -77,9 +77,15 @@ const GetCollegeLists = () => {
   }
 };
 
-const GetBookList = (data, token) => {
+const GetBookList = (data, token ,categoryRes) => {
   const body = data;
-  const slug = "/institude_home_page/inst_home_list/" + body + "/";
+  let slug ;
+  if(categoryRes != -1 && categoryRes != undefined ){
+     slug = `/institude_home_page/inst_home_list/${body}/?category=${categoryRes}`;
+  }
+  else{
+    slug = `/institude_home_page/inst_home_list/${body}/`;
+  }
   const url = `${baseRoute}${slug}`;
   try {
     const response = axios({

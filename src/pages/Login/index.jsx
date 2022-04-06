@@ -38,7 +38,7 @@ export default function Login() {
   });
   
   useEffect(() => {
-    const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+    const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
    if(token){
      navigate("/MainHome")
    }

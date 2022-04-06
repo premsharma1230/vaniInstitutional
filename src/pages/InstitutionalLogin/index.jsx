@@ -48,6 +48,12 @@ export default function InstitutionalLogin() {
 
     loadData();
   }, []);
+  useEffect(() => {
+    const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
+   if(token){
+     navigate("/MainHome")
+   }
+  },[window.location.pathname])
 
   const handleSubmit = e => {
     e.preventDefault();

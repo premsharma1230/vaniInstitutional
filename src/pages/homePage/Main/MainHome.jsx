@@ -22,7 +22,9 @@ export const MainHome = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    GetBookList(slug, token).then(res => {
+    const categoryRes = -1
+    GetBookList(slug, token,categoryRes).then(res => {
+      sessionStorage.setItem("filterbokLists",JSON.stringify(res) )
       setBookList(res?.results);
     });
     GetBookListCategory(slug, token).then(res => {
@@ -48,13 +50,19 @@ export const MainHome = () => {
   // ---pagination---->
   const searchData = (e) => {
     const body = e.target.value
-    GetBookListSearch(body,slug,token).then(res => {
+    GetBookListSearch(body, slug, token).then(res => {
       setBookList(res?.results);
     });
   }
   const goToBookDetailsPage = (bookDetail) => {
     sessionStorage.setItem("bookDetail", JSON.stringify(bookDetail))
     navigate("/Description");
+  }
+  const categoryItem = (e,value) => {
+    const categoryRes = value?.genres
+    GetBookList(slug, token,categoryRes).then(res => {
+      setBookList(res?.results);
+    });
   }
 
   return (
@@ -80,6 +88,7 @@ export const MainHome = () => {
               <Autocomplete
                 id="category"
                 options={category}
+                onChange={categoryItem}
                 // groupBy={option => option.genres__value}
                 getOptionLabel={option => option.genres__value}
                 sx={{ width: 300 }}
@@ -91,7 +100,7 @@ export const MainHome = () => {
             <div className="Category_Grid_Wrp">
               <div className="category_Grid_Content">
                 {bookList?.map((ele, index) => (
-                  <div onClick={() =>goToBookDetailsPage(ele)} className="Grid-item" key={index}>
+                  <div onClick={() => goToBookDetailsPage(ele)} className="Grid-item" key={index}>
                     <div>
                       <figure>
                         <img src={ele?.image} alt="book" />
@@ -105,8 +114,9 @@ export const MainHome = () => {
                 ))}
               </div>
               <div className="Pagination_wrp">
-                <Stack spacing={2}>
-                  {/* onChange={handleChange}  */}
+                <Stack
+                  // onChange={handleChange}  
+                  spacing={2}>
                   <Pagination count={10} page={page} />
                 </Stack>
               </div>

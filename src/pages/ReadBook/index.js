@@ -41,10 +41,10 @@ export default function ReadBook() {
           epubInitOptions={{
             openAs: 'epub'
           }}
-          epubOptions={{
-            flow: "scrolled",
-            manager: "continuous"
-          }}
+          // epubOptions={{
+          //   flow: "scrolled",
+          //   manager: "continuous"
+          // }}
           getRendition={(rendition) => renditionRef.current = rendition}
           tocChanged={toc => tocRef.current = toc}
           showToc={false}

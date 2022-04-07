@@ -83,7 +83,7 @@ export const Description = () => {
                       onClick={() => readNow(bookDetails?.original_ebook)}
                       className="read_btn"
                     >
-                      <Link to="/ContinueReading">
+                      <Link to="#">
                         <i class="fas fa-book-open"></i>
                         <span>READ NOW</span>
                       </Link>

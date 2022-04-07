@@ -21,7 +21,7 @@ export const ContinueReading = () => {
             </div>
             <div className="SaveBook_Grid">
               <div className="Grid-item">
-                <Link to="/Description">
+                <Link to="#">
                   <figure>
                     <img src={book} alt="book" />
                   </figure>
@@ -33,7 +33,7 @@ export const ContinueReading = () => {
                 </Link>
               </div>
               <div className="Grid-item">
-                <Link to="/Description">
+                <Link to="#">
                   <figure>
                     <img src={book2} alt="book" />
                   </figure>

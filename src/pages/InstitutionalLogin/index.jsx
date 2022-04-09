@@ -39,20 +39,29 @@ export default function InstitutionalLogin() {
     const loadData = () => {
       GetCollegeLists().then(res => {
         const response = res;
+        sessionStorage.setItem("institutionLists",JSON.stringify(res))
         setInstitutionsLists(response);
+      }).catch((err) => {
+        console.log(err)
       });
     };
 
     loadData();
   }, []);
+  useEffect(() => {
+    const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
+   if(token){
+     navigate("/MainHome")
+   }
+  },[window.location.pathname])
+
   const handleSubmit = e => {
     e.preventDefault();
     const selectedInstitutionalData = institutionsLists.filter(
       item => item.name === selectedInstitute
     );
-    navigate("/login", {
-      state: { selectedInstitutionalData: selectedInstitutionalData },
-    });
+    sessionStorage.setItem("selectedInstitution",JSON.stringify(selectedInstitutionalData))
+    navigate("/login");
   };
   const handleSelect = e => {
     setSelectedInstitute(e.target.value);

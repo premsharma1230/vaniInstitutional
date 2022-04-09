@@ -151,7 +151,7 @@ const GetBookListDetails = (college_slug, token, book_slug) => {
 const studentLogin = data => {
   const body = {
     user: {
-      college: data?.slug?.slug,
+      college: data?.slug,
       email: data.username,
       password: data.password,
     },
@@ -205,6 +205,43 @@ const AddSaveBookList = (college_slug, token, book_slug) => {
     return error;
   }
 };
+const GetContinueReading = (college_slug, token) => {
+  const slug = `/institude_home_page/continue_reading_book_list/${college_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  try {
+    const response = axios({
+      method: "get",
+      url: url,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+const PostContinueReading = (book_slug, token, pageNo) => {
+  // console.log(pageNo, "pageNo+++++++++++++++++");
+  const slug = `/institude_home_page/set_or_get_page_no/${book_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  const body = {
+    pages: Number(pageNo),
+  };
+  try {
+    const response = axios({
+      method: "post",
+      url: url,
+      data: body,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
 
 export {
   HomeBanner,
@@ -220,4 +257,6 @@ export {
   GetBookListDetails,
   GetSaveBookList,
   AddSaveBookList,
+  GetContinueReading,
+  PostContinueReading,
 };

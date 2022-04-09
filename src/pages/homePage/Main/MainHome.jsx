@@ -8,14 +8,15 @@ import grid from "../../../assets/grid1.png";
 import Typography from "@mui/material/Typography";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, Link,useNavigate, useHistory } from "react-router-dom";
 import { GetBookList, GetBookListCategory, GetBookListSearch } from "../../../api/api";
 
 export const MainHome = () => {
   const { state } = useLocation();
   let navigate = useNavigate();
-  const slug = state?.UserLogin?.data?.college_slug;
-  const token = state?.UserLogin?.data?.token;
+  // const slug = state?.UserLogin?.data?.college_slug;
+  const slug = JSON.parse(sessionStorage.getItem("studentLogin")).college_slug;
+  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
   const [page, setPage] = useState();
   const [bookList, setBookList] = useState([]);
   const [category, setCategory] = useState([]);
@@ -23,6 +24,7 @@ export const MainHome = () => {
   useEffect(() => {
     const categoryRes = -1
     GetBookList(slug, token,categoryRes).then(res => {
+      sessionStorage.setItem("filterbokLists",JSON.stringify(res) )
       setBookList(res?.results);
     });
     GetBookListCategory(slug, token).then(res => {
@@ -52,10 +54,9 @@ export const MainHome = () => {
       setBookList(res?.results);
     });
   }
-  const goToBookDetailsPage = (e) => {
-    navigate("/Description", {
-      state: { bookDetail: e, college_slug: slug, token: token ,allBookList : bookList},
-    });
+  const goToBookDetailsPage = (bookDetail) => {
+    sessionStorage.setItem("bookDetail", JSON.stringify(bookDetail))
+    navigate("/Description");
   }
   const categoryItem = (e,value) => {
     const categoryRes = value?.genres

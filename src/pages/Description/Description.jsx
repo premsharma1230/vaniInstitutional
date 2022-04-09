@@ -8,17 +8,21 @@ export const Description = () => {
   const { state } = useLocation();
   let navigate = useNavigate();
   const [bookDetails, setBookDetails] = useState();
+  const college_slug = JSON.parse(
+    sessionStorage.getItem("studentLogin")
+  ).college_slug;
+  const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
+  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
   const [booklist, setBooklist] = useState([]);
-  const college_slug = state?.college_slug;
-  const book_slug = state?.bookDetail?.slug;
-  const booklistId = state?.bookDetail?.id;
-  const token = state?.token;
-  const bookList = state?.allBookList;
+  const booklistId = JSON.parse(sessionStorage.getItem("bookDetail")).id;
+  const bookListFIlter = JSON.parse(
+    sessionStorage.getItem("filterbokLists")
+  )?.results;
   useEffect(() => {
     GetBookListDetails(college_slug, token, book_slug).then(res => {
       setBookDetails(res.data);
     });
-    const data = bookList?.filter(ele => ele.id != booklistId);
+    const data = bookListFIlter?.filter(ele => ele.id != booklistId);
     console.log(data, "+++++++++++++++++++++++++++++++++++++++++++++");
     setBooklist(data);
   }, []);
@@ -28,7 +32,7 @@ export const Description = () => {
     });
   };
 
-  console.log(bookDetails, "+bookDetailsbookDetails");
+  console.log(bookDetails, "+++++++++++++bookDetailsbookDetails");
 
   return (
     <section className="Main_HomeWrapper Description_wrapper">

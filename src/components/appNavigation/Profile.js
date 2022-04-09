@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -6,12 +6,35 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [LoginUserName, setLoginUserName] = useState("");
   const open = Boolean(anchorEl);
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  useEffect(() => {
+    const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
+    if (token) {
+      navigate("/MainHome");
+      const UserName = JSON.parse(
+        sessionStorage.getItem("studentLogin")
+      ).username;
+      setLoginUserName(UserName);
+    }
+  }, [window.location.pathname]);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    console.log("+++++++++++++++++++++");
+    console.log("+++++++++++++++++++++");
+    console.log("+++++++++++++++++++++");
+    console.log("+++++++++++++++++++++");
+    console.log("+++++++++++++++++++++");
+    sessionStorage.clear();
+
+    navigate("/login");
   };
 
   return (
@@ -24,7 +47,7 @@ export default function Profile() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <span>Profile</span>
+        <span>{LoginUserName}</span>
         <strong>
           <i class="fas fa-angle-down"></i>
         </strong>
@@ -48,7 +71,9 @@ export default function Profile() {
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link to="/login">Logout</Link>
+          <Link to={""} onClick={handleLogout}>
+            Logout
+          </Link>
         </MenuItem>
       </Menu>
     </div>

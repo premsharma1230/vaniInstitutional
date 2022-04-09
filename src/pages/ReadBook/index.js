@@ -4,18 +4,30 @@ import ss from "./Around_the_World_in_28_Languages (2).epub";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
 import book1 from "../../assets/grid1.png";
+import { PostContinueReading } from "../../api/api";
 
 export default function ReadBook(props) {
+  // console.log(GetContinueReading, "GetContinueReading++++++++++");
   const [page, setPage] = useState("");
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
   const { state } = useLocation();
   const readme = state?.readme;
+  const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
+  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  // console.log(book_slug, "book_slug+++++++++++++++++");
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
+      // console.log(renditionRef.current, "renditionRef.current.++++++++++++++");
       const { displayed, href } = renditionRef.current.location.start;
       const chapter = tocRef.current.find(item => item.href === href);
       setPage(`${displayed.page}`);
+      PostContinueReading(book_slug, token, `${displayed.page}`).then(res => {
+        // console.log(
+        //   res,
+        //   "datadatadatadatadatadatadatadatadata+++++++++++++++++++++++++++++++++++++++++++++"
+        // );
+      });
     }
   };
   const ownStyles = {
@@ -42,6 +54,8 @@ export default function ReadBook(props) {
     }
   }, [size]);
   //<------------fontsize--end--here-->
+
+  // console.log(tocRef, "+++++++toc");
 
   return (
     <>

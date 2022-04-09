@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Footer } from "../Footer/Footer";
 import book from "../../assets/grid1.png";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-import { GetBookListDetails } from "../../api/api";
 import Profile from "../../components/appNavigation/Profile";
-=======
 import { GetBookListDetails,GetReletedBooksListDetails } from "../../api/api";
->>>>>>> 07b2a29d97b46b75d62761f80dc925d098313eaf
 
 export const Description = () => {
   let navigate = useNavigate();

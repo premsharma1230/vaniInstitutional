@@ -27,11 +27,6 @@ export default function Profile() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("+++++++++++++++++++++");
-    console.log("+++++++++++++++++++++");
-    console.log("+++++++++++++++++++++");
-    console.log("+++++++++++++++++++++");
-    console.log("+++++++++++++++++++++");
     sessionStorage.clear();
 
     navigate("/login");

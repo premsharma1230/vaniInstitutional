@@ -53,7 +53,6 @@ export default function Login() {
         navigate("/MainHome");
       })
       .catch(err => {
-        console.log("err", err)
         // swal("Your imaginary file is safe!");
       });
   };

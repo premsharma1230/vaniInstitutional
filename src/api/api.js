@@ -147,6 +147,22 @@ const GetBookListDetails = (college_slug, token, book_slug) => {
     return error;
   }
 };
+const GetReletedBooksListDetails = (college_slug, token, book_slug) => {
+  const slug = `/institude_home_page/releted_books/${college_slug}/${book_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  try {
+    const response = axios({
+      method: "get",
+      url: url,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
 
 const studentLogin = data => {
   const body = {
@@ -222,7 +238,6 @@ const GetContinueReading = (college_slug, token) => {
   }
 };
 const PostContinueReading = (book_slug, token, pageNo) => {
-  // console.log(pageNo, "pageNo+++++++++++++++++");
   const slug = `/institude_home_page/set_or_get_page_no/${book_slug}/`;
   const url = `${baseRoute}${slug}`;
   const body = {
@@ -259,4 +274,5 @@ export {
   AddSaveBookList,
   GetContinueReading,
   PostContinueReading,
+  GetReletedBooksListDetails
 };

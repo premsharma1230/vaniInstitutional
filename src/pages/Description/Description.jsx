@@ -2,33 +2,28 @@ import React, { useEffect, useState } from "react";
 import { Footer } from "../Footer/Footer";
 import book from "../../assets/grid1.png";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { GetBookListDetails } from "../../api/api";
+import { GetBookListDetails,GetReletedBooksListDetails } from "../../api/api";
 
 export const Description = () => {
-  const { state } = useLocation();
   let navigate = useNavigate();
-  const [bookDetails, setBookDetails] = useState();
-  const college_slug = JSON.parse(
-    sessionStorage.getItem("studentLogin")
-  ).college_slug;
+  const [bookDetails, setBookDetails] = useState({});
+  const [bookList, setBooklist] = useState([]);
+  const college_slug = JSON.parse(sessionStorage.getItem("studentLogin")).college_slug;
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
-  const [booklist, setBooklist] = useState([]);
-  const booklistId = JSON.parse(sessionStorage.getItem("bookDetail")).id;
-  const bookListFIlter = JSON.parse(sessionStorage.getItem("filterbokLists"))?.results;
   useEffect(() => {
     GetBookListDetails(college_slug, token, book_slug).then(res => {
       setBookDetails(res.data);
     });
-    const data = bookListFIlter?.filter((ele) => ele.id != booklistId)
-    setBooklist(data)
-  }, [])
-  const readNow = (e) => {
+    GetReletedBooksListDetails(college_slug, token, book_slug).then(resp => {
+      setBooklist(resp?.results)
+    });
+  }, [bookList,bookDetails])
+  function readNow(e) {
     navigate("/readbook", {
       state: { readme: e },
     });
-  };
-
+  }
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div className="container">
@@ -106,16 +101,18 @@ export const Description = () => {
             <h2>Other Books</h2>
           </div>
           <div className="Grid_Carousel_wrp">
-            {booklist.length > 0 &&
-              booklist?.map(ele => (
-                <div className="Grid-item">
+            {bookList?.length > 0 &&
+              bookList?.map((ele,index) => (
+                <div key={index} className="Grid-item">
                   <Link to="/Description">
                     <figure>
-                      <img src={ele.image} alt="book" />
+                      <img src={ele?.image} alt="book" />
                     </figure>
                     <figcaption>
-                      <h3>{ele.title_and_author.title}</h3>
-                      <strong>{ele.title_and_author.authors}</strong>
+                      <h3>{ele?.title_and_author?.title}</h3>
+                      {ele?.title_and_author?.authors?.map((e,index) =>
+                      <strong key={index}>{e}</strong>
+                      )}
                     </figcaption>
                   </Link>
                 </div>

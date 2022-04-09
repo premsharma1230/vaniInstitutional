@@ -42,7 +42,6 @@ export default function InstitutionalLogin() {
         sessionStorage.setItem("institutionLists",JSON.stringify(res))
         setInstitutionsLists(response);
       }).catch((err) => {
-        console.log(err)
       });
     };
 

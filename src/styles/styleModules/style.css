@@ -123,6 +123,14 @@ a {
   text-decoration: none;
 }
 
+.Ebook_Wrapper {
+  padding: 0rem 0 1rem;
+}
+
+.Ebook_Wrapper .Ebook_Content {
+  padding: 0rem 0 4rem;
+}
+
 h1,
 h2,
 h3,
@@ -143,6 +151,14 @@ html {
 
 a {
   text-decoration: none;
+}
+
+.Ebook_Wrapper {
+  padding: 0rem 0 1rem;
+}
+
+.Ebook_Wrapper .Ebook_Content {
+  padding: 0rem 0 4rem;
 }
 
 .BookList_MainWrappe {
@@ -667,9 +683,7 @@ a {
 }
 
 .Description_wrapper .Otherbook_Wrapper .Grid_Carousel_wrp .Grid-item figure {
-  height: -webkit-max-content !important;
-  height: -moz-max-content !important;
-  height: max-content !important;
+  height: 260px !important;
 }
 
 .SaveMain_Wrapper {

@@ -27,14 +27,9 @@ export default function Profile() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("+++++++++++++++++++++");
-    console.log("+++++++++++++++++++++");
-    console.log("+++++++++++++++++++++");
-    console.log("+++++++++++++++++++++");
-    console.log("+++++++++++++++++++++");
     sessionStorage.clear();
-
-    navigate("/login");
+    handleClose();
+    navigate("/");
   };
 
   return (
@@ -70,10 +65,8 @@ export default function Profile() {
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Link to={""} onClick={handleLogout}>
-            Logout
-          </Link>
+        <MenuItem onClick={handleLogout}>
+            Logout  
         </MenuItem>
       </Menu>
     </div>

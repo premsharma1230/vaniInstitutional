@@ -3,6 +3,7 @@ import { Footer } from "../Footer/Footer";
 import book from "../../assets/grid1.png";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { GetBookListDetails } from "../../api/api";
+import Profile from "../../components/appNavigation/Profile";
 
 export const Description = () => {
   const { state } = useLocation();
@@ -31,6 +32,9 @@ export const Description = () => {
 
   return (
     <section className="Main_HomeWrapper Description_wrapper">
+      <div className="Profile" style={{display:'flex', justifyContent:'right'}}>
+              <Profile />
+        </div>
       <div className="container">
         <div className="Description_Content">
           <div className="Description_Left">

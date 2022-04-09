@@ -5,22 +5,9 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import LogogSection from "./logoSection.component";
-import NavigationSection from "./naviagtionSection.component";
-import ApplicationArea from "./applicationArea.component";
 import Classes from "./_appNavigation.module.scss";
-import Profile from "./Profile";
 
 const AppNavigation = () => {
-  const [getToken, setGetToken] = useState("");
-  useEffect(() => {
-    const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
-    if (token) {
-      setGetToken(token);
-    } else {
-      setGetToken("");
-    }
-  }, [window.location.pathname]);
-
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -38,13 +25,6 @@ const AppNavigation = () => {
                 <LogogSection />
               </div>
             </Typography>
-            {getToken != "" ? (
-              <div className="Profile">
-                <Profile />
-              </div>
-            ) : null}
-            {/* <NavigationSection /> */}
-            {/* <ApplicationArea /> */}
           </Toolbar>
         </AppBar>
       </Box>

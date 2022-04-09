@@ -10,6 +10,8 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useLocation, Link,useNavigate, useHistory } from "react-router-dom";
 import { GetBookList, GetBookListCategory, GetBookListSearch } from "../../../api/api";
+import {Data} from './Data'
+import Profile from "../../../components/appNavigation/Profile";
 
 export const MainHome = () => {
   const { state } = useLocation();
@@ -17,20 +19,31 @@ export const MainHome = () => {
   // const slug = state?.UserLogin?.data?.college_slug;
   const slug = JSON.parse(sessionStorage.getItem("studentLogin")).college_slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
-  const [page, setPage] = useState();
+  const [page, setPage] = useState(1);
   const [bookList, setBookList] = useState([]);
   const [category, setCategory] = useState([]);
-
+  const [startSize, setStartSize] = useState(0);
+  const [count, setCount] = useState(1);
   useEffect(() => {
     const categoryRes = -1
     GetBookList(slug, token,categoryRes).then(res => {
       sessionStorage.setItem("filterbokLists",JSON.stringify(res) )
       setBookList(res?.results);
+      setCount(Math.ceil(res?.results?.length/2))
     });
+
+    // dropdown category list 
     GetBookListCategory(slug, token).then(res => {
       setCategory(res);
     });
   }, []);
+
+  // useEffect(() => {
+  //     const arrayBooklists = [...bookList];
+  //       arrayBooklists.splice(0,3);
+
+  // }, bookList)
+  // console.log('bookList', bookList);
 
   // const top100Films = [{ title: "The Psychology of Money" }];
 
@@ -48,26 +61,42 @@ export const MainHome = () => {
   // };
 
   // ---pagination---->
+
+  // search box api 
   const searchData = (e) => {
     const body = e.target.value
     GetBookListSearch(body, slug, token).then(res => {
       setBookList(res?.results);
+      setCount(Math.ceil(res?.results?.length/2))
     });
   }
+
+
   const goToBookDetailsPage = (bookDetail) => {
     sessionStorage.setItem("bookDetail", JSON.stringify(bookDetail))
     navigate("/Description");
   }
+
+
   const categoryItem = (e,value) => {
     const categoryRes = value?.genres
     GetBookList(slug, token,categoryRes).then(res => {
       setBookList(res?.results);
+      setCount(Math.ceil(res?.results?.length/2))
     });
   }
 
+  const handleChange  = (event, value) => {
+    setPage(value)
+    setStartSize((value * 2)-2)
+  }
+
   return (
-    <>
+    <> 
       <div className="Main_HomeWrapper">
+      <div className="Profile" style={{display:'flex', justifyContent:'right'}}>
+              <Profile />
+        </div>
         <Banner />
         <div className="container">
           <div className="Search_Wrapper">
@@ -99,7 +128,7 @@ export const MainHome = () => {
             </div>
             <div className="Category_Grid_Wrp">
               <div className="category_Grid_Content">
-                {bookList?.map((ele, index) => (
+                {bookList.slice(startSize,startSize+2)?.map((ele, index) => (
                   <div onClick={() => goToBookDetailsPage(ele)} className="Grid-item" key={index}>
                     <div>
                       <figure>
@@ -115,9 +144,8 @@ export const MainHome = () => {
               </div>
               <div className="Pagination_wrp">
                 <Stack
-                  // onChange={handleChange}  
                   spacing={2}>
-                  <Pagination count={10} page={page} />
+                  <Pagination count={count} page={page}  onChange={handleChange} />
                 </Stack>
               </div>
             </div>

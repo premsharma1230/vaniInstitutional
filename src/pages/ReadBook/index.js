@@ -7,7 +7,6 @@ import book1 from "../../assets/grid1.png";
 import { PostContinueReading } from "../../api/api";
 
 export default function ReadBook(props) {
-  // console.log(GetContinueReading, "GetContinueReading++++++++++");
   const [page, setPage] = useState("");
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
@@ -15,18 +14,12 @@ export default function ReadBook(props) {
   const readme = state?.readme;
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
-  // console.log(book_slug, "book_slug+++++++++++++++++");
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
-      // console.log(renditionRef.current, "renditionRef.current.++++++++++++++");
       const { displayed, href } = renditionRef.current.location.start;
       const chapter = tocRef.current.find(item => item.href === href);
       setPage(`${displayed.page}`);
       PostContinueReading(book_slug, token, `${displayed.page}`).then(res => {
-        // console.log(
-        //   res,
-        //   "datadatadatadatadatadatadatadatadata+++++++++++++++++++++++++++++++++++++++++++++"
-        // );
       });
     }
   };
@@ -55,7 +48,7 @@ export default function ReadBook(props) {
   }, [size]);
   //<------------fontsize--end--here-->
 
-  // console.log(tocRef, "+++++++toc");
+  console.log(renditionRef, "+++++++++++++++++++++++++++++++++++++");
 
   return (
     <>

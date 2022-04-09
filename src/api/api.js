@@ -77,13 +77,12 @@ const GetCollegeLists = () => {
   }
 };
 
-const GetBookList = (data, token ,categoryRes) => {
+const GetBookList = (data, token, categoryRes) => {
   const body = data;
-  let slug ;
-  if(categoryRes != -1 && categoryRes != undefined ){
-     slug = `/institude_home_page/inst_home_list/${body}/?category=${categoryRes}`;
-  }
-  else{
+  let slug;
+  if (categoryRes != -1 && categoryRes != undefined) {
+    slug = `/institude_home_page/inst_home_list/${body}/?category=${categoryRes}`;
+  } else {
     slug = `/institude_home_page/inst_home_list/${body}/`;
   }
   const url = `${baseRoute}${slug}`;
@@ -100,8 +99,8 @@ const GetBookList = (data, token ,categoryRes) => {
     return error;
   }
 };
-const GetBookListSearch = (data,college_slug, token) => {
-  const slug =`/institude_home_page/inst_search_result/${college_slug}/?search_word=${data}`;
+const GetBookListSearch = (data, college_slug, token) => {
+  const slug = `/institude_home_page/inst_search_result/${college_slug}/?search_word=${data}`;
   const url = `${baseRoute}${slug}`;
   try {
     const response = axios({
@@ -117,7 +116,7 @@ const GetBookListSearch = (data,college_slug, token) => {
   }
 };
 const GetBookListCategory = (college_slug, token) => {
-  const slug =`/institude_home_page/inst_home_filter_values/${college_slug}`;
+  const slug = `/institude_home_page/inst_home_filter_values/${college_slug}`;
   const url = `${baseRoute}${slug}`;
   try {
     const response = axios({
@@ -132,8 +131,8 @@ const GetBookListCategory = (college_slug, token) => {
     return error;
   }
 };
-const GetBookListDetails = (college_slug, token,book_slug) => {
-  const slug =`/institude_home_page/inst_book_details/${college_slug}/${book_slug}/`;
+const GetBookListDetails = (college_slug, token, book_slug) => {
+  const slug = `/institude_home_page/inst_book_details/${college_slug}/${book_slug}/`;
   const url = `${baseRoute}${slug}`;
   try {
     const response = axios({
@@ -173,6 +172,77 @@ const studentLogin = data => {
     return error;
   }
 };
+
+const GetSaveBookList = (college_slug, token) => {
+  const slug = `/institude_home_page/inst_user_save_book_list/${college_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  try {
+    const response = axios({
+      method: "get",
+      url: url,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+const AddSaveBookList = (college_slug, token, book_slug) => {
+  const slug = `/institude_home_page/inst_user_save_book_list/${college_slug}/${book_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  try {
+    const response = axios({
+      method: "get",
+      url: url,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+const GetContinueReading = (college_slug, token) => {
+  const slug = `/institude_home_page/continue_reading_book_list/${college_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  try {
+    const response = axios({
+      method: "get",
+      url: url,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+const PostContinueReading = (book_slug, token, pageNo) => {
+  // console.log(pageNo, "pageNo+++++++++++++++++");
+  const slug = `/institude_home_page/set_or_get_page_no/${book_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  const body = {
+    pages: Number(pageNo),
+  };
+  try {
+    const response = axios({
+      method: "post",
+      url: url,
+      data: body,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
 export {
   HomeBanner,
   AuthorList,
@@ -184,5 +254,9 @@ export {
   GetBookList,
   GetBookListSearch,
   GetBookListCategory,
-  GetBookListDetails
+  GetBookListDetails,
+  GetSaveBookList,
+  AddSaveBookList,
+  GetContinueReading,
+  PostContinueReading,
 };

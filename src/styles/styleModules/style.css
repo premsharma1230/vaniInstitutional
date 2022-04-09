@@ -127,8 +127,117 @@ a {
   padding: 0rem 0 1rem;
 }
 
+.Ebook_Wrapper .About_Book {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: max-content 1fr;
+      grid-template-columns: -webkit-max-content 1fr;
+      grid-template-columns: max-content 1fr;
+  grid-gap: 1.5rem;
+  width: 82%;
+  margin: 6rem auto 3rem;
+}
+
+.Ebook_Wrapper .About_Book figure {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  max-height: -webkit-max-content;
+  max-height: -moz-max-content;
+  max-height: max-content;
+}
+
+.Ebook_Wrapper .About_Book figure img {
+  max-width: 100%;
+  max-height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Ebook_Wrapper .About_Book .About-book-title {
+  border-bottom: 1px solid #0298bf;
+}
+
+.Ebook_Wrapper .About_Book .About-book-title h2 {
+  color: #4e4e4e;
+  font-size: 2.2em;
+  font-weight: 700;
+  line-height: 46px;
+  letter-spacing: 0.20000000298023224px;
+}
+
+.Ebook_Wrapper .About_Book .About-book-title h5 {
+  padding: 0.5rem 0;
+  font-size: 1.2;
+  font-weight: 700;
+  line-height: 23px;
+  color: #020056;
+  letter-spacing: 0.20000000298023224px;
+}
+
 .Ebook_Wrapper .Ebook_Content {
   padding: 0rem 0 4rem;
+}
+
+.Ebook_Wrapper .Ebook-Content_Wrp {
+  height: 70vh;
+  width: 38vw;
+  margin: auto;
+  margin-top: 0rem;
+  -webkit-box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.179);
+          box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.179);
+}
+
+.Ebook_Wrapper .MagnifierFont_Btn {
+  z-index: 1;
+}
+
+.Ebook_Wrapper .MagnifierFont_Btn button {
+  color: #fe4365;
+  background: transparent;
+  outline: none;
+  border: none;
+  margin-right: 2.5rem;
+  cursor: pointer;
+  position: absolute;
+  left: 31rem;
+  -webkit-transform: translateY(-21px);
+          transform: translateY(-21px);
+  z-index: 1;
+}
+
+.Ebook_Wrapper .MagnifierFont_Btn button:nth-child(2) {
+  left: 47rem;
+}
+
+.Profile_Wrapper .Profilebtn {
+  text-align: center;
+  background: #0298bf !important;
+  color: #fff;
+  padding: 0.3rem 1rem !important;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: max-content 20px;
+      grid-template-columns: -webkit-max-content 20px;
+      grid-template-columns: max-content 20px;
+  grid-gap: 1rem;
+}
+
+.Menu_Wrap .MuiPaper-root.MuiPaper-elevation {
+  top: 52px !important;
+}
+
+.Menu_Wrap .MuiPaper-root.MuiPaper-elevation a {
+  color: currentColor;
+}
+
+.Menu_Wrap ul {
+  width: 130px !important;
+}
+
+.Menu_Wrap ul li {
+  display: block !important;
+  padding: 0.5rem 0.5rem 0.5rem 1rem !important;
 }
 
 h1,
@@ -151,14 +260,6 @@ html {
 
 a {
   text-decoration: none;
-}
-
-.Ebook_Wrapper {
-  padding: 0rem 0 1rem;
-}
-
-.Ebook_Wrapper .Ebook_Content {
-  padding: 0rem 0 4rem;
 }
 
 .BookList_MainWrappe {

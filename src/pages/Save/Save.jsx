@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import book from "../../assets/grid1.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
+import { GetSaveBookList } from "../../api/api";
 
 export const Save = () => {
+  const [bookSaveList, setbookSaveList] = useState();
+  const { state } = useLocation();
+  const college_slug = JSON.parse(
+    sessionStorage.getItem("studentLogin")
+  ).college_slug;
+  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  useEffect(() => {
+    GetSaveBookList(college_slug, token).then(res => {
+      setbookSaveList(res?.results);
+      // console.log(
+      //   res,
+      //   "datadatadatadatadatadatadatadatadata+++++++++++++++++++++++++++++++++++++++++++++"
+      // );
+    });
+  }, []);
+
+  console.log(bookSaveList, "bookSaveList+++++++++++++");
+
   return (
     <section className="Main_HomeWrapper SaveMain_Wrapper">
       <div className="Save_Content_wrp">
@@ -19,17 +38,24 @@ export const Save = () => {
               </figcaption>
             </div>
             <div className="SaveBook_Grid">
-              <div className="Grid-item">
-                <Link to="/Description">
-                  <figure>
-                    <img src={book} alt="book" />
-                  </figure>
-                  <figcaption>
-                    <h3>The Psychology of Money</h3>
-                    <strong>Morgan Housel</strong>
-                  </figcaption>
-                </Link>
-              </div>
+              {bookSaveList?.map((ele, index) => (
+                <div key={index} className="Grid-item">
+                  <Link to="">
+                    <figure>
+                      <img src={ele?.book_details?.image} alt="book" />
+                    </figure>
+                    <figcaption>
+                      <h3>{ele?.book_details?.title}</h3>
+                      {ele?.book_details?.book_authors.map((item, index) => (
+                        <strong key={index}>
+                          {index ? "," : null}
+                          {item}
+                        </strong>
+                      ))}
+                    </figcaption>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>

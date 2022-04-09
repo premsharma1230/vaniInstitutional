@@ -8,7 +8,9 @@ export const Description = () => {
   const { state } = useLocation();
   let navigate = useNavigate();
   const [bookDetails, setBookDetails] = useState();
-  const college_slug = JSON.parse(sessionStorage.getItem("studentLogin")).college_slug;
+  const college_slug = JSON.parse(
+    sessionStorage.getItem("studentLogin")
+  ).college_slug;
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
   const [booklist, setBooklist] = useState([]);
@@ -26,6 +28,7 @@ export const Description = () => {
       state: { readme: e },
     });
   };
+
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div className="container">
@@ -79,7 +82,7 @@ export const Description = () => {
                       onClick={() => readNow(bookDetails?.original_ebook)}
                       className="read_btn"
                     >
-                      <Link to="/ContinueReading">
+                      <Link to="#">
                         <i class="fas fa-book-open"></i>
                         <span>READ NOW</span>
                       </Link>

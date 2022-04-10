@@ -85,7 +85,7 @@ export const Description = () => {
                 <div className="description-Group-btn">
                   <div className="description_content">
                     <button
-                      onClick={() => readNow(bookDetails?.original_ebook)}
+                      onClick={() => readNow(bookDetails)}
                       className="read_btn"
                     >
                       <Link to="#">

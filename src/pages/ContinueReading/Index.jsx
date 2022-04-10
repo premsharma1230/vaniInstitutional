@@ -50,7 +50,7 @@ export const ContinueReading = () => {
                     <strong key={index}>{e}</strong>
                     )}
                     <button 
-                     onClick={() => readNow(ele?.original_ebook)}
+                     onClick={() => readNow(ele)}
                     className="continue_btn">Continue</button>
                   </figcaption>
               </div>

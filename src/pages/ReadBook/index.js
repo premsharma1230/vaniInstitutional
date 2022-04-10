@@ -15,6 +15,7 @@ export default function ReadBook(props) {
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
   const readme = JSON.parse(sessionStorage.getItem("readme"));
+  console.log(readme,"+++++++++++++++++++++++++++++++++++++")
 
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
@@ -68,8 +69,10 @@ export default function ReadBook(props) {
               <img src={book1} alt="book" />{" "}
             </figure>
             <div className="About-book-title">
-              <h2>Heading</h2>
-              <h5>By Author</h5>
+              <h2>{readme?.book_details?.title}</h2>
+              {readme?.book_details?.book_authors?.map((auth) =>
+              <h5>{"By"} {auth}</h5>
+              )}
             </div>
           </div>
         </div>
@@ -77,11 +80,11 @@ export default function ReadBook(props) {
           <div className="ebook-reader-container Ebook-Content_Wrp">
             <ReactReader
               locationChanged={locationChanged}
-              url={readme}
+              url={readme?.original_ebook}
               epubInitOptions={{
                 openAs: "epub",
               }}
-              location={5}
+              location={0}
               getRendition={rendition => (renditionRef.current = rendition)}
               tocChanged={toc => (tocRef.current = toc)}
               showToc={false}

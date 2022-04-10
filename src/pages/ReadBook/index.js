@@ -55,7 +55,6 @@ export default function ReadBook(props) {
   }, [size]);
   //<------------fontsize--end--here-->
 
-  console.log(renditionRef, "+++++++++++++++++++++++++++++++++++++");
 
   return (
     <>
@@ -70,7 +69,7 @@ export default function ReadBook(props) {
           <div className="About_Book">
             <figure>
               {" "}
-              <img src={book1} alt="book" />{" "}
+              <img src={readme?.book_details?.image} alt="book" />{" "}
             </figure>
             <div className="About-book-title">
               <h2>{readme?.book_details?.title}</h2>

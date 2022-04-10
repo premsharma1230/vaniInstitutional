@@ -32,6 +32,7 @@ const useStyles = makeStyles({
 export default function InstitutionalLogin() {
   const [institutionsLists, setInstitutionsLists] = useState([]);
   const [selectedInstitute, setSelectedInstitute] = useState("");
+  const [value, setValue] = useState([]);
   let navigate = useNavigate();
   const classes = useStyles();
 
@@ -39,8 +40,8 @@ export default function InstitutionalLogin() {
     const loadData = () => {
       GetCollegeLists().then(res => {
         const response = res;
-        sessionStorage.setItem("institutionLists",JSON.stringify(res))
-        setInstitutionsLists(response);
+        sessionStorage.setItem("institutionLists", JSON.stringify(res))
+        setInstitutionsLists(response)
       }).catch((err) => {
       });
     };
@@ -49,21 +50,21 @@ export default function InstitutionalLogin() {
   }, []);
   useEffect(() => {
     const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
-   if(token){
-     navigate("/MainHome")
-   }
-  },[window.location.pathname])
+    if (token) {
+      navigate("/MainHome")
+    }
+  }, [window.location.pathname])
 
   const handleSubmit = e => {
     e.preventDefault();
     const selectedInstitutionalData = institutionsLists.filter(
-      item => item.name === selectedInstitute
+      item => item.name === value
     );
     sessionStorage.setItem("selectedInstitution",JSON.stringify(selectedInstitutionalData))
     navigate("/login");
   };
-  const handleSelect = e => {
-    setSelectedInstitute(e.target.value);
+  const handleSelect = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
@@ -95,17 +96,19 @@ export default function InstitutionalLogin() {
                   <div className={Classes.maaa}>
                     <Stack spacing={2} sx={{ width: 350 }}>
                       <Autocomplete
-                        id="free-solo-demo"
-                        freeSolo
-                        onSelect={handleSelect}
+                        value={value}
+                        onChange={handleSelect}
+                        inputValue={selectedInstitute}
+                        onInputChange={(event, selectedInstitute) => {
+                          setSelectedInstitute(selectedInstitute);
+                        }}
+                        id="controllable-states-demo"
                         options={institutionsLists?.map(option => option.name)}
-                        renderInput={params => (
-                          <TextField
-                            {...params}
-                            label="Search for your insitute here"
-                            variant="outlined"
-                          />
-                        )}
+                        renderInput={(params) =>
+                           <TextField {...params} 
+                        label="Search for your insitute here"
+                        variant="outlined"
+                         />}
                       />
                     </Stack>
                   </div>

@@ -167,12 +167,11 @@ const GetReletedBooksListDetails = (college_slug, token, book_slug) => {
 const studentLogin = data => {
   const body = {
     user: {
-      college: data?.slug,
-      email: data.username,
-      password: data.password,
+      "college": data?.slug,
+      "email": data.username,
+      "password": data.password,
     },
   };
-
   const slug = "/auth/college_student_login/";
   const url = `${baseRoute}${slug}`;
   try {
@@ -180,8 +179,17 @@ const studentLogin = data => {
       method: "post",
       url: url,
       data: body,
-    }).then(response => {
-      return response.data;
+    }).then(res => {
+      return res.data;
+    }) .catch(function (error) {
+      if (error.response) {
+        return error.response;
+      } 
+      else if (error.request) {
+        return error.request;
+      } else {
+        return error.message;
+      }
     });
     return response;
   } catch (error) {

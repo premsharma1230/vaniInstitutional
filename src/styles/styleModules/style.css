@@ -210,6 +210,17 @@ a {
   left: 47rem;
 }
 
+.css-42vny5-MuiPaper-root-MuiAppBar-root {
+  z-index: 1 !important;
+}
+
+.Profile_Wrapper {
+  position: absolute;
+  z-index: 5;
+  top: 20px;
+  right: 30px;
+}
+
 .Profile_Wrapper .Profilebtn {
   text-align: center;
   background: #0298bf !important;

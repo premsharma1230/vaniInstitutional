@@ -5,15 +5,17 @@ import { useLocation, Link, useNavigate } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
 import book1 from "../../assets/grid1.png";
 import { PostContinueReading } from "../../api/api";
+import Profile from "../../components/appNavigation/Profile";
 
 export default function ReadBook(props) {
   const [page, setPage] = useState("");
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
   const { state } = useLocation();
-  const readme = state?.readme;
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  const readme = JSON.parse(sessionStorage.getItem("readme"));
+
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
       const { displayed, href } = renditionRef.current.location.start;
@@ -23,6 +25,9 @@ export default function ReadBook(props) {
       });
     }
   };
+  useEffect(() => {
+    setPage(5)
+  }, []);
   const ownStyles = {
     ...ReactReaderStyle,
     arrow: {
@@ -53,6 +58,9 @@ export default function ReadBook(props) {
   return (
     <>
       <div className="Main_HomeWrapper Ebook_Wrapper">
+      <div className="Profile" style={{display:'flex', justifyContent:'right'}}>
+              <Profile />
+        </div>
         <div className="Ebook_Heading">
           <div className="About_Book">
             <figure>
@@ -73,6 +81,7 @@ export default function ReadBook(props) {
               epubInitOptions={{
                 openAs: "epub",
               }}
+              location={5}
               getRendition={rendition => (renditionRef.current = rendition)}
               tocChanged={toc => (tocRef.current = toc)}
               showToc={false}

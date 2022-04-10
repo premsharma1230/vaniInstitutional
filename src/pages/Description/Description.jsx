@@ -3,7 +3,7 @@ import { Footer } from "../Footer/Footer";
 import book from "../../assets/grid1.png";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import Profile from "../../components/appNavigation/Profile";
-import { GetBookListDetails,GetReletedBooksListDetails } from "../../api/api";
+import { GetBookListDetails, GetReletedBooksListDetails } from "../../api/api";
 
 export const Description = () => {
   let navigate = useNavigate();
@@ -19,17 +19,24 @@ export const Description = () => {
     GetReletedBooksListDetails(college_slug, token, book_slug).then(resp => {
       setBooklist(resp?.results)
     });
-  }, [bookList,bookDetails])
+  }, [])
   function readNow(e) {
-    navigate("/readbook", {
-      state: { readme: e },
+    sessionStorage.setItem("readme", JSON.stringify(e))
+    navigate("/readbook");
+  }
+  function openReletedBooksList(e) {
+    GetBookListDetails(college_slug, token, e?.slug).then(res => {
+      setBookDetails(res.data);
+    });
+    GetReletedBooksListDetails(college_slug, token,  e?.slug).then(resp => {
+      setBooklist(resp?.results)
     });
   }
   return (
     <section className="Main_HomeWrapper Description_wrapper">
-      <div className="Profile" style={{display:'flex', justifyContent:'right'}}>
-              <Profile />
-        </div>
+      <div className="Profile" style={{ display: 'flex', justifyContent: 'right' }}>
+        <Profile />
+      </div>
       <div className="container">
         <div className="Description_Content">
           <div className="Description_Left">
@@ -106,19 +113,17 @@ export const Description = () => {
           </div>
           <div className="Grid_Carousel_wrp">
             {bookList?.length > 0 &&
-              bookList?.map((ele,index) => (
-                <div key={index} className="Grid-item">
-                  <Link to="/Description">
-                    <figure>
-                      <img src={ele?.image} alt="book" />
-                    </figure>
-                    <figcaption>
-                      <h3>{ele?.title_and_author?.title}</h3>
-                      {ele?.title_and_author?.authors?.map((e,index) =>
+              bookList?.map((ele, index) => (
+                <div key={index} onClick={() => openReletedBooksList(ele)} className="Grid-item">
+                  <figure>
+                    <img src={ele?.image} alt="book" />
+                  </figure>
+                  <figcaption>
+                    <h3>{ele?.title_and_author?.title}</h3>
+                    {ele?.title_and_author?.authors?.map((e, index) =>
                       <strong key={index}>{e}</strong>
-                      )}
-                    </figcaption>
-                  </Link>
+                    )}
+                  </figcaption>
                 </div>
               ))}{" "}
           </div>

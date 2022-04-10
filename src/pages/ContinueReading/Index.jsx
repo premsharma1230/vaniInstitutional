@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
 import { GetContinueReading } from "../../api/api";
 import { useLocation,  useNavigate } from "react-router-dom";
+import Profile from "../../components/appNavigation/Profile";
 
 export const ContinueReading = () => {
   let navigate = useNavigate();
@@ -17,12 +18,14 @@ export const ContinueReading = () => {
     });
   }, [])
   function readNow(e) {
-    navigate("/readbook", {
-      state: { readme: e },
-    });
+    sessionStorage.setItem("readme", JSON.stringify(e))
+    navigate("/readbook");
   }
   return (
     <section className="Main_HomeWrapper SaveMain_Wrapper ContinueReading_Wrapper">
+       <div className="Profile" style={{display:'flex', justifyContent:'right'}}>
+              <Profile />
+        </div>
       <div className="Save_Content_wrp">
         <div className=" container">
           <div className="Save_Content">
@@ -38,7 +41,6 @@ export const ContinueReading = () => {
             <div className="SaveBook_Grid">
             {continueReading?.map((ele,index) =>
               <div  key={index} className="Grid-item">
-                <Link to="#">
                   <figure>
                     <img src={ele?.book_details?.image} alt="book" />
                   </figure>
@@ -51,7 +53,6 @@ export const ContinueReading = () => {
                      onClick={() => readNow(ele?.original_ebook)}
                     className="continue_btn">Continue</button>
                   </figcaption>
-                </Link>
               </div>
                )}
             </div>

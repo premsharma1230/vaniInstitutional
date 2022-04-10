@@ -31,6 +31,14 @@ export default function Profile() {
     handleClose();
     navigate("/");
   };
+  const handleContinueReading = () => {
+    handleClose();
+    navigate("/ContinueReading");
+  };
+  const handleSaveBook = () => {
+    handleClose();
+    navigate("/Save");
+  };
 
   return (
     <div className="Profile_Wrapper">
@@ -63,8 +71,8 @@ export default function Profile() {
           horizontal: "left",
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleSaveBook}>Save Book</MenuItem>
+        <MenuItem onClick={handleContinueReading}>Continue reading</MenuItem>
         <MenuItem onClick={handleLogout}>
             Logout  
         </MenuItem>

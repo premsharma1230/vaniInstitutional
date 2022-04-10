@@ -15,19 +15,20 @@ export default function ReadBook(props) {
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
   const readme = JSON.parse(sessionStorage.getItem("readme"));
-  console.log(readme,"+++++++++++++++++++++++++++++++++++++")
+  console.log(readme, "+++++++++++++++++++++++++++++++++++++");
 
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
       const { displayed, href } = renditionRef.current.location.start;
       const chapter = tocRef.current.find(item => item.href === href);
       setPage(`${displayed.page}`);
-      PostContinueReading(book_slug, token, `${displayed.page}`).then(res => {
-      });
+      PostContinueReading(book_slug, token, `${displayed.page}`).then(
+        res => {}
+      );
     }
   };
   useEffect(() => {
-    setPage(5)
+    setPage(5);
   }, []);
   const ownStyles = {
     ...ReactReaderStyle,
@@ -59,8 +60,11 @@ export default function ReadBook(props) {
   return (
     <>
       <div className="Main_HomeWrapper Ebook_Wrapper">
-      <div className="Profile" style={{display:'flex', justifyContent:'right'}}>
-              <Profile />
+        <div
+          className="Profile"
+          style={{ display: "flex", justifyContent: "right" }}
+        >
+          <Profile />
         </div>
         <div className="Ebook_Heading">
           <div className="About_Book">
@@ -70,9 +74,11 @@ export default function ReadBook(props) {
             </figure>
             <div className="About-book-title">
               <h2>{readme?.book_details?.title}</h2>
-              {readme?.book_details?.book_authors?.map((auth) =>
-              <h5>{"By"} {auth}</h5>
-              )}
+              {readme?.book_details?.book_authors?.map(auth => (
+                <h5>
+                  {"By"} {auth}
+                </h5>
+              ))}
             </div>
           </div>
         </div>

@@ -211,11 +211,11 @@ a {
 }
 
 .css-42vny5-MuiPaper-root-MuiAppBar-root {
-  z-index: 1 !important;
+  z-index: 2 !important;
 }
 
 .Profile_Wrapper {
-  position: absolute;
+  position: fixed;
   z-index: 5;
   top: 20px;
   right: 30px;
@@ -235,7 +235,7 @@ a {
 }
 
 .Menu_Wrap .MuiPaper-root.MuiPaper-elevation {
-  top: 52px !important;
+  top: 60px !important;
 }
 
 .Menu_Wrap .MuiPaper-root.MuiPaper-elevation a {
@@ -243,12 +243,15 @@ a {
 }
 
 .Menu_Wrap ul {
-  width: 130px !important;
+  width: -webkit-max-content !important;
+  width: -moz-max-content !important;
+  width: max-content !important;
 }
 
 .Menu_Wrap ul li {
   display: block !important;
   padding: 0.5rem 0.5rem 0.5rem 1rem !important;
+  color: #0298bf;
 }
 
 h1,

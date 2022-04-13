@@ -15,7 +15,6 @@ export default function ReadBook(props) {
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
   const readme = JSON.parse(sessionStorage.getItem("readme"));
-  console.log(readme, "+++++++++++++++++++++++++++++++++++++");
 
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
@@ -27,9 +26,9 @@ export default function ReadBook(props) {
       );
     }
   };
-  useEffect(() => {
-    setPage(5);
-  }, []);
+  // useEffect(() => {
+  //   setPage(5);
+  // }, []);
   const ownStyles = {
     ...ReactReaderStyle,
     arrow: {
@@ -73,11 +72,12 @@ export default function ReadBook(props) {
             </figure>
             <div className="About-book-title">
               <h2>{readme?.book_details?.title}</h2>
-              {readme?.book_details?.book_authors?.map(auth => (
-                <h5>
-                  {"By"} {auth}
+              <h5 style={{display:"flex"}}>By &nbsp; {readme?.book_details?.book_authors.map((author, index) =>
+                  <p >
+                    {index ? "," : " "} {author}
+                  </p>
+                )}
                 </h5>
-              ))}
             </div>
           </div>
         </div>

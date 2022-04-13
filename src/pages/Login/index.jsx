@@ -78,7 +78,7 @@ export default function Login() {
     const finalData = Object.assign(data, { slug: selectedInstitute?.[0].slug });
     studentLogin(finalData).then(res => {
 
-      if (res?.status == 200) {
+      if (res?.status == true) {
         sessionStorage.setItem("studentLogin", JSON.stringify(res?.data))
         navigate("/MainHome");
       } else {

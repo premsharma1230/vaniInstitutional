@@ -35,6 +35,7 @@ export const Description = () => {
       setBooklist(resp?.results)
     });
   }
+  console.log(bookDetails, "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div className="Profile" style={{ display: 'flex', justifyContent: 'right' }}>
@@ -55,7 +56,12 @@ export const Description = () => {
             <div className="About_Book">
               <div className="About-book-title">
                 <h2>{bookDetails?.book_details?.title}</h2>
-                <h5>By {bookDetails?.book_details?.book_authors}</h5>
+                <h5 style={{display:"flex"}}>By &nbsp; {bookDetails?.book_details?.book_authors.map((author, index) =>
+                  <p >
+                    {index ? "," : " "} {author}
+                  </p>
+                )}
+                </h5>
               </div>
               <figcaption>
                 <p>{bookDetails?.book_details?.description}</p>
@@ -82,7 +88,9 @@ export const Description = () => {
                   </li>
                   <li>
                     <span>Genre :</span>
-                    <strong>{bookDetails?.book_details?.book_genres}</strong>
+                    {bookDetails?.book_details?.book_genres.map((genre,index) =>
+                    <strong key={index}>{genre}</strong>
+                    )}
                   </li>
                 </ul>
                 <div className="description-Group-btn">
@@ -115,22 +123,22 @@ export const Description = () => {
             <h2>Other Books</h2>
           </div>
           <div className="Grid_Carousel_wrp">
-          <Carousel className="Grid-item" >
-                {bookList?.length > 0 &&
-                  bookList?.map((ele, index) => (
-                    <div key={index} onClick={() => openReletedBooksList(ele)} >
-                      <figure>
-                        <img src={ele?.image} alt="book" />
-                      </figure>
-                      <figcaption>
-                        <h3>{ele?.title_and_author?.title}</h3>
-                        {ele?.title_and_author?.authors?.map((e, index) =>
-                          <strong key={index}>{e}</strong>
-                        )}
-                      </figcaption>
-                    </div>
-              ))}
-              </Carousel>
+            <Carousel className="Grid-item" >
+              {bookList?.length > 0 &&
+                bookList?.map((ele, index) => (
+                  <div key={index} onClick={() => openReletedBooksList(ele)} >
+                    <figure>
+                      <img src={ele?.image} alt="book" />
+                    </figure>
+                    <figcaption>
+                      <h3>{ele?.title_and_author?.title}</h3>
+                      {ele?.title_and_author?.authors?.map((e, index) =>
+                        <strong key={index}>{e}</strong>
+                      )}
+                    </figcaption>
+                  </div>
+                ))}
+            </Carousel>
           </div>
         </div>
         {/* end-here--Other-Books */}

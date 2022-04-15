@@ -229,6 +229,22 @@ const AddSaveBookList = (college_slug, token, book_slug) => {
     return error;
   }
 };
+const AddSaveBook = (token, book_slug) => {
+  const slug = `/institude_home_page/add_or_remove_from_save_list/${book_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  try {
+    const response = axios({
+      method: "post",
+      url: url,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
 const GetContinueReading = (college_slug, token) => {
   const slug = `/institude_home_page/continue_reading_book_list/${college_slug}/`;
   const url = `${baseRoute}${slug}`;
@@ -300,5 +316,6 @@ export {
   GetContinueReading,
   PostContinueReading,
   GetReletedBooksListDetails,
-  ContinueCurrentReading
+  ContinueCurrentReading,
+  AddSaveBook
 };

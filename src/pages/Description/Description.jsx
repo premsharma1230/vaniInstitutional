@@ -3,7 +3,7 @@ import { Footer } from "../Footer/Footer";
 import book from "../../assets/grid1.png";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import Profile from "../../components/appNavigation/Profile";
-import { GetBookListDetails, GetReletedBooksListDetails } from "../../api/api";
+import { AddSaveBook, GetBookListDetails, GetReletedBooksListDetails } from "../../api/api";
 import Carousel from 'react-material-ui-carousel';
 
 export const Description = () => {
@@ -27,6 +27,13 @@ export const Description = () => {
     sessionStorage.setItem("readme", JSON.stringify(e))
     navigate("/readbook");
   }
+  function saveBook(e) {
+   
+    AddSaveBook(token, e?.slug).then(ele => {
+      navigate("/Save");
+    })
+    // 
+  }
   function openReletedBooksList(e) {
     GetBookListDetails(college_slug, token, e?.slug).then(res => {
       setBookDetails(res.data);
@@ -35,6 +42,7 @@ export const Description = () => {
       setBooklist(resp?.results)
     });
   }
+ 
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div className="Profile" style={{ display: 'flex', justifyContent: 'right' }}>
@@ -101,13 +109,15 @@ export const Description = () => {
                       <Link to="#">
                         <i class="fas fa-book-open"></i>
                         <span>READ NOW</span>
-                      </Link>
+                     </Link>
                     </button>
-                    <button className="Save_btn">
-                      <Link to="/Save">
+                    <button
+                     onClick={() => saveBook(bookDetails)}
+                     className="Save_btn">
+                      <Link to="#">
                         <i class="fas fa-bookmark"></i>
                         <span>save</span>
-                      </Link>
+                        </Link>
                     </button>
                   </div>
                 </div>

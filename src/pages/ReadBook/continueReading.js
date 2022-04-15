@@ -9,13 +9,14 @@ import Profile from "../../components/appNavigation/Profile";
 
 export default function ContinueReadBook(props) {
   const [page, setPage] = useState("");
+  const [size, setSize] = useState(100);
   const [getLocation, setGetLocation] = useState("");
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
   const { state } = useLocation();
-  const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
+  const book_slug = JSON.parse(sessionStorage.getItem("contingreadme")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
-  const readme = JSON.parse(sessionStorage.getItem("readme"));
+  const readme = JSON.parse(sessionStorage.getItem("contingreadme"));
 
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
@@ -27,13 +28,7 @@ export default function ContinueReadBook(props) {
       );
     }
   };
-  useEffect(() => {
-    ContinueCurrentReading(book_slug, token).then(res =>{
-      console.log(res,"__________________________")
-      setPage(res?.page_no)
-      setGetLocation(res?.loaction)
-    })
-  }, []);
+
   const ownStyles = {
     ...ReactReaderStyle,
     arrow: {
@@ -48,7 +43,7 @@ export default function ContinueReadBook(props) {
   };
 
   // fontsize---->
-  const [size, setSize] = useState(100);
+
   const changeSize = newSize => {
     setSize(newSize);
   };
@@ -58,8 +53,13 @@ export default function ContinueReadBook(props) {
     }
   }, [size]);
   //<------------fontsize--end--here-->
-  console.log(page,"@@@@@@@@@@@@@@@@@@@@@@@@")
-  console.log(getLocation,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+  useEffect(() => {
+    ContinueCurrentReading(book_slug, token).then(res =>{
+      console.log(res,"__________________________")
+      setPage(res?.page_no)
+      setGetLocation(res?.loaction)
+    })
+  }, []);
 
   return (
     <>

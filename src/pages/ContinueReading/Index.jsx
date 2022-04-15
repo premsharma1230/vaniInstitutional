@@ -20,7 +20,7 @@ export const ContinueReading = () => {
     });
   }, []);
   function readNow(e) {
-    sessionStorage.setItem("readme", JSON.stringify(e));
+    sessionStorage.setItem("contingreadme", JSON.stringify(e));
     navigate("/continueReadBook");
   }
   return (

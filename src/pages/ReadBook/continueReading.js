@@ -4,11 +4,12 @@ import ss from "./Around_the_World_in_28_Languages (2).epub";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { Footer } from "../Footer/Footer";
 import book1 from "../../assets/grid1.png";
-import { PostContinueReading } from "../../api/api";
+import { ContinueCurrentReading, PostContinueReading } from "../../api/api";
 import Profile from "../../components/appNavigation/Profile";
 
-export default function ReadBook(props) {
+export default function ContinueReadBook(props) {
   const [page, setPage] = useState("");
+  const [getLocation, setGetLocation] = useState("");
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
   const { state } = useLocation();
@@ -26,6 +27,13 @@ export default function ReadBook(props) {
       );
     }
   };
+  useEffect(() => {
+    ContinueCurrentReading(book_slug, token).then(res =>{
+      console.log(res,"__________________________")
+      setPage(res?.page_no)
+      setGetLocation(res?.loaction)
+    })
+  }, []);
   const ownStyles = {
     ...ReactReaderStyle,
     arrow: {
@@ -50,7 +58,8 @@ export default function ReadBook(props) {
     }
   }, [size]);
   //<------------fontsize--end--here-->
-
+  console.log(page,"@@@@@@@@@@@@@@@@@@@@@@@@")
+  console.log(getLocation,"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 
   return (
     <>
@@ -78,6 +87,7 @@ export default function ReadBook(props) {
             </div>
           </div>
         </div>
+        {getLocation != "" ?
         <div className="Ebook_Content">
           <div className="ebook-reader-container Ebook-Content_Wrp">
             <ReactReader
@@ -86,6 +96,7 @@ export default function ReadBook(props) {
               epubInitOptions={{
                 openAs: "epub",
               }}
+              location={getLocation}
               getRendition={rendition => (renditionRef.current = rendition)}
               tocChanged={toc => (tocRef.current = toc)}
               showToc={false}
@@ -125,8 +136,10 @@ export default function ReadBook(props) {
               <i className="fas fa-search-plus"></i>
             </button>
           </div>
+        
           {/* font-size */}
         </div>
+          :null}
         <Footer />
       </div>
     </>

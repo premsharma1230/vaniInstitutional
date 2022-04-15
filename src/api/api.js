@@ -245,17 +245,34 @@ const GetContinueReading = (college_slug, token) => {
     return error;
   }
 };
-const PostContinueReading = (book_slug, token, pageNo) => {
+const PostContinueReading = (book_slug, token, pageNo,location) => {
   const slug = `/institude_home_page/set_or_get_page_no/${book_slug}/`;
   const url = `${baseRoute}${slug}`;
   const body = {
     pages: Number(pageNo),
+    location: location
   };
   try {
     const response = axios({
       method: "post",
       url: url,
       data: body,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+const ContinueCurrentReading = (book_slug, token) => {
+  const slug = `/institude_home_page/set_or_get_page_no/${book_slug}/`;
+  const url = `${baseRoute}${slug}`;
+  try {
+    const response = axios({
+      method: "get",
+      url: url,
       headers: { Authorization: `Bearer ${token}` },
     }).then(response => {
       return response.data;
@@ -282,5 +299,6 @@ export {
   AddSaveBookList,
   GetContinueReading,
   PostContinueReading,
-  GetReletedBooksListDetails
+  GetReletedBooksListDetails,
+  ContinueCurrentReading
 };

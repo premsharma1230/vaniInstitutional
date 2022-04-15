@@ -35,7 +35,6 @@ export const Description = () => {
       setBooklist(resp?.results)
     });
   }
-  console.log(bookDetails, "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div className="Profile" style={{ display: 'flex', justifyContent: 'right' }}>

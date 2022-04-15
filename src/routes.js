@@ -9,6 +9,7 @@ import { Description } from "./pages/Description/Description";
 import  ReadBook from "./pages/ReadBook";
 import { Save } from "./pages/Save/Save";
 import { ContinueReading } from "./pages/ContinueReading/Index";
+import ContinueReadBook from "./pages/ReadBook/continueReading";
 
 export default function RouteSeperater() {
   return (
@@ -23,6 +24,7 @@ export default function RouteSeperater() {
             <Route path="/MainHome" element={<MainHome />} />
             <Route path="/Description" element={<Description />} />
             <Route path="/readbook" element={<ReadBook />} />
+            <Route path="/continueReadBook" element={<ContinueReadBook />} />
             <Route path="/Save" element={<Save />} />
             <Route path="/ContinueReading" element={<ContinueReading />} />
           </Route>

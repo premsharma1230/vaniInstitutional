@@ -21,7 +21,7 @@ export const ContinueReading = () => {
   }, []);
   function readNow(e) {
     sessionStorage.setItem("readme", JSON.stringify(e));
-    navigate("/readbook");
+    navigate("/continueReadBook");
   }
   return (
     <section className="Main_HomeWrapper SaveMain_Wrapper ContinueReading_Wrapper">

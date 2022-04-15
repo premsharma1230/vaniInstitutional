@@ -4,13 +4,15 @@ import book from "../../assets/grid1.png";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import Profile from "../../components/appNavigation/Profile";
 import { GetBookListDetails, GetReletedBooksListDetails } from "../../api/api";
-import Carousel from 'react-material-ui-carousel';
+import Carousel from "react-material-ui-carousel";
 
 export const Description = () => {
   let navigate = useNavigate();
   const [bookDetails, setBookDetails] = useState({});
   const [bookList, setBooklist] = useState([]);
-  const college_slug = JSON.parse(sessionStorage.getItem("studentLogin")).college_slug;
+  const college_slug = JSON.parse(
+    sessionStorage.getItem("studentLogin")
+  ).college_slug;
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const book_Id = JSON.parse(sessionStorage.getItem("bookDetail")).id;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
@@ -20,11 +22,11 @@ export const Description = () => {
     });
     GetReletedBooksListDetails(college_slug, token, book_slug).then(resp => {
       const booklist = resp?.results?.filter(e => e.id != book_Id);
-      setBooklist(booklist)
+      setBooklist(booklist);
     });
-  }, [])
+  }, []);
   function readNow(e) {
-    sessionStorage.setItem("readme", JSON.stringify(e))
+    sessionStorage.setItem("readme", JSON.stringify(e));
     navigate("/readbook");
   }
   function openReletedBooksList(e) {
@@ -32,12 +34,15 @@ export const Description = () => {
       setBookDetails(res.data);
     });
     GetReletedBooksListDetails(college_slug, token, e?.slug).then(resp => {
-      setBooklist(resp?.results)
+      setBooklist(resp?.results);
     });
   }
   return (
     <section className="Main_HomeWrapper Description_wrapper">
-      <div className="Profile" style={{ display: 'flex', justifyContent: 'right' }}>
+      <div
+        className="Profile"
+        style={{ display: "flex", justifyContent: "right" }}
+      >
         <Profile />
       </div>
       <div className="container">
@@ -55,11 +60,15 @@ export const Description = () => {
             <div className="About_Book">
               <div className="About-book-title">
                 <h2>{bookDetails?.book_details?.title}</h2>
-                <h5 style={{display:"flex"}}>By &nbsp; {bookDetails?.book_details?.book_authors.map((author, index) =>
-                  <p >
-                    {index ? "," : " "} {author}
-                  </p>
-                )}
+                <h5 style={{ display: "flex" }}>
+                  By &nbsp;{" "}
+                  {bookDetails?.book_details?.book_authors.map(
+                    (author, index) => (
+                      <p>
+                        {index ? "," : " "} {author}
+                      </p>
+                    )
+                  )}
                 </h5>
               </div>
               <figcaption>
@@ -87,8 +96,10 @@ export const Description = () => {
                   </li>
                   <li>
                     <span>Genre :</span>
-                    {bookDetails?.book_details?.book_genres.map((genre,index) =>
-                    <strong key={index}>{genre}</strong>
+                    {bookDetails?.book_details?.book_genres.map(
+                      (genre, index) => (
+                        <strong key={index}>{genre}</strong>
+                      )
                     )}
                   </li>
                 </ul>
@@ -122,22 +133,25 @@ export const Description = () => {
             <h2>Other Books</h2>
           </div>
           <div className="Grid_Carousel_wrp">
-            <Carousel className="Grid-item" >
-              {bookList?.length > 0 &&
-                bookList?.map((ele, index) => (
-                  <div key={index} onClick={() => openReletedBooksList(ele)} >
+            {/* <Carousel className="Grid-item" > */}
+            {bookList?.length > 0 &&
+              bookList?.map((ele, index) => (
+                <div className="Grid-item">
+                  <div key={index} onClick={() => openReletedBooksList(ele)}>
                     <figure>
                       <img src={ele?.image} alt="book" />
                     </figure>
                     <figcaption>
                       <h3>{ele?.title_and_author?.title}</h3>
-                      {ele?.title_and_author?.authors?.map((e, index) =>
+                      {ele?.title_and_author?.authors?.map((e, index) => (
                         <strong key={index}>{e}</strong>
-                      )}
+                      ))}
                     </figcaption>
                   </div>
-                ))}
-            </Carousel>
+                </div>
+              ))}
+
+            {/* </Carousel> */}
           </div>
         </div>
         {/* end-here--Other-Books */}

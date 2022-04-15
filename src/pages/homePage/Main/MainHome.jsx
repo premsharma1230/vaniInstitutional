@@ -31,8 +31,6 @@ export const MainHome = () => {
       setBookList(res?.results);
       setCount(Math.ceil(res?.results?.length/2))
     });
-
-    // dropdown category list 
     GetBookListCategory(slug, token).then(res => {
       setCategory(res);
     });

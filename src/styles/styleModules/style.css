@@ -123,6 +123,11 @@ a {
   text-decoration: none;
 }
 
+.active_save_bottom button {
+  background: #1db954 !important;
+  color: #fff !important;
+}
+
 .Ebook_Wrapper {
   padding: 0rem 0 1rem;
 }
@@ -274,6 +279,11 @@ html {
 
 a {
   text-decoration: none;
+}
+
+.active_save_bottom button {
+  background: #1db954 !important;
+  color: #fff !important;
 }
 
 .BookList_MainWrappe {

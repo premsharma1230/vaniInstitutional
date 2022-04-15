@@ -3,13 +3,19 @@ import { Footer } from "../Footer/Footer";
 import book from "../../assets/grid1.png";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import Profile from "../../components/appNavigation/Profile";
-import { GetBookListDetails, GetReletedBooksListDetails } from "../../api/api";
+import {
+  AddSaveBook,
+  GetBookListDetails,
+  GetReletedBooksListDetails,
+  GetSaveBookList,
+} from "../../api/api";
 import Carousel from "react-material-ui-carousel";
 
 export const Description = () => {
   let navigate = useNavigate();
   const [bookDetails, setBookDetails] = useState({});
   const [bookList, setBooklist] = useState([]);
+  const [bookSaveList, setbookSaveList] = useState(false);
   const college_slug = JSON.parse(
     sessionStorage.getItem("studentLogin")
   ).college_slug;
@@ -24,10 +30,27 @@ export const Description = () => {
       const booklist = resp?.results?.filter(e => e.id != book_Id);
       setBooklist(booklist);
     });
+    GetSaveBookList(college_slug, token).then(res => {
+      console.log(res, "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+      const booklist = res?.results?.filter(e => e.id === book_Id);
+      console.log(booklist, "********************************************888");
+      if (booklist.length > 0) {
+        setbookSaveList(true);
+      }
+    });
   }, []);
   function readNow(e) {
     sessionStorage.setItem("readme", JSON.stringify(e));
     navigate("/readbook");
+  }
+  function saveBook(e) {
+    AddSaveBook(token, e?.slug).then(ele => {
+      // navigate("/Save");
+      setbookSaveList(ele.is_added);
+
+      console.log(ele, "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+    });
+    //
   }
   function openReletedBooksList(e) {
     GetBookListDetails(college_slug, token, e?.slug).then(res => {
@@ -37,6 +60,10 @@ export const Description = () => {
       setBooklist(resp?.results);
     });
   }
+  console.log(
+    bookSaveList,
+    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+  );
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div
@@ -114,12 +141,29 @@ export const Description = () => {
                         <span>READ NOW</span>
                       </Link>
                     </button>
-                    <button className="Save_btn">
-                      <Link to="/Save">
-                        <i class="fas fa-bookmark"></i>
-                        <span>save</span>
-                      </Link>
-                    </button>
+                    {bookSaveList ? (
+                      <div className="active_save_bottom">
+                        <button
+                          onClick={() => saveBook(bookDetails)}
+                          className="Save_btn"
+                        >
+                          <Link to="#">
+                            <i className="fas fa-check-circle"></i>
+                            <span>save</span>
+                          </Link>
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => saveBook(bookDetails)}
+                        className="Save_btn"
+                      >
+                        <Link to="#">
+                          <i class="fas fa-bookmark"></i>
+                          <span>save</span>
+                        </Link>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

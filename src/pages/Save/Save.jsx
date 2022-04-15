@@ -16,10 +16,6 @@ export const Save = () => {
   useEffect(() => {
     GetSaveBookList(college_slug, token).then(res => {
       setbookSaveList(res?.results);
-      // console.log(
-      //   res,
-      //   "datadatadatadatadatadatadatadatadata+++++++++++++++++++++++++++++++++++++++++++++"
-      // );
     });
   }, []);
   const handleDescription = (bookDetail) => {

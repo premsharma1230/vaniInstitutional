@@ -3,13 +3,14 @@ import { Footer } from "../Footer/Footer";
 import book from "../../assets/grid1.png";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import Profile from "../../components/appNavigation/Profile";
-import { AddSaveBook, GetBookListDetails, GetReletedBooksListDetails } from "../../api/api";
+import { AddSaveBook, GetBookListDetails, GetReletedBooksListDetails, GetSaveBookList } from "../../api/api";
 import Carousel from 'react-material-ui-carousel';
 
 export const Description = () => {
   let navigate = useNavigate();
   const [bookDetails, setBookDetails] = useState({});
   const [bookList, setBooklist] = useState([]);
+  const [bookSaveList, setbookSaveList] = useState(false);
   const college_slug = JSON.parse(sessionStorage.getItem("studentLogin")).college_slug;
   const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
   const book_Id = JSON.parse(sessionStorage.getItem("bookDetail")).id;
@@ -21,6 +22,12 @@ export const Description = () => {
     GetReletedBooksListDetails(college_slug, token, book_slug).then(resp => {
       const booklist = resp?.results?.filter(e => e.id != book_Id);
       setBooklist(booklist)
+    });
+    GetSaveBookList(college_slug, token).then(res => {
+      console.log(res,"kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+      const booklist = res?.results?.every(e => e.id == book_Id);
+      console.log(booklist,"********************************************888")
+      setbookSaveList(booklist);
     });
   }, [])
   function readNow(e) {
@@ -111,14 +118,25 @@ export const Description = () => {
                         <span>READ NOW</span>
                      </Link>
                     </button>
+                    {bookSaveList ?
                     <button
                      onClick={() => saveBook(bookDetails)}
-                     className="Save_btn">
+                     className="Save_btn active_save_bottom">
                       <Link to="#">
                         <i class="fas fa-bookmark"></i>
                         <span>save</span>
                         </Link>
                     </button>
+                    :
+                    <button
+                     onClick={() => saveBook(bookDetails)}
+                     className="Save_btn" >
+                      <Link to="#">
+                        <i class="fas fa-bookmark"></i>
+                        <span>save</span>
+                        </Link>
+                    </button>
+                    }
                   </div>
                 </div>
               </div>

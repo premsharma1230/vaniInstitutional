@@ -9,8 +9,8 @@ import { useForm, Controller } from "react-hook-form";
 import { studentLogin } from "../../api/api";
 // import swal from "sweetalert";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -36,30 +36,36 @@ const useStyles = makeStyles({
 export default function Login() {
   const classes = useStyles();
   let navigate = useNavigate();
-  const [showError ,setShowError] = React.useState("")
+  const [showError, setShowError] = React.useState("");
   const [state, setState] = React.useState({
     open: false,
-    vertical: 'top',
-    horizontal: 'center',
+    vertical: "top",
+    horizontal: "center",
   });
   const { vertical, horizontal, open } = state;
   const handleClick = () => {
-    console.log("+++++++++++++++++++++++++++++")
+    console.log("+++++++++++++++++++++++++++++");
     setState({
       open: true,
-      vertical: 'top',
-      horizontal: 'right',
+      vertical: "top",
+      horizontal: "right",
     });
   };
 
-  const { handleSubmit, control, reset, formState: { errors }, register } = useForm({
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+    register,
+  } = useForm({
     defaultValues: {
       username: "",
       password: "",
     },
   });
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
@@ -69,24 +75,27 @@ export default function Login() {
   useEffect(() => {
     const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
     if (token) {
-      navigate("/MainHome")
+      navigate("/MainHome");
     }
-  }, [window.location.pathname])
+  }, [window.location.pathname]);
 
-  const onSubmit = (data) => {
-    const selectedInstitute = JSON.parse(sessionStorage.getItem("selectedInstitution"));
-    const finalData = Object.assign(data, { slug: selectedInstitute?.[0].slug });
-    studentLogin(finalData).then(res => {
-
-      if (res?.status == true) {
-        sessionStorage.setItem("studentLogin", JSON.stringify(res?.data))
-        navigate("/MainHome");
-      } else {
-        setShowError(res?.data?.non_field_errors[0])
-        handleClick()
-      }
-
-    })
+  const onSubmit = data => {
+    const selectedInstitute = JSON.parse(
+      sessionStorage.getItem("selectedInstitution")
+    );
+    const finalData = Object.assign(data, {
+      slug: selectedInstitute?.[0].slug,
+    });
+    studentLogin(finalData)
+      .then(res => {
+        if (res?.status == true) {
+          sessionStorage.setItem("studentLogin", JSON.stringify(res?.data));
+          navigate("/MainHome");
+        } else {
+          setShowError(res?.data?.non_field_errors[0]);
+          handleClick();
+        }
+      })
       .catch(err => {
         // swal("Your imaginary file is safe!");
       });
@@ -94,8 +103,8 @@ export default function Login() {
 
   return (
     <section className="LoginWrapper">
-      <div className={Classes.loginContainer}>
-        <Card className={classes.root}>
+      <div className={`${Classes.loginContainer} MainCard_Wrp`}>
+        <Card className={`${classes.root} card_Wrapper`}>
           <CardContent>
             <div className={Classes.loginHeader}>
               <div className={Classes.loginMainHeader}>Login</div>
@@ -106,9 +115,9 @@ export default function Login() {
             <div className={Classes.formContainer}>
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className={`${classes.root} ${Classes.formMain}`}
+                className={`${classes.root} ${Classes.formMain} Form_wrp`}
               >
-                <div>
+                <div className="LoginUsers">
                   <div>
                     <TextField
                       label="Username"
@@ -150,7 +159,6 @@ export default function Login() {
                   >
                     Login
                   </Button>
-
                 </div>
               </form>
               <div className={Classes.backForgotPassword}>

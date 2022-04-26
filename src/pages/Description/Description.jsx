@@ -47,8 +47,6 @@ export const Description = () => {
     AddSaveBook(token, e?.slug).then(ele => {
       // navigate("/Save");
       setbookSaveList(ele.is_added);
-
-      console.log(ele, "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
     });
     //
   }
@@ -60,10 +58,7 @@ export const Description = () => {
       setBooklist(resp?.results);
     });
   }
-  console.log(
-    bookSaveList,
-    "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
-  );
+
   return (
     <section className="Main_HomeWrapper Description_wrapper">
       <div
@@ -76,11 +71,7 @@ export const Description = () => {
         <div className="Description_Content">
           <div className="Description_Left">
             <figure>
-              <img
-                src={bookDetails?.book_details?.image}
-                alt="book"
-                style={{ width: "18rem", height: "24rem" }}
-              />
+              <img src={bookDetails?.book_details?.image} alt="book" />
             </figure>
           </div>
           <div className="Description_Right">

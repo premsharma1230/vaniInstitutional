@@ -38,12 +38,13 @@ export default function InstitutionalLogin() {
 
   useEffect(() => {
     const loadData = () => {
-      GetCollegeLists().then(res => {
-        const response = res;
-        sessionStorage.setItem("institutionLists", JSON.stringify(res))
-        setInstitutionsLists(response)
-      }).catch((err) => {
-      });
+      GetCollegeLists()
+        .then(res => {
+          const response = res;
+          sessionStorage.setItem("institutionLists", JSON.stringify(res));
+          setInstitutionsLists(response);
+        })
+        .catch(err => {});
     };
 
     loadData();
@@ -51,16 +52,19 @@ export default function InstitutionalLogin() {
   useEffect(() => {
     const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
     if (token) {
-      navigate("/MainHome")
+      navigate("/MainHome");
     }
-  }, [window.location.pathname])
+  }, [window.location.pathname]);
 
   const handleSubmit = e => {
     e.preventDefault();
     const selectedInstitutionalData = institutionsLists.filter(
       item => item.name === value
     );
-    sessionStorage.setItem("selectedInstitution",JSON.stringify(selectedInstitutionalData))
+    sessionStorage.setItem(
+      "selectedInstitution",
+      JSON.stringify(selectedInstitutionalData)
+    );
     navigate("/login");
   };
   const handleSelect = (event, newValue) => {
@@ -84,17 +88,21 @@ export default function InstitutionalLogin() {
                 Institutional Login
               </div>
             </div>
-            <div className={Classes.formContainer}>
+            <div className={`${Classes.formContainer} main_form_wrapper`}>
               <div className={Classes.enterCollege}>
                 Enter by selecting your college
               </div>
               <form
                 onSubmit={handleSubmit}
-                className={`${classes.root} ${Classes.formMain}`}
+                className={`${classes.root} ${Classes.formMain} Form_Wrapper`}
               >
                 <div>
                   <div className={Classes.maaa}>
-                    <Stack spacing={2} sx={{ width: 350 }}>
+                    <Stack
+                      spacing={2}
+                      sx={{ width: 350 }}
+                      className="Institutional_Wrp"
+                    >
                       <Autocomplete
                         value={value}
                         onChange={handleSelect}
@@ -104,11 +112,13 @@ export default function InstitutionalLogin() {
                         }}
                         id="controllable-states-demo"
                         options={institutionsLists?.map(option => option.name)}
-                        renderInput={(params) =>
-                           <TextField {...params} 
-                        label="Search for your insitute here"
-                        variant="outlined"
-                         />}
+                        renderInput={params => (
+                          <TextField
+                            {...params}
+                            label="Search for your insitute here"
+                            variant="outlined"
+                          />
+                        )}
                       />
                     </Stack>
                   </div>

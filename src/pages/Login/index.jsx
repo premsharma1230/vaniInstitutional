@@ -34,6 +34,7 @@ const useStyles = makeStyles({
   },
 });
 export default function Login() {
+  const rediectBack = JSON.parse(sessionStorage.getItem("navigationStore"));
   const classes = useStyles();
   let navigate = useNavigate();
   const [showError, setShowError] = React.useState("");
@@ -44,7 +45,6 @@ export default function Login() {
   });
   const { vertical, horizontal, open } = state;
   const handleClick = () => {
-    console.log("+++++++++++++++++++++++++++++");
     setState({
       open: true,
       vertical: "top",
@@ -90,7 +90,11 @@ export default function Login() {
       .then(res => {
         if (res?.status == true) {
           sessionStorage.setItem("studentLogin", JSON.stringify(res?.data));
-          navigate("/MainHome");
+           if(rediectBack){
+            navigate(-2);
+           }else{
+            navigate("/MainHome");
+           }
         } else {
           setShowError(res?.data?.non_field_errors[0]);
           handleClick();

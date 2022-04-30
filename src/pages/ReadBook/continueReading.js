@@ -55,7 +55,6 @@ export default function ContinueReadBook(props) {
   //<------------fontsize--end--here-->
   useEffect(() => {
     ContinueCurrentReading(book_slug, token).then(res =>{
-      console.log(res,"__________________________")
       setPage(res?.page_no)
       setGetLocation(res?.loaction)
     })

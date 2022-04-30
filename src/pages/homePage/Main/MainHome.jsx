@@ -17,8 +17,8 @@ export const MainHome = () => {
   const { state } = useLocation();
   let navigate = useNavigate();
   // const slug = state?.UserLogin?.data?.college_slug;
-  const slug = JSON.parse(sessionStorage.getItem("studentLogin")).college_slug;
-  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  const slug = JSON.parse(sessionStorage.getItem("studentLogin"))?.college_slug;
+  const token = JSON.parse(sessionStorage.getItem("studentLogin"))?.token;
   const [page, setPage] = useState(1);
   const [bookList, setBookList] = useState([]);
   const [category, setCategory] = useState([]);
@@ -41,7 +41,6 @@ export const MainHome = () => {
   //       arrayBooklists.splice(0,3);
 
   // }, bookList)
-  // console.log('bookList', bookList);
 
   // const top100Films = [{ title: "The Psychology of Money" }];
 
@@ -70,10 +69,10 @@ export const MainHome = () => {
   }
 
 
-  const goToBookDetailsPage = (bookDetail) => {
-    sessionStorage.setItem("bookDetail", JSON.stringify(bookDetail))
-    navigate("/Description");
-  }
+  // const goToBookDetailsPage = (bookDetail) => {
+  //   sessionStorage.setItem("bookDetail", JSON.stringify(bookDetail))
+  //   navigate("/Description");
+  // }
 
 
   const categoryItem = (e,value) => {
@@ -88,7 +87,6 @@ export const MainHome = () => {
     setPage(value)
     setStartSize((value * 2)-2)
   }
-
   return (
     <> 
       <div className="Main_HomeWrapper">
@@ -127,7 +125,12 @@ export const MainHome = () => {
             <div className="Category_Grid_Wrp">
               <div className="category_Grid_Content">
                 {bookList.slice(startSize,startSize+2)?.map((ele, index) => (
-                  <div onClick={() => goToBookDetailsPage(ele)} className="Grid-item" key={index}>
+                  <div key={index}>
+                 <Link
+                  to={`/Description/${ele?.slug}`}
+                  key={ele?.slug}
+                >
+                  <div className="Grid-item">
                     <div>
                       <figure>
                         <img src={ele?.image} alt="book" />
@@ -137,6 +140,8 @@ export const MainHome = () => {
                         <strong>{ele?.title_and_author?.authors[0]}</strong>
                       </figcaption>
                     </div>
+                  </div>
+                  </Link>
                   </div>
                 ))}
               </div>

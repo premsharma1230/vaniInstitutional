@@ -13,31 +13,36 @@ import Carousel from "react-material-ui-carousel";
 
 export const Description = () => {
   let navigate = useNavigate();
+  const location = useLocation();
+  const token = JSON.parse(sessionStorage.getItem("studentLogin"))?.token;
+  const book_slug  = location.pathname.split("/")
   const [bookDetails, setBookDetails] = useState({});
   const [bookList, setBooklist] = useState([]);
   const [bookSaveList, setbookSaveList] = useState(false);
   const college_slug = JSON.parse(
     sessionStorage.getItem("studentLogin")
-  ).college_slug;
-  const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
-  const book_Id = JSON.parse(sessionStorage.getItem("bookDetail")).id;
-  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  )?.college_slug;
+ 
+ 
   useEffect(() => {
-    GetBookListDetails(college_slug, token, book_slug).then(res => {
-      setBookDetails(res.data);
-    });
-    GetReletedBooksListDetails(college_slug, token, book_slug).then(resp => {
-      const booklist = resp?.results?.filter(e => e.id != book_Id);
-      setBooklist(booklist);
-    });
-    GetSaveBookList(college_slug, token).then(res => {
-      console.log(res, "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-      const booklist = res?.results?.filter(e => e.id === book_Id);
-      console.log(booklist, "********************************************888");
-      if (booklist.length > 0) {
-        setbookSaveList(true);
-      }
-    });
+    if (token) {
+      GetBookListDetails(college_slug, token, book_slug[2]).then(res => {
+        setBookDetails(res.data);
+        GetReletedBooksListDetails(college_slug, token, book_slug[2]).then(resp => {
+          const booklist = resp?.results?.filter(e => e.id != res?.data?.id);
+          setBooklist(booklist);
+        });
+        GetSaveBookList(college_slug, token).then(res => {
+          const booklist = res?.results?.filter(e => e.id === res?.data?.id);
+          if (booklist.length > 0) {
+            setbookSaveList(true);
+          }
+        });
+      });
+    } else {
+      sessionStorage.setItem("navigationStore", JSON.stringify(true))
+      navigate("/");
+    }
   }, []);
   function readNow(e) {
     sessionStorage.setItem("readme", JSON.stringify(e));

@@ -22,7 +22,10 @@ export default function RouteSeperater() {
             <Route path="/BookDetail" element={<BooksDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/MainHome" element={<MainHome />} />
-            <Route path="/Description" element={<Description />} />
+            {/* <Route path="/Description" element={<Description />} /> */}
+            <Route path="/Description" element={<Description />}>
+              <Route path=":DescriptionId" element={<Description />} />
+            </Route>
             <Route path="/readbook" element={<ReadBook />} />
             <Route path="/continueReadBook" element={<ContinueReadBook />} />
             <Route path="/Save" element={<Save />} />

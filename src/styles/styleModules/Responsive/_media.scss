@@ -250,6 +250,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .Main_HomeWrapper .Banner_Wrapper .Banner_img img {
+    height: 286px;
+  }
   .SaveMain_Wrapper
     .Save_Content_wrp
     .Save_Content
@@ -311,6 +314,12 @@
 }
 
 @media only screen and (max-width: 557px) {
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content {
+    top: 25%;
+  }
+  .Main_HomeWrapper .Banner_Wrapper .Banner_img img {
+    height: 260px;
+  }
   .SaveMain_Wrapper
     .Save_Content_wrp
     .Save_Content

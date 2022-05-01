@@ -2,13 +2,16 @@
   padding: 5rem 0 0;
   background: #fff;
   .Banner_Wrapper {
-    background: url(/src/assets/banner.png);
-    background-size: cover;
-    height: 420px;
-    width: 100%;
-    position: relative;
-    border-bottom-right-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+    .Banner_img {
+      width: 100%;
+      img {
+        height: 420px;
+        width: 100%;
+        position: relative;
+        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+      }
+    }
     .Banner_Content {
       position: absolute;
       top: 20%;

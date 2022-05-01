@@ -318,9 +318,11 @@ a {
   background: #fff;
 }
 
-.Main_HomeWrapper .Banner_Wrapper {
-  background: url(/src/assets/banner.png);
-  background-size: cover;
+.Main_HomeWrapper .Banner_Wrapper .Banner_img {
+  width: 100%;
+}
+
+.Main_HomeWrapper .Banner_Wrapper .Banner_img img {
   height: 420px;
   width: 100%;
   position: relative;
@@ -1181,6 +1183,9 @@ h3 {
 }
 
 @media only screen and (max-width: 768px) {
+  .Main_HomeWrapper .Banner_Wrapper .Banner_img img {
+    height: 286px;
+  }
   .SaveMain_Wrapper
 .Save_Content_wrp
 .Save_Content
@@ -1244,6 +1249,12 @@ figure {
 }
 
 @media only screen and (max-width: 557px) {
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content {
+    top: 25%;
+  }
+  .Main_HomeWrapper .Banner_Wrapper .Banner_img img {
+    height: 260px;
+  }
   .SaveMain_Wrapper
 .Save_Content_wrp
 .Save_Content

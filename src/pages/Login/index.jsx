@@ -90,17 +90,24 @@ export default function Login() {
       .then(res => {
         if (res?.status == true) {
           sessionStorage.setItem("studentLogin", JSON.stringify(res?.data));
-           if(rediectBack){
+          if (rediectBack) {
             navigate(-2);
-           }else{
+          } else {
             navigate("/MainHome");
-           }
+          }
         } else {
-          setShowError(res?.data?.non_field_errors[0]);
-          handleClick();
+          if (res?.msg && !res?.status) {
+            setShowError(res?.msg);
+            handleClick();
+          } else {
+            setShowError(res?.data?.non_field_errors[0]);
+            console.log(res, "res?.data?+++++++++");
+            handleClick();
+          }
         }
       })
       .catch(err => {
+        console.log(err, "catch++++++++");
         // swal("Your imaginary file is safe!");
       });
   };

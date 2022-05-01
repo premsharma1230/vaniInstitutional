@@ -167,9 +167,9 @@ const GetReletedBooksListDetails = (college_slug, token, book_slug) => {
 const studentLogin = data => {
   const body = {
     user: {
-      "college": data?.slug,
-      "email": data.username,
-      "password": data.password,
+      college: data?.slug,
+      email: data.username,
+      password: data.password,
     },
   };
   const slug = "/auth/college_student_login/";
@@ -179,18 +179,19 @@ const studentLogin = data => {
       method: "post",
       url: url,
       data: body,
-    }).then(res => {
-      return res.data;
-    }) .catch(function (error) {
-      if (error.response) {
-        return error.response;
-      } 
-      else if (error.request) {
-        return error.request;
-      } else {
-        return error.message;
-      }
-    });
+    })
+      .then(res => {
+        return res.data;
+      })
+      .catch(function (error) {
+        if (error.response) {
+          return error.response;
+        } else if (error.request) {
+          return error.request;
+        } else {
+          return error.message;
+        }
+      });
     return response;
   } catch (error) {
     return error;
@@ -261,12 +262,12 @@ const GetContinueReading = (college_slug, token) => {
     return error;
   }
 };
-const PostContinueReading = (book_slug, token, pageNo,location) => {
+const PostContinueReading = (book_slug, token, pageNo, location) => {
   const slug = `/institude_home_page/set_or_get_page_no/${book_slug}/`;
   const url = `${baseRoute}${slug}`;
   const body = {
     pages: Number(pageNo),
-    location: location
+    location: location,
   };
   try {
     const response = axios({
@@ -299,6 +300,34 @@ const ContinueCurrentReading = (book_slug, token) => {
   }
 };
 
+const BannerApi = (College_Slug, token) => {
+  let slug = `/institude_home_page/inst_home_page_banner/${College_Slug}`;
+  const url = `${baseRoute}${slug}`;
+  // axios({
+  //   method: "get",
+  //   url: url,
+  //   headers: { Authorization: `Bearer ${token}` },
+  // })
+  //   .then(response => {
+  //     return response?.data;
+  //   })
+  //   .catch(error => {
+  //     return error;
+  //   });
+  try {
+    const response = axios({
+      method: "get",
+      url: url,
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(response => {
+      return response.data;
+    });
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
+
 export {
   HomeBanner,
   AuthorList,
@@ -317,5 +346,6 @@ export {
   PostContinueReading,
   GetReletedBooksListDetails,
   ContinueCurrentReading,
-  AddSaveBook
+  AddSaveBook,
+  BannerApi,
 };

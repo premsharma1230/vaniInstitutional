@@ -45,6 +45,7 @@ export const Description = () => {
     }
   }, []);
   function readNow(e) {
+    console.log(e,"++++++++++++++++++++++++++++++++++++++++++++++++")
     sessionStorage.setItem("readme", JSON.stringify(e));
     navigate("/readbook");
   }

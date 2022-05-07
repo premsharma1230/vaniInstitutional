@@ -12,8 +12,7 @@ export default function ReadBook(props) {
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
   const { state } = useLocation();
-  const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
-  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  const token = JSON.parse(sessionStorage.getItem("studentLogin"))?.token;
   const readme = JSON.parse(sessionStorage.getItem("readme"));
 
   const locationChanged = epubcifi => {
@@ -21,7 +20,7 @@ export default function ReadBook(props) {
       const { displayed, href } = renditionRef.current.location.start;
       const chapter = tocRef.current.find(item => item.href === href);
       setPage(`${displayed.page}`);
-      PostContinueReading(book_slug, token, `${displayed.page}`,epubcifi).then(
+      PostContinueReading(readme?.slug, token, `${displayed.page}`,epubcifi).then(
         res => {}
       );
     }

@@ -7,7 +7,7 @@ import Classes from "./_appNavigation.module.scss";
 export default function ApplicationArea() {
   return (
     <>
-      <div className={Classes.iconArea}>
+      <div className={`${Classes.iconArea} iconArea`}>
         <ul>
           <li>Search field</li>
           <li>
@@ -21,7 +21,7 @@ export default function ApplicationArea() {
           </li>
         </ul>
       </div>
-      <div className={Classes.responseIcon}>
+      <div className={`${Classes.responseIcon} responseIcon`}>
         <ul>
           <li>
             <BsPerson />

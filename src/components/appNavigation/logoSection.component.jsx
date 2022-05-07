@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function LogogSection() {
   return (
     <Link to="/">
-      <div className={Classes.mainContainer}>
+      <div className={`${Classes.mainContainer} mainContainer`}>
         <div>
           <img
             src={HindiLogo}
@@ -17,10 +17,10 @@ export default function LogogSection() {
             height="47px"
           />
         </div>
-        <div className={Classes.vani}>
+        <div className={`${Classes.vani} vani`}>
           <img src={VaniLogo} alt="vani publiction logo" />
         </div>
-        <div className={Classes.englishLogo}>
+        <div className={`${Classes.englishLogo} englishLogo`}>
           <img
             src={EnglishLogo}
             alt="vani publiction in english"

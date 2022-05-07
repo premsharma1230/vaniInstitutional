@@ -12,7 +12,7 @@ const AppNavigation = () => {
     <div>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
-          className={Classes.navigationBar}
+          className={`${Classes.navigationBar} navigationBar`}
           sx={{ backgroundColor: "#ffff" }}
         >
           <Toolbar>
@@ -21,7 +21,7 @@ const AppNavigation = () => {
               component="div"
               sx={{ flexGrow: 1, color: "black" }}
             >
-              <div className={Classes.Banner}>
+              <div className={`${Classes.Banner} Logo_Banner`}>
                 <LogogSection />
               </div>
             </Typography>

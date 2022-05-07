@@ -10,7 +10,7 @@ export default function NavigationSection() {
     "Events",
   ];
   return (
-    <div className={Classes.navigationContainer}>
+    <div className={`${Classes.navigationContainer} navigationContainer`}>
       <ul>
         {linkarr.map((ele, index) => {
           return (

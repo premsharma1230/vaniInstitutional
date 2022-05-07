@@ -117,13 +117,15 @@ export default function Login() {
       <div className={`${Classes.loginContainer} MainCard_Wrp`}>
         <Card className={`${classes.root} card_Wrapper`}>
           <CardContent>
-            <div className={Classes.loginHeader}>
-              <div className={Classes.loginMainHeader}>Login</div>
-              <div className={Classes.loginSubheader}>
+            <div className={`${Classes.loginHeader} loginHeader`}>
+              <div className={`${Classes.loginMainHeader} loginMainHeader`}>
+                Login
+              </div>
+              <div className={`${Classes.loginSubheader} loginSubheader`}>
                 Logging in into Vani Prakashan Group eBook Library
               </div>
             </div>
-            <div className={Classes.formContainer}>
+            <div className={`${Classes.formContainer} formContainer`}>
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className={`${classes.root} ${Classes.formMain} Form_wrp`}
@@ -134,7 +136,7 @@ export default function Login() {
                       label="Username"
                       variant="outlined"
                       fullWidth
-                      className={classes.userField}
+                      className={`${classes.userField}`}
                       name="username"
                       {...register("username", {
                         required: "username is required",
@@ -143,11 +145,13 @@ export default function Login() {
                       helperText={errors.username?.message}
                     />
                   </div>
-                  <div className={Classes.passwordFieldMargin}>
+                  <div
+                    className={`${Classes.passwordFieldMargin} passwordFieldMargin`}
+                  >
                     <TextField
                       label="Password"
                       variant="outlined"
-                      className={Classes.passwordField}
+                      className={`${Classes.passwordField} passwordField`}
                       {...register("password", {
                         required: "password is required",
                       })}
@@ -156,7 +160,7 @@ export default function Login() {
                     />
                   </div>
                 </div>
-                <div className={Classes.SignupButton}>
+                <div className={`${Classes.SignupButton} SignupButton`}>
                   <Button
                     variant="contained"
                     style={{
@@ -172,13 +176,17 @@ export default function Login() {
                   </Button>
                 </div>
               </form>
-              <div className={Classes.backForgotPassword}>
+              <div
+                className={`${Classes.backForgotPassword} backForgotPassword`}
+              >
                 <div>
-                  <Link to="/" className={Classes.back}>
+                  <Link to="/" className={`${Classes.back} back`}>
                     Back
                   </Link>
                 </div>
-                <div className={Classes.forgotPassword}>Forgot Password</div>
+                <div className={`${Classes.forgotPassword} forgotPassword`}>
+                  Forgot Password
+                </div>
               </div>
             </div>
           </CardContent>

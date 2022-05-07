@@ -72,24 +72,26 @@ export default function InstitutionalLogin() {
   };
 
   return (
-    <section className={Classes.institutionalWrapper}>
-      <div className={Classes.loginContainer}>
-        <Card className={classes.root}>
+    <section className={`${Classes.institutionalWrapper} institutionalWrapper`}>
+      <div className={`${Classes.loginContainer} loginContainer`}>
+        <Card className={`${classes.root} root`}>
           <CardContent>
-            <div className={Classes.loginHeader}>
-              <div className={Classes.loginMainHeader}>
+            <div className={`${Classes.loginHeader} loginHeader`}>
+              <div className={`${Classes.loginMainHeader} loginMainHeader`}>
                 Vani Prakashan Group
               </div>
-              <div className={Classes.loginSubheader}>
+              <div className={`${Classes.loginSubheader} loginSubheader`}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna,
                 faucibus tempor mauris massa.
               </div>
-              <div className={Classes.instututionalloginSubheader}>
+              <div
+                className={`${Classes.instututionalloginSubheader} instututionalloginSubheader`}
+              >
                 Institutional Login
               </div>
             </div>
             <div className={`${Classes.formContainer} main_form_wrapper`}>
-              <div className={Classes.enterCollege}>
+              <div className={`${Classes.enterCollege} enterCollege`}>
                 Enter by selecting your college
               </div>
               <form
@@ -97,7 +99,7 @@ export default function InstitutionalLogin() {
                 className={`${classes.root} ${Classes.formMain} Form_Wrapper`}
               >
                 <div>
-                  <div className={Classes.maaa}>
+                  <div className={`${Classes.maaa} stack_Wrapper`}>
                     <Stack
                       spacing={2}
                       sx={{ width: 350 }}
@@ -123,7 +125,7 @@ export default function InstitutionalLogin() {
                     </Stack>
                   </div>
                 </div>
-                <div className={Classes.SignupButton}>
+                <div className={`${Classes.SignupButton} SignupButton`}>
                   <Button
                     variant="contained"
                     style={{
@@ -140,8 +142,10 @@ export default function InstitutionalLogin() {
                   </Button>
                 </div>
               </form>
-              <div className={Classes.backForgotPassword}>
-                <div className={Classes.back}>Back</div>
+              <div
+                className={`${Classes.backForgotPassword} backForgotPassword`}
+              >
+                <div className={`${Classes.back} back`}>Back</div>
               </div>
             </div>
           </CardContent>

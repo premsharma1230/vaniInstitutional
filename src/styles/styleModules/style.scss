@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 15px;
+  background: #e5e5e5;
+  font-family: "Lora";
+  letter-spacing: 0.05px;
+  color: #333333;
+  font-weight: 300;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+// @import "../styleModules/_mixins";
+@import "./_mixins";
+// Ebook--
+.Ebook_Wrapper {
+  padding: 0rem 0 1rem;
+  .About_Book {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-gap: 1.5rem;
+    width: 82%;
+    margin: 6rem auto 3rem;
+    figure {
+      max-width: max-content;
+      max-height: max-content;
+      img {
+        max-width: 100%;
+        max-height: 100px;
+        object-fit: cover;
+      }
+    }
+    .About-book-title {
+      border-bottom: 1px solid #0298bf;
+      h2 {
+        color: #4e4e4e;
+        font-size: 2.2em;
+        font-weight: 700;
+        line-height: 46px;
+        letter-spacing: 0.20000000298023224px;
+      }
+      h5 {
+        padding: 0.5rem 0;
+        font-size: 1.2em;
+        font-weight: 700;
+        line-height: 23px;
+        color: #020056;
+        letter-spacing: 0.20000000298023224px;
+      }
+    }
+  }
+  .Ebook_Content {
+    padding: 0rem 0 4rem;
+  }
+  .Ebook-Content_Wrp {
+    height: 70vh;
+    width: 38vw;
+    margin: auto;
+    margin-top: 0rem;
+    box-shadow: 0px 0px 27px rgba(0, 0, 0, 0.179);
+  }
+  .MagnifierFont_Btn {
+    z-index: 1;
+    button {
+      color: #fe4365;
+      background: transparent;
+      outline: none;
+      border: none;
+      margin-right: 2.5rem;
+      cursor: pointer;
+      position: absolute;
+      left: 31rem;
+      transform: translateY(-21px);
+      z-index: 1;
+      &:nth-child(2) {
+        left: 47rem;
+      }
+    }
+  }
+}
+
+//--<<<<<=---Ebook-----End----here------>>>>>>>>
+.css-42vny5-MuiPaper-root-MuiAppBar-root {
+  z-index: 2 !important;
+}
+
+.Profile_Wrapper {
+  position: fixed;
+  z-index: 5;
+  top: 20px;
+  right: 30px;
+  .Profilebtn {
+    text-align: center;
+    background: #0298bf !important;
+    color: #fff;
+    padding: 0.3rem 1rem !important;
+    display: grid;
+    grid-template-columns: max-content 20px;
+    grid-gap: 1rem;
+  }
+}
+.Menu_Wrap {
+  .MuiPaper-root.MuiPaper-elevation {
+    top: 60px !important;
+    a {
+      color: currentColor;
+    }
+  }
+  ul {
+    width: max-content !important;
+    li {
+      display: block !important;
+      padding: 0.5rem 0.5rem 0.5rem 1rem !important;
+      color: #0298bf;
+    }
+  }
+}
+
+@import "./_main";

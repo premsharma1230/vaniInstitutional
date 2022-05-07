@@ -1,0 +1,735 @@
+@media only screen and (max-width: 1200px) {
+  //<<<<<<<---------Login------->>>>>>>
+  ._appNavigation_Banner__CqsfJ {
+    left: 10%;
+  }
+  ._login_institutionalWrapper__0iNzJ {
+    height: max-content !important;
+    padding: 3rem 0 !important;
+  }
+  .makeStyles-root-1 {
+    min-width: 400px !important;
+  }
+  ._login_loginMainHeader__m4HVz {
+    font-size: 29px !important;
+    padding-top: 21px !important;
+  }
+  ._login_loginSubheader__0fVLG {
+    font-size: 13px !important;
+    padding: 24px 41px !important;
+    width: 395px !important;
+  }
+  ._login_instututionalloginSubheader__De3mS {
+    font-size: 21px !important;
+    margin-bottom: 20px !important;
+  }
+  .LoginWrapper {
+    height: max-content;
+    padding: 3rem 0;
+  }
+  //<<<<<<<---------Login-----end---here---->>>>>>>
+  //<<<<<<<---------Home-------->>>>>>>
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content h1 {
+    font-size: 1.7em;
+  }
+  //<<<<<<<-----------Home---end---here---->>>>>>>
+}
+@media only screen and (max-width: 1024px) {
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .About_Book
+    .About-book-title
+    h2 {
+    font-size: 1.9em;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .About_Book
+    .About-book-title
+    h5 {
+    padding: 0.5rem 0;
+    font-size: 1em;
+    line-height: 23px;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .description-Group-btn
+    button
+    a {
+    font-size: 1em;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .description-Group-btn
+    button {
+    width: 190px;
+    height: 40px;
+  }
+  .Description_wrapper .Otherbook_Wrapper .Otherbook-Heading h2 {
+    padding: 0 0 0 0rem;
+    font-size: 1.3em;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .About_Book
+    figcaption
+    p {
+    font-size: 0.79em;
+    word-break: break-word;
+  }
+  .Save_Content_wrp .Save_Content {
+    height: max-content !important;
+  }
+  // <<<<<<-----------Footer------>>>>>>>>>
+
+  .Footer_Wrapper .Footer_Content {
+    grid-gap: 9rem;
+  }
+  .Footer_Wrapper .Footer_Content .foot_item ul li a {
+    font-size: 0.79em;
+  }
+
+  // <<<<<<-----------Footer---end---here--->>>>>>>>>
+}
+@media only screen and (max-width: 992px) {
+  .Description_wrapper .Otherbook_Wrapper .Grid_Carousel_wrp .Grid-item figure {
+    height: 209px !important;
+  }
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content {
+    width: 50%;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .About_Book
+    .About-book-title
+    h2 {
+    font-size: 1.2em;
+    line-height: 30px;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .description-Group-btn
+    button
+    a {
+    font-size: 0.89em;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .About-book-detail
+    > ul
+    li
+    strong {
+    font-size: 15px;
+  }
+  .Description_wrapper
+    .Otherbook_Wrapper
+    .Grid_Carousel_wrp
+    .Grid-item
+    figcaption
+    h3 {
+    font-size: 15px;
+  }
+  ._appNavigation_Banner__CqsfJ {
+    padding-left: 6rem;
+  }
+  // <<<<<<-----------Footer------>>>>>>>>>
+  .Main_HomeWrapper
+    .Category_Wrapper
+    .Category_Grid_Wrp
+    .category_Grid_Content {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem 1rem;
+  }
+  .Description_wrapper .Description_Content .Description_Left figure img {
+    max-width: 43%;
+  }
+  // <<<<<<-----------Footer--end--here---->>>>>>>>>
+}
+@media only screen and (max-width: 800px) {
+  .Description_wrapper .Description_Content {
+    padding: 6rem 0 2rem;
+    grid-template-columns: 250px 1fr;
+    grid-gap: 1rem;
+    width: 91%;
+    margin: 0 auto;
+  }
+
+  .Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp {
+    width: 53%;
+    left: 20%;
+    top: -49px;
+  }
+  .Main_HomeWrapper
+    .Search_Wrapper
+    .Search_Item_Wrp
+    .Search-child_wrap
+    .search_content
+    button {
+    height: 38px;
+    width: 90px;
+  }
+  .Main_HomeWrapper
+    .Search_Wrapper
+    .Search_Item_Wrp
+    .Search-child_wrap
+    .search_content {
+    grid-gap: 1.5rem;
+    grid-template-columns: 250px max-content;
+  }
+  .Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .rect_Wrp {
+    width: 100%;
+    height: 24px;
+  }
+  .Main_HomeWrapper .Category_Wrapper {
+    padding: 5rem 0 1rem;
+  }
+
+  .Main_HomeWrapper .Category_Wrapper .Category_Grid_Wrp {
+    padding: 2.5rem 0 1rem;
+  }
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content h1 {
+    font-size: 1.2em;
+  }
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content p {
+    padding: 1rem 0 0;
+    font-size: 15px;
+  }
+
+  .Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .Search-child_wrap img {
+    width: 18px;
+    height: 18px;
+  }
+  .Main_HomeWrapper
+    .Category_Wrapper
+    .Category_Grid_Wrp
+    .category_Grid_Content
+    .Grid-item
+    figcaption
+    h3 {
+    font-size: 15px;
+  }
+  .Main_HomeWrapper
+    .Category_Wrapper
+    .Category_Grid_Wrp
+    .category_Grid_Content {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem 1rem;
+  }
+
+  .SaveMain_Wrapper .Save_Content_wrp {
+    padding: 4rem 0 3rem;
+  }
+  .SaveMain_Wrapper .Save_Content_wrp .Save_Content .SaveBook_Grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    grid-gap: 3rem 1rem;
+  }
+  // <<<<<<-----------Footer------>>>>>>>>>
+  .Footer_Wrapper .Footer_Content {
+    grid-gap: 6rem;
+  }
+  .Footer_Wrapper .Footer_Content .foot_item .Heading_wrp h2 {
+    font-size: 0.9em;
+  }
+  .Footer_Wrapper .Footer_Content .foot_item ul li a {
+    font-size: 0.75em;
+  }
+  .Footer_Wrapper .Footer_Content .foot_item ul li {
+    padding: 0.4rem 0;
+  }
+
+  // <<<<<<-----------Footer---end---here--->>>>>>>>>
+}
+
+@media only screen and (max-width: 768px) {
+  .SaveMain_Wrapper
+    .Save_Content_wrp
+    .Save_Content
+    .SaveBook_Grid
+    .Grid-item
+    figure {
+    height: 250px !important;
+  }
+  .Description_wrapper .Description_Content .Description_Left {
+    text-align: center;
+  }
+  .Description_wrapper .Description_Content {
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+  }
+  .Profile_Wrapper {
+    top: 12px;
+    right: 30px;
+  }
+  .Main_HomeWrapper {
+    padding: 3.3rem 0 0;
+  }
+  .Main_HomeWrapper .Banner_Wrapper {
+    height: 300px;
+  }
+  .Main_HomeWrapper
+    .Search_Wrapper
+    .Search_Item_Wrp
+    .Search-child_wrap
+    .search_content {
+    grid-gap: 1.5rem;
+    grid-template-columns: 218px max-content;
+  }
+  .Profile_Wrapper .Profilebtn {
+    font-size: 12px;
+  }
+  .Footer_Wrapper .Footer_Content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 14rem;
+  }
+  ._login_loginMainHeader__NBtaD {
+    font-size: 1.8em !important;
+  }
+  // <<<<<<-----------Footer------>>>>>>>>>
+  .Footer_Wrapper .Footer_Content {
+    grid-gap: 0.5rem;
+  }
+  // <<<<<<-----------Footer---end---here--->>>>>>>>>
+  .LoginUsers {
+    input {
+      padding: 9.5px 14px !important;
+    }
+    .MuiInputLabel-outlined {
+      transform: translate(14px, 11px) scale(1);
+      font-size: 14px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 557px) {
+  .SaveMain_Wrapper
+    .Save_Content_wrp
+    .Save_Content
+    .SaveBook_Grid
+    .Grid-item
+    figure {
+    height: 200px !important;
+  }
+  .Save_Content_wrp .Save_Content .SaveBook_Grid .Grid-item figcaption h3 {
+    font-size: 0.89em;
+  }
+  .Profile_Wrapper .Profilebtn {
+    font-size: 11px;
+  }
+  .Profile_Wrapper {
+    top: 4px;
+    right: 22px;
+  }
+  .Profile_Wrapper .Profilebtn {
+    padding: 0.3rem 0.5rem !important;
+    grid-template-columns: 130px 20px;
+    grid-gap: 0.5rem;
+    span {
+      word-break: break-word !important;
+    }
+  }
+  .Main_HomeWrapper .Banner_Wrapper {
+    height: 270px;
+  }
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content {
+    width: 85%;
+  }
+  .Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp {
+    width: 74%;
+    left: 13%;
+    top: -49px;
+  }
+  .Main_HomeWrapper
+    .Search_Wrapper
+    .Search_Item_Wrp
+    .Search-child_wrap
+    .search_content {
+    grid-gap: 1.5rem;
+    grid-template-columns: 200px max-content;
+    justify-content: space-between;
+  }
+
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content p {
+    padding: 1rem 0 0;
+    font-size: 13px;
+  }
+  .LoginWrapper {
+    display: block !important;
+    ._login_loginSubheader__El5a7 {
+      width: auto;
+      padding: 22px 13px;
+    }
+    .LoginUsers {
+      width: 90%;
+      ._login_passwordField__0Ss0D {
+        width: 100%;
+      }
+    }
+  }
+  .MainCard_Wrp {
+    .card_Wrapper {
+      width: 90%;
+      min-width: auto !important;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+  }
+  .Description_wrapper .Otherbook_Wrapper .Grid_Carousel_wrp .Grid-item figure {
+    height: 124px !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .SaveMain_Wrapper .Save_Content_wrp .Save_Content .SaveBook_Grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3rem 1rem;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .description-Group-btn
+    button {
+    width: 130px;
+    height: 40px;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .description-Group-btn
+    button
+    a {
+    font-size: 0.79em;
+    grid-gap: 0.7rem;
+  }
+  .Description_wrapper .Otherbook_Wrapper .Otherbook-Heading h2 {
+    font-size: 1.11em;
+  }
+  .Description_wrapper .Otherbook_Wrapper .Otherbook-Heading {
+    padding: 1.2rem 0;
+  }
+  .Description_wrapper .Otherbook_Wrapper {
+    padding: 0rem 0 1.5rem;
+  }
+  .Description_wrapper .Otherbook_Wrapper .Grid_Carousel_wrp {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3rem 1rem;
+  }
+  .Description_wrapper .Description_Content .Description_Left figure img {
+    max-width: 50%;
+  }
+  .Description_wrapper .Description_Content {
+    padding: 2.5rem 0 2rem;
+  }
+  ._appNavigation_mainContainer__583RN :first-child img {
+    margin: 1rem 0.5rem 0.5rem !important;
+    width: 35px !important;
+    height: 30px !important;
+  }
+  ._appNavigation_Banner__CqsfJ {
+    margin-left: 2.3rem !important;
+  }
+  ._appNavigation_mainContainer__583RN ._appNavigation_vani__\+hDDy img {
+    width: 42px !important;
+  }
+  ._appNavigation_mainContainer__583RN ._appNavigation_englishLogo__w1bhq img {
+    margin: 1rem 0.5rem 0.5rem !important;
+    width: 60px !important;
+    height: 35px !important;
+  }
+  //<<<<<<<---------Login--------->>>>>>>
+  .LoginWrapper {
+    .Form_wrp {
+      width: 100% !important;
+    }
+  }
+
+  ._login_loginContainer__Uqp2q {
+    margin-top: 4rem !important;
+  }
+  ._login_loginMainHeader__m4HVz {
+    font-size: 26px !important;
+    padding-top: 4px !important;
+  }
+  ._login_loginSubheader__0fVLG {
+    font-size: 12px !important;
+    padding: 16px 5px !important;
+    width: auto !important;
+  }
+  ._login_instututionalloginSubheader__De3mS {
+    font-size: 20px !important;
+    margin-bottom: 13px !important;
+  }
+  ._login_backForgotPassword__BVCYZ {
+    margin-top: 24px !important;
+    height: auto !important;
+  }
+  .MuiFormLabel-root {
+    font-size: 13px !important;
+  }
+
+  .makeStyles-root-1 {
+    min-width: auto !important;
+    width: 80% !important;
+  }
+  ._login_institutionalWrapper__0iNzJ {
+    display: block !important;
+  }
+  ._login_formMain__TOHbg {
+    width: 100% !important;
+  }
+  .css-db2z83-MuiStack-root {
+    width: 239px !important;
+    margin: 0 auto !important;
+  }
+  ._login_loginSubheader__El5a7 {
+    font-size: 14px !important;
+  }
+  //<<<<<<<---------Login-----end---here---->>>>>>>
+  .Main_HomeWrapper
+    .Category_Wrapper
+    .Category_Grid_Wrp
+    .category_Grid_Content
+    .Grid-item
+    figure {
+    height: 200px;
+  }
+  .Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp {
+    width: 100%;
+    left: 0%;
+    top: -49px;
+  }
+  .Main_HomeWrapper
+    .Category_Wrapper
+    .Category_Grid_Wrp
+    .category_Grid_Content {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem 1rem;
+  }
+
+  .Main_HomeWrapper
+    .Search_Wrapper
+    .Search_Item_Wrp
+    .Search-child_wrap
+    .search_content {
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(2, max-content);
+  }
+  .ContinueReading_Wrapper .Grid-item .continue_btn {
+    margin: 0 auto;
+  }
+  .SaveMain_Wrapper .Save_Content_wrp .Save_Content .SaveBook_Grid {
+    grid-gap: 2rem 1rem;
+  }
+  .ContinueReading_Wrapper .Grid-item .continue_btn {
+    font-size: 0.89em;
+  }
+  .SaveMain_Wrapper
+    .Save_Content_wrp
+    .Save_Content
+    .Save_heading
+    figcaption
+    h3 {
+    font-size: 1.1em;
+  }
+  .SaveMain_Wrapper
+    .Save_Content_wrp
+    .Save_Content
+    .Save_heading
+    figure
+    .fa-bookmark,
+  .SaveMain_Wrapper
+    .Save_Content_wrp
+    .Save_Content
+    .Save_heading
+    figure
+    .fa-book-open {
+    font-size: 1.4em;
+  }
+  .SaveMain_Wrapper .Save_Content_wrp .Save_Content .Save_heading {
+    grid-gap: 1rem;
+    padding: 0 0 1.2rem;
+  }
+  .SaveMain_Wrapper .Save_Content_wrp {
+    padding: 3rem 0 3rem;
+  }
+  .Menu_Wrap ul {
+    width: 170px !important;
+  }
+  //<<<<<<<---------Footer----->>>>>>>
+  .Footer_Wrapper .Footer_Content {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 3rem;
+  }
+  .Footer_Wrapper .Footer_Content {
+    grid-gap: 1.5rem;
+  }
+  .Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp {
+    top: -38px;
+  }
+  //<<<<<<<---------Footer-----end---here---->>>>>>>
+}
+@media only screen and (max-width: 375px) {
+  .SaveMain_Wrapper .Save_Content_wrp .Save_Content .Save_heading {
+    grid-template-columns: max-content 1fr;
+    grid-gap: 1rem;
+    padding: 0 0 1.4rem;
+  }
+  .SaveMain_Wrapper
+    .Save_Content_wrp
+    .Save_Content
+    .Save_heading
+    figcaption
+    h3 {
+    font-size: 1.1em;
+  }
+  .SaveMain_Wrapper
+    .Save_Content_wrp
+    .Save_Content
+    .Save_heading
+    figure
+    .fa-bookmark,
+  .SaveMain_Wrapper
+    .Save_Content_wrp
+    .Save_Content
+    .Save_heading
+    figure
+    .fa-book-open {
+    font-size: 1.6em;
+  }
+  .SaveMain_Wrapper .Save_Content_wrp .Save_Content .SaveBook_Grid {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem 1rem;
+  }
+  .Description_wrapper
+    .Otherbook_Wrapper
+    .Grid_Carousel_wrp
+    .Grid-item
+    figcaption
+    h3 {
+    font-size: 14px;
+  }
+  .Description_wrapper .Otherbook_Wrapper .Otherbook-Heading {
+    padding: 1rem 0;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .About_Book
+    .About-book-title
+    h2 {
+    font-size: 1.1em;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .About_Book
+    .About-book-title
+    h5 {
+    padding: 0.3rem 0 0.5em;
+    font-size: 0.89em;
+    line-height: 20px;
+  }
+
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .About-book-detail
+    > ul
+    li {
+    grid-gap: 0.5rem;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .About-book-detail
+    > ul
+    li
+    strong {
+    font-size: 13px;
+  }
+  .Description_wrapper .Description_Content .Description_Left figure img {
+    max-width: 80%;
+  }
+  .Footer_Wrapper .Footer_Content {
+    grid-gap: 0.5rem;
+  }
+  .Main_HomeWrapper .Search_Wrapper .Search_Item_Wrp .Search-child_wrap img {
+    width: 15px;
+    height: 15px;
+  }
+  .Description_wrapper
+    .Description_Content
+    .Description_Right
+    .description-Group-btn
+    button {
+    width: 102px;
+    height: 32px;
+  }
+  .Main_HomeWrapper
+    .Search_Wrapper
+    .Search_Item_Wrp
+    .Search-child_wrap
+    .search_content
+    button {
+    height: 30px;
+    width: 80px;
+    font-size: 12px;
+  }
+  .Main_HomeWrapper
+    .Search_Wrapper
+    .Search_Item_Wrp
+    .Search-child_wrap
+    .search_content
+    input {
+    font-size: 11px;
+  }
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content p {
+    padding: 0.5rem 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .Main_HomeWrapper
+    .Category_Wrapper
+    .Category_Grid_Wrp
+    .category_Grid_Content
+    .Grid-item
+    figcaption
+    h3 {
+    font-size: 13px;
+  }
+  .Profile_Wrapper .Profilebtn {
+    padding: 0.3rem 0.2rem !important;
+    grid-template-columns: 130px max-content;
+    grid-gap: 0.3rem;
+  }
+  .Profile_Wrapper {
+    top: 15px;
+    right: 6px;
+  }
+  .Profile_Wrapper .Profilebtn {
+    font-size: 9px;
+  }
+  //<<<<<<<---------Login-------->>>>>>>
+  .main_form_wrapper .Form_Wrapper {
+    width: 100% !important;
+  }
+  ._login_loginMainHeader__m4HVz {
+    font-size: 22px !important;
+    padding-top: 4px !important;
+  }
+  //<<<<<<<---------Login-----end---here---->>>>>>>
+}
+@media only screen and (max-width: 320px) {
+  .makeStyles-root-1 {
+    width: 80% !important;
+  }
+}

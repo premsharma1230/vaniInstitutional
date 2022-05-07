@@ -1,0 +1,78 @@
+.institutionalWrapper {
+  background: url(../../assets//login-bg.png) no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginContainer {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+}
+.formContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.formMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.instututionalloginSubheader {
+  font-size: 24px;
+  color: #0298bf;
+  margin-bottom: 39px;
+}
+.loginSubheader {
+  font-size: 14px;
+  padding: 25px 44px;
+  width: 395px;
+  text-align: center;
+}
+.loginMainHeader {
+  font-weight: 700;
+  font-size: 36px;
+  color: #0298bf;
+  padding-top: 36px;
+}
+.enterCollege {
+  text-align: center;
+  margin-bottom: 14px;
+  color: #4e4e4e;
+}
+
+.userField,
+.passwordField {
+  width: 388px;
+}
+.passwordFieldMargin {
+  margin-top: 22px;
+}
+.SignupButton {
+  margin-top: 34px;
+}
+.backForgotPassword {
+  display: flex;
+  justify-content: center;
+  margin-top: 27px;
+  height: 31px;
+  align-items: center;
+}
+.back {
+  // border-right: 1px solid;
+  padding-right: 10px;
+  color: #0298bf;
+}
+.userField.MuiOutlinedInput-root {
+  border-radius: 30px !important;
+}

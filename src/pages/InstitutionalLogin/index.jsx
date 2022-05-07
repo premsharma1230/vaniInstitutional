@@ -74,7 +74,7 @@ export default function InstitutionalLogin() {
   return (
     <section className={`${Classes.institutionalWrapper} institutionalWrapper`}>
       <div className={`${Classes.loginContainer} loginContainer`}>
-        <Card className={`${classes.root} root`}>
+        <Card className={`${classes.root} root_wrapper `}>
           <CardContent>
             <div className={`${Classes.loginHeader} loginHeader`}>
               <div className={`${Classes.loginMainHeader} loginMainHeader`}>
@@ -98,32 +98,30 @@ export default function InstitutionalLogin() {
                 onSubmit={handleSubmit}
                 className={`${classes.root} ${Classes.formMain} Form_Wrapper`}
               >
-                <div>
-                  <div className={`${Classes.maaa} stack_Wrapper`}>
-                    <Stack
-                      spacing={2}
-                      sx={{ width: 350 }}
-                      className="Institutional_Wrp"
-                    >
-                      <Autocomplete
-                        value={value}
-                        onChange={handleSelect}
-                        inputValue={selectedInstitute}
-                        onInputChange={(event, selectedInstitute) => {
-                          setSelectedInstitute(selectedInstitute);
-                        }}
-                        id="controllable-states-demo"
-                        options={institutionsLists?.map(option => option.name)}
-                        renderInput={params => (
-                          <TextField
-                            {...params}
-                            label="Search for your insitute here"
-                            variant="outlined"
-                          />
-                        )}
-                      />
-                    </Stack>
-                  </div>
+                <div className={`${Classes.maaa} stack_Wrapper`}>
+                  <Stack
+                    spacing={2}
+                    sx={{ width: 350 }}
+                    className="Institutional_Wrp"
+                  >
+                    <Autocomplete
+                      value={value}
+                      onChange={handleSelect}
+                      inputValue={selectedInstitute}
+                      onInputChange={(event, selectedInstitute) => {
+                        setSelectedInstitute(selectedInstitute);
+                      }}
+                      id="controllable-states-demo"
+                      options={institutionsLists?.map(option => option.name)}
+                      renderInput={params => (
+                        <TextField
+                          {...params}
+                          label="Search for your insitute here"
+                          variant="outlined"
+                        />
+                      )}
+                    />
+                  </Stack>
                 </div>
                 <div className={`${Classes.SignupButton} SignupButton`}>
                   <Button

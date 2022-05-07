@@ -7,7 +7,7 @@
     height: max-content !important;
     padding: 3rem 0 !important;
   }
-  .makeStyles-root-1 {
+  .Form_wrp {
     min-width: 400px !important;
   }
   .loginMainHeader {
@@ -294,7 +294,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 14rem;
   }
-  ._login_loginMainHeader__NBtaD {
+  .loginMainHeader {
     font-size: 1.8em !important;
   }
   // <<<<<<-----------Footer------>>>>>>>>>
@@ -310,6 +310,10 @@
       transform: translate(14px, 11px) scale(1);
       font-size: 14px !important;
     }
+  }
+  .loginContainer {
+    width: 90% !important;
+    margin: 0 auto;
   }
 }
 
@@ -377,13 +381,13 @@
   }
   .LoginWrapper {
     display: block !important;
-    ._login_loginSubheader__El5a7 {
+    .loginSubheader {
       width: auto;
       padding: 22px 13px;
     }
     .LoginUsers {
       width: 90%;
-      ._login_passwordField__0Ss0D {
+      .passwordField {
         width: 100%;
       }
     }
@@ -399,8 +403,23 @@
   .Description_wrapper .Otherbook_Wrapper .Grid_Carousel_wrp .Grid-item figure {
     height: 124px !important;
   }
+  .root_wrapper {
+    min-width: 90% !important;
+    margin: 0 auto;
+  }
 }
 @media only screen and (max-width: 480px) {
+  .Main_HomeWrapper .Banner_Wrapper .Banner_Content {
+    top: 21%;
+  }
+  .stack_Wrapper {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .root_wrapper {
+    min-width: 80% !important;
+    margin: 0 auto;
+  }
   .SaveMain_Wrapper .Save_Content_wrp .Save_Content .SaveBook_Grid {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 3rem 1rem;
@@ -441,18 +460,18 @@
   .Description_wrapper .Description_Content {
     padding: 2.5rem 0 2rem;
   }
-  ._appNavigation_mainContainer__583RN :first-child img {
+  .mainContainer :first-child img {
     margin: 1rem 0.5rem 0.5rem !important;
     width: 35px !important;
     height: 30px !important;
   }
-  ._appNavigation_Banner__CqsfJ {
+  .Logo_Banner {
     margin-left: 2.3rem !important;
   }
-  ._appNavigation_mainContainer__583RN ._appNavigation_vani__\+hDDy img {
+  .mainContainer .vani img {
     width: 42px !important;
   }
-  ._appNavigation_mainContainer__583RN ._appNavigation_englishLogo__w1bhq img {
+  .mainContainer .englishLogo img {
     margin: 1rem 0.5rem 0.5rem !important;
     width: 60px !important;
     height: 35px !important;
@@ -464,8 +483,10 @@
     }
   }
 
-  ._login_loginContainer__Uqp2q {
+  .loginContainer {
     margin-top: 4rem !important;
+    width: 90%;
+    margin: 0 auto;
   }
   .loginMainHeader {
     font-size: 26px !important;
@@ -488,21 +509,22 @@
     font-size: 13px !important;
   }
 
-  .makeStyles-root-1 {
+  .Form_wrp {
     min-width: auto !important;
     width: 80% !important;
   }
   .institutionalWrapper {
     display: block !important;
   }
-  ._login_formMain__TOHbg {
+  .Form_Wrapper {
     width: 100% !important;
+    min-width: 100% !important;
   }
-  .css-db2z83-MuiStack-root {
-    width: 239px !important;
+  .Institutional_Wrp {
+    width: 100% !important;
     margin: 0 auto !important;
   }
-  ._login_loginSubheader__El5a7 {
+  .loginSubheader {
     font-size: 14px !important;
   }
   //<<<<<<<---------Login-----end---here---->>>>>>>
@@ -590,7 +612,17 @@
   }
   //<<<<<<<---------Footer-----end---here---->>>>>>>
 }
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 376px) {
+  .Profile_Wrapper .Profilebtn {
+    padding: 0.3rem 0.2rem !important;
+    grid-template-columns: 92px 20px;
+    grid-gap: 0.3rem;
+    height: 38px;
+    transform: translateY(-6px);
+  }
+  .Logo_Banner {
+    left: 4% !important;
+  }
   .SaveMain_Wrapper .Save_Content_wrp .Save_Content .Save_heading {
     grid-template-columns: max-content 1fr;
     grid-gap: 1rem;
@@ -719,11 +751,11 @@
     h3 {
     font-size: 13px;
   }
-  .Profile_Wrapper .Profilebtn {
-    padding: 0.3rem 0.2rem !important;
-    grid-template-columns: 130px max-content;
-    grid-gap: 0.3rem;
-  }
+  // .Profile_Wrapper .Profilebtn {
+  //   padding: 0.3rem 0.2rem !important;
+  //   grid-template-columns: 130px max-content;
+  //   grid-gap: 0.3rem;
+  // }
   .Profile_Wrapper {
     top: 15px;
     right: 6px;
@@ -739,10 +771,17 @@
     font-size: 22px !important;
     padding-top: 4px !important;
   }
+
   //<<<<<<<---------Login-----end---here---->>>>>>>
 }
 @media only screen and (max-width: 320px) {
-  .makeStyles-root-1 {
+  .Form_wrp {
     width: 80% !important;
+  }
+  .CategorySearch_wrp .css-viou3o-MuiAutocomplete-root {
+    width: 100%;
+  }
+  .CategorySearch_wrp .MuiInputBase-fullWidth {
+    width: 100%;
   }
 }

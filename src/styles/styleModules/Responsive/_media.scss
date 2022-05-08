@@ -35,6 +35,16 @@
   //<<<<<<<-----------Home---end---here---->>>>>>>
 }
 @media only screen and (max-width: 1024px) {
+  .Ebook-Content_Wrp button:nth-child(odd) {
+    transform: translateX(133px) !important;
+  }
+  .Ebook-Content_Wrp button:nth-child(even) {
+    transform: translateX(-116px) !important;
+  }
+
+  .Ebook_Wrapper .MagnifierFont_Btn {
+    width: 250px;
+  }
   .Description_wrapper
     .Description_Content
     .Description_Right
@@ -97,6 +107,12 @@
   // <<<<<<-----------Footer---end---here--->>>>>>>>>
 }
 @media only screen and (max-width: 992px) {
+  .Ebook_Wrapper .Ebook-Content_Wrp {
+    width: 64%;
+  }
+  .Ebook_Wrapper .MagnifierFont_Btn {
+    width: 340px;
+  }
   .Description_wrapper .Otherbook_Wrapper .Grid_Carousel_wrp .Grid-item figure {
     height: 209px !important;
   }
@@ -250,8 +266,21 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .Ebook_Wrapper .About_Book .About-book-title h2 {
+    font-size: 1.9em;
+    line-height: 36px;
+  }
   .Main_HomeWrapper .Banner_Wrapper .Banner_img img {
     height: 286px;
+  }
+  .Ebook_Wrapper .MagnifierFont_Btn .zoom_button {
+    transform: translateY(-24px);
+  }
+  .Ebook-Content_Wrp button:nth-child(odd) {
+    transform: translateX(140px) !important;
+  }
+  .Ebook-Content_Wrp button:nth-child(even) {
+    transform: translateX(-137px) !important;
   }
   .SaveMain_Wrapper
     .Save_Content_wrp
@@ -318,6 +347,14 @@
 }
 
 @media only screen and (max-width: 557px) {
+  .Ebook_Wrapper .About_Book .About-book-title h2 {
+    font-size: 1.5em;
+    line-height: 36px;
+  }
+
+  .Ebook_Wrapper .Ebook-Content_Wrp {
+    width: 83%;
+  }
   .Logo_Banner {
     padding-left: 3rem !important;
   }
@@ -409,6 +446,23 @@
   }
 }
 @media only screen and (max-width: 480px) {
+  .Ebook_Wrapper .About_Book .About-book-title h5 {
+    font-size: 1em;
+  }
+  .Ebook_Wrapper .About_Book .About-book-title h2 {
+    font-size: 1.3em;
+    line-height: 36px;
+  }
+  .Ebook_Wrapper .MagnifierFont_Btn {
+    width: 294px;
+  }
+  .Ebook-Content_Wrp button:nth-child(odd) {
+    transform: translateX(114px) !important;
+  }
+  .Ebook-Content_Wrp button:nth-child(even) {
+    transform: translateX(-106px) !important;
+  }
+
   .Main_HomeWrapper .Banner_Wrapper .Banner_Content {
     top: 21%;
   }
@@ -613,6 +667,22 @@
   //<<<<<<<---------Footer-----end---here---->>>>>>>
 }
 @media only screen and (max-width: 376px) {
+  .Ebook_Wrapper .MagnifierFont_Btn {
+    width: 221px;
+  }
+  .Ebook-Content_Wrp button:nth-child(odd) {
+    transform: translateX(88px) !important;
+  }
+  .Ebook-Content_Wrp button:nth-child(even) {
+    transform: translateX(-86px) !important;
+  }
+  .Ebook_Wrapper .About_Book .About-book-title h5 {
+    font-size: 0.89em;
+  }
+  .Ebook_Wrapper .About_Book .About-book-title h2 {
+    font-size: 1.2em;
+    line-height: 36px;
+  }
   .Profile_Wrapper .Profilebtn {
     padding: 0.3rem 0.2rem !important;
     grid-template-columns: 92px 20px;
@@ -775,6 +845,19 @@
   //<<<<<<<---------Login-----end---here---->>>>>>>
 }
 @media only screen and (max-width: 320px) {
+  .Ebook_Wrapper .MagnifierFont_Btn {
+    width: 200px;
+  }
+  .Ebook_Wrapper .About_Book .About-book-title h2 {
+    font-size: 1em;
+    line-height: 26px;
+  }
+  .Ebook-Content_Wrp button:nth-child(odd) {
+    transform: translateX(81px) !important;
+  }
+  .Ebook-Content_Wrp button:nth-child(even) {
+    transform: translateX(-64px) !important;
+  }
   .Form_wrp {
     width: 80% !important;
   }

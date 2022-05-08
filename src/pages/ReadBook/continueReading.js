@@ -17,13 +17,14 @@ export default function ContinueReadBook(props) {
   const book_slug = JSON.parse(sessionStorage.getItem("contingreadme")).slug;
   const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
   const readme = JSON.parse(sessionStorage.getItem("contingreadme"));
+  const [selections, setSelections] = useState([]);
 
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
       const { displayed, href } = renditionRef.current.location.start;
       const chapter = tocRef.current.find(item => item.href === href);
       setPage(`${displayed.page}`);
-      PostContinueReading(book_slug, token, `${displayed.page}`,epubcifi).then(
+      PostContinueReading(book_slug, token, `${displayed.page}`, epubcifi).then(
         res => {}
       );
     }
@@ -31,12 +32,13 @@ export default function ContinueReadBook(props) {
 
   const ownStyles = {
     ...ReactReaderStyle,
+    className: "Button_Wrapper",
     arrow: {
       ...ReactReaderStyle.arrow,
       color: "red",
       top: "unset",
       bottom: 0,
-      padding: "0 12rem",
+      // padding: "0 12rem",
       fontSize: "30px",
       // transform: 'translate(10px, 6px)'
     },
@@ -54,11 +56,45 @@ export default function ContinueReadBook(props) {
   }, [size]);
   //<------------fontsize--end--here-->
   useEffect(() => {
-    ContinueCurrentReading(book_slug, token).then(res =>{
-      setPage(res?.page_no)
-      setGetLocation(res?.loaction)
-    })
+    ContinueCurrentReading(book_slug, token).then(res => {
+      setPage(res?.page_no);
+      setGetLocation(res?.loaction);
+    });
   }, []);
+
+  // const renditionRef = useRef(null)
+  // <<<<<<<----------Select----Line---start--here----->>>>>>>>>>
+  useEffect(() => {
+    if (renditionRef.current) {
+      function setRenderSelection(cfiRange, contents) {
+        setSelections(
+          selections.concat({
+            text: renditionRef.current.getRange(cfiRange).toString(),
+            cfiRange,
+          })
+        );
+        renditionRef.current.annotations.add(
+          "highlight",
+          cfiRange,
+          {},
+          null,
+          "hl",
+          {
+            fill: "#0298bf",
+            "fill-opacity": "0.5",
+            "mix-blend-mode": "multiply",
+          }
+        );
+        contents.window.getSelection().removeAllRanges();
+      }
+      renditionRef.current.on("selected", setRenderSelection);
+      return () => {
+        renditionRef.current.off("selected", setRenderSelection);
+      };
+    }
+  }, [setSelections, selections]);
+
+  // <<<<<<<----------Select----Line---start--here----->>>>>>>>>>
 
   return (
     <>
@@ -77,68 +113,86 @@ export default function ContinueReadBook(props) {
             </figure>
             <div className="About-book-title">
               <h2>{readme?.book_details?.title}</h2>
-              <h5 style={{display:"flex"}}>By &nbsp; {readme?.book_details?.book_authors.map((author, index) =>
-                  <p >
+              <h5 style={{ display: "flex" }}>
+                By &nbsp;{" "}
+                {readme?.book_details?.book_authors.map((author, index) => (
+                  <p>
                     {index ? "," : " "} {author}
                   </p>
-                )}
-                </h5>
+                ))}
+              </h5>
             </div>
           </div>
         </div>
-        {getLocation != "" ?
-        <div className="Ebook_Content">
-          <div className="ebook-reader-container Ebook-Content_Wrp">
-            <ReactReader
-              locationChanged={locationChanged}
-              url={readme?.original_ebook}
-              epubInitOptions={{
-                openAs: "epub",
-              }}
-              location={getLocation}
-              getRendition={rendition => (renditionRef.current = rendition)}
-              tocChanged={toc => (tocRef.current = toc)}
-              showToc={false}
-              styles={ownStyles}
-            />
-          </div>
-          <div
-            className="PageCount"
-            style={{
-              bottom: "0.4rem",
-              right: "1rem",
-              left: "0rem",
-              textAlign: "center",
-              zIndex: 1,
-              fontSize: "1.1em",
-              color: "#020056",
-              fontWeight: "bold",
-              position: "relative",
-            }}
-          >
-            <span
-              className="Counter-page"
+        {getLocation != "" ? (
+          <div className="Ebook_Content">
+            <div className="ebook-reader-container Ebook-Content_Wrp">
+              <ReactReader
+                locationChanged={locationChanged}
+                url={readme?.original_ebook}
+                epubInitOptions={{
+                  openAs: "epub",
+                }}
+                location={getLocation}
+                // getRendition={rendition => (renditionRef.current = rendition)}
+                getRendition={rendition => {
+                  renditionRef.current = rendition;
+                  renditionRef.current.themes.default({
+                    "::selection": {
+                      background: "yellow",
+                    },
+                  });
+                  setSelections([]);
+                }}
+                tocChanged={toc => (tocRef.current = toc)}
+                showToc={false}
+                styles={ownStyles}
+                className="Epub_Wrapper"
+              />
+            </div>
+            <div
+              className="PageCount"
               style={{
-                position: "absolute",
-                top: "-1.2rem",
+                bottom: "0.4rem",
+                right: "1rem",
+                left: "0rem",
+                textAlign: "center",
+                zIndex: 1,
+                fontSize: "1.1em",
+                color: "#020056",
+                fontWeight: "bold",
+                position: "relative",
               }}
             >
-              {page}
-            </span>
+              <span
+                className="Counter-page"
+                style={{
+                  position: "absolute",
+                  top: "-1.2rem",
+                }}
+              >
+                {page}
+              </span>
+            </div>
+            {/* Font--size */}
+            <div className="MagnifierFont_Btn">
+              <button
+                onClick={() => changeSize(Math.max(90, size - 10))}
+                className="zoom_button"
+              >
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button
+                onClick={() => changeSize(Math.min(230, size + 10))}
+                className="zoom_button"
+              >
+                <i className="fas fa-search-plus"></i>
+              </button>
+            </div>
+
+            {/* font-size */}
           </div>
-          {/* Font--size */}
-          <div className="MagnifierFont_Btn">
-            <button onClick={() => changeSize(Math.max(90, size - 10))}>
-              <i class="fas fa-search-minus"></i>
-            </button>
-            <button onClick={() => changeSize(Math.min(230, size + 10))}>
-              <i className="fas fa-search-plus"></i>
-            </button>
-          </div>
-        
-          {/* font-size */}
-        </div>
-          :null}
+        ) : null}
         <Footer />
       </div>
     </>

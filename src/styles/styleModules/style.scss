@@ -151,19 +151,27 @@ video {
   }
   .MagnifierFont_Btn {
     z-index: 1;
-    button {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+    .zoom_button {
       color: #fe4365;
       background: transparent;
       outline: none;
       border: none;
-      margin-right: 2.5rem;
+      // margin-right: 2.5rem;
       cursor: pointer;
       position: absolute;
-      left: 31rem;
+      // left: 31rem;
+
       transform: translateY(-21px);
       z-index: 1;
+      &:nth-child(1) {
+        left: 0;
+      }
       &:nth-child(2) {
-        left: 47rem;
+        // left: 47rem;
+        right: 0;
       }
     }
   }
@@ -204,6 +212,13 @@ video {
       color: #0298bf;
     }
   }
+}
+
+.Ebook-Content_Wrp button:nth-child(odd) {
+  transform: translateX(169px) !important;
+}
+.Ebook-Content_Wrp button:nth-child(even) {
+  transform: translateX(-160px) !important;
 }
 
 @import "./_main";

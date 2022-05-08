@@ -15,11 +15,11 @@ export default function Profile() {
     setAnchorEl(null);
   };
   useEffect(() => {
-    const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
+    const token = JSON.parse(localStorage?.getItem("studentLogin"))?.token;
     if (token) {
       navigate("/MainHome");
       const UserName = JSON.parse(
-        sessionStorage.getItem("studentLogin")
+        localStorage.getItem("studentLogin")
       ).username;
       setLoginUserName(UserName);
     }
@@ -27,6 +27,7 @@ export default function Profile() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.clear();
     sessionStorage.clear();
     handleClose();
     navigate("/");

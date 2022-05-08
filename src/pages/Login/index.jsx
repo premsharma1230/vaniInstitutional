@@ -73,7 +73,7 @@ export default function Login() {
   };
 
   useEffect(() => {
-    const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
+    const token = JSON.parse(localStorage?.getItem("studentLogin"))?.token;
     if (token) {
       navigate("/MainHome");
     }
@@ -89,8 +89,8 @@ export default function Login() {
     studentLogin(finalData)
       .then(res => {
         if (res?.status == true) {
-          sessionStorage.setItem("studentLogin", JSON.stringify(res?.data));
-          if (rediectBack) {
+          localStorage.setItem("studentLogin", JSON.stringify(res?.data));
+           if(rediectBack){
             navigate(-2);
           } else {
             navigate("/MainHome");

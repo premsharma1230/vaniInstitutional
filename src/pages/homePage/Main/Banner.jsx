@@ -4,13 +4,9 @@ import { BannerApi } from "../../../api/api";
 
 export const Banner = () => {
   const [banner, setBanner] = useState();
-  const College_Slug = JSON.parse(
-    sessionStorage.getItem("studentLogin")
-  ).college_slug;
-  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  const studentLogin = JSON.parse(localStorage.getItem("studentLogin"));
   useEffect(() => {
-    BannerApi(College_Slug, token).then(elem => {
-      console.log(elem, "setBanner+++++++++++++");
+    BannerApi(studentLogin?.College_Slug, studentLogin?.token).then(elem => {
       return setBanner(elem?.data);
     });
   }, []);

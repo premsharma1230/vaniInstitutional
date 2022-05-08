@@ -15,7 +15,7 @@ export default function ContinueReadBook(props) {
   const tocRef = useRef(null);
   const { state } = useLocation();
   const book_slug = JSON.parse(sessionStorage.getItem("contingreadme")).slug;
-  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  const token = JSON.parse(localStorage.getItem("studentLogin")).token;
   const readme = JSON.parse(sessionStorage.getItem("contingreadme"));
   const [selections, setSelections] = useState([]);
 

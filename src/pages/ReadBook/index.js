@@ -12,18 +12,21 @@ export default function ReadBook(props) {
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
   const { state } = useLocation();
-  const book_slug = JSON.parse(sessionStorage.getItem("bookDetail")).slug;
-  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  const token = JSON.parse(localStorage.getItem("studentLogin"))?.token;
   const readme = JSON.parse(sessionStorage.getItem("readme"));
+  const [selections, setSelections] = useState([]);
 
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
       const { displayed, href } = renditionRef.current.location.start;
       const chapter = tocRef.current.find(item => item.href === href);
       setPage(`${displayed.page}`);
-      PostContinueReading(book_slug, token, `${displayed.page}`,epubcifi).then(
-        res => {}
-      );
+      PostContinueReading(
+        readme?.slug,
+        token,
+        `${displayed.page}`,
+        epubcifi
+      ).then(res => {});
     }
   };
   const ownStyles = {
@@ -33,7 +36,7 @@ export default function ReadBook(props) {
       color: "red",
       top: "unset",
       bottom: 0,
-      padding: "0 12rem",
+      // padding: "0 12rem",
       fontSize: "30px",
       // transform: 'translate(10px, 6px)'
     },
@@ -51,6 +54,38 @@ export default function ReadBook(props) {
   }, [size]);
   //<------------fontsize--end--here-->
 
+  // <<<<<<<----------Select----Line---start--here----->>>>>>>>>>
+  useEffect(() => {
+    if (renditionRef.current) {
+      function setRenderSelection(cfiRange, contents) {
+        setSelections(
+          selections.concat({
+            text: renditionRef.current.getRange(cfiRange).toString(),
+            cfiRange,
+          })
+        );
+        renditionRef.current.annotations.add(
+          "highlight",
+          cfiRange,
+          {},
+          null,
+          "hl",
+          {
+            fill: "#0298bf",
+            "fill-opacity": "0.5",
+            "mix-blend-mode": "multiply",
+          }
+        );
+        contents.window.getSelection().removeAllRanges();
+      }
+      renditionRef.current.on("selected", setRenderSelection);
+      return () => {
+        renditionRef.current.off("selected", setRenderSelection);
+      };
+    }
+  }, [setSelections, selections]);
+
+  // <<<<<<<----------Select----Line---start--here----->>>>>>>>>>
 
   return (
     <>
@@ -69,12 +104,14 @@ export default function ReadBook(props) {
             </figure>
             <div className="About-book-title">
               <h2>{readme?.book_details?.title}</h2>
-              <h5 style={{display:"flex"}}>By &nbsp; {readme?.book_details?.book_authors.map((author, index) =>
-                  <p >
+              <h5 style={{ display: "flex" }}>
+                By &nbsp;{" "}
+                {readme?.book_details?.book_authors.map((author, index) => (
+                  <p>
                     {index ? "," : " "} {author}
                   </p>
-                )}
-                </h5>
+                ))}
+              </h5>
             </div>
           </div>
         </div>
@@ -86,10 +123,19 @@ export default function ReadBook(props) {
               epubInitOptions={{
                 openAs: "epub",
               }}
-              getRendition={rendition => (renditionRef.current = rendition)}
+              getRendition={rendition => {
+                renditionRef.current = rendition;
+                renditionRef.current.themes.default({
+                  "::selection": {
+                    background: "yellow",
+                  },
+                });
+                setSelections([]);
+              }}
               tocChanged={toc => (tocRef.current = toc)}
               showToc={false}
               styles={ownStyles}
+              className="Epub_Wrapper"
             />
           </div>
           <div
@@ -118,10 +164,16 @@ export default function ReadBook(props) {
           </div>
           {/* Font--size */}
           <div className="MagnifierFont_Btn">
-            <button onClick={() => changeSize(Math.max(90, size - 10))}>
+            <button
+              onClick={() => changeSize(Math.max(90, size - 10))}
+              className="zoom_button"
+            >
               <i class="fas fa-search-minus"></i>
             </button>
-            <button onClick={() => changeSize(Math.min(230, size + 10))}>
+            <button
+              onClick={() => changeSize(Math.min(230, size + 10))}
+              className="zoom_button"
+            >
               <i className="fas fa-search-plus"></i>
             </button>
           </div>

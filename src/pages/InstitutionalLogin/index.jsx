@@ -50,7 +50,7 @@ export default function InstitutionalLogin() {
     loadData();
   }, []);
   useEffect(() => {
-    const token = JSON.parse(sessionStorage?.getItem("studentLogin"))?.token;
+    const token = JSON.parse(localStorage?.getItem("studentLogin"))?.token;
     if (token) {
       navigate("/MainHome");
     }

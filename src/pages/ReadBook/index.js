@@ -12,7 +12,7 @@ export default function ReadBook(props) {
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
   const { state } = useLocation();
-  const token = JSON.parse(sessionStorage.getItem("studentLogin"))?.token;
+  const token = JSON.parse(localStorage.getItem("studentLogin"))?.token;
   const readme = JSON.parse(sessionStorage.getItem("readme"));
 
   const locationChanged = epubcifi => {

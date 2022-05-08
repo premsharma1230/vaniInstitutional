@@ -14,13 +14,13 @@ import Carousel from "react-material-ui-carousel";
 export const Description = () => {
   let navigate = useNavigate();
   const location = useLocation();
-  const token = JSON.parse(sessionStorage.getItem("studentLogin"))?.token;
+  const token = JSON.parse(localStorage.getItem("studentLogin"))?.token;
   const book_slug  = location.pathname.split("/")
   const [bookDetails, setBookDetails] = useState({});
   const [bookList, setBooklist] = useState([]);
   const [bookSaveList, setbookSaveList] = useState(false);
   const college_slug = JSON.parse(
-    sessionStorage.getItem("studentLogin")
+    localStorage.getItem("studentLogin")
   )?.college_slug;
  
  
@@ -50,7 +50,7 @@ export const Description = () => {
     navigate("/readbook");
   }
   function saveBook(e) {
-    AddSaveBook(token, e?.slug).then(ele => {
+    AddSaveBook(token, e?.slug).then(ele => { 
       // navigate("/Save");
       setbookSaveList(ele.is_added);
     });

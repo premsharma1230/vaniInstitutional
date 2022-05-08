@@ -10,9 +10,9 @@ export const Save = () => {
   const { state } = useLocation();
   let navigate = useNavigate();
   const college_slug = JSON.parse(
-    sessionStorage.getItem("studentLogin")
+    localStorage.getItem("studentLogin")
   ).college_slug;
-  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  const token = JSON.parse(localStorage.getItem("studentLogin")).token;
   useEffect(() => {
     GetSaveBookList(college_slug, token).then(res => {
       setbookSaveList(res?.results);

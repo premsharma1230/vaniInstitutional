@@ -11,9 +11,9 @@ export const ContinueReading = () => {
   let navigate = useNavigate();
   const [continueReading, setContinueReading] = useState([]);
   const college_slug = JSON.parse(
-    sessionStorage.getItem("studentLogin")
+    localStorage.getItem("studentLogin")
   ).college_slug;
-  const token = JSON.parse(sessionStorage.getItem("studentLogin")).token;
+  const token = JSON.parse(localStorage.getItem("studentLogin")).token;
   useEffect(() => {
     GetContinueReading(college_slug, token).then(res => {
       setContinueReading(res?.results);

@@ -17,8 +17,8 @@ export const MainHome = () => {
   const { state } = useLocation();
   let navigate = useNavigate();
   // const slug = state?.UserLogin?.data?.college_slug;
-  const slug = JSON.parse(sessionStorage.getItem("studentLogin"))?.college_slug;
-  const token = JSON.parse(sessionStorage.getItem("studentLogin"))?.token;
+  const slug = JSON.parse(localStorage.getItem("studentLogin"))?.college_slug;
+  const token = JSON.parse(localStorage.getItem("studentLogin"))?.token;
   const [page, setPage] = useState(1);
   const [bookList, setBookList] = useState([]);
   const [category, setCategory] = useState([]);

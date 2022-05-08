@@ -29,6 +29,7 @@ export const MainHome = () => {
   const [count, setCount] = useState(1);
   useEffect(() => {
     const categoryRes = -1;
+    if(studentLogin?.token){
     GetBookList(
       studentLogin?.college_slug,
       studentLogin?.token,
@@ -43,6 +44,10 @@ export const MainHome = () => {
         setCategory(res);
       }
     );
+    }else{
+      sessionStorage.setItem("navigationStore", JSON.stringify(false))
+      navigate("/");
+    }
   }, []);
 
   // useEffect(() => {

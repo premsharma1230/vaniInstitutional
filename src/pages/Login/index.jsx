@@ -92,6 +92,7 @@ export default function Login() {
           localStorage.setItem("studentLogin", JSON.stringify(res?.data));
            if(rediectBack){
             navigate(-2);
+            sessionStorage.setItem("navigationStore", JSON.stringify(false));
           } else {
             navigate("/MainHome");
           }

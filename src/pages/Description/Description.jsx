@@ -14,25 +14,22 @@ import Carousel from "react-material-ui-carousel";
 export const Description = () => {
   let navigate = useNavigate();
   const location = useLocation();
-  const token = JSON.parse(localStorage.getItem("studentLogin"))?.token;
+  const studentLogin = JSON.parse(localStorage.getItem("studentLogin"));
   const book_slug  = location.pathname.split("/")
   const [bookDetails, setBookDetails] = useState({});
   const [bookList, setBooklist] = useState([]);
   const [bookSaveList, setbookSaveList] = useState(false);
-  const college_slug = JSON.parse(
-    localStorage.getItem("studentLogin")
-  )?.college_slug;
  
  
   useEffect(() => {
-    if (token) {
-      GetBookListDetails(college_slug, token, book_slug[2]).then(res => {
+    if (studentLogin?.token) {
+      GetBookListDetails(studentLogin?.college_slug, studentLogin?.token, book_slug[2]).then(res => {
         setBookDetails(res.data);
-        GetReletedBooksListDetails(college_slug, token, book_slug[2]).then(resp => {
+        GetReletedBooksListDetails(studentLogin?.college_slug, studentLogin?.token, book_slug[2]).then(resp => {
           const booklist = resp?.results?.filter(e => e.id != res?.data?.id);
           setBooklist(booklist);
         });
-        GetSaveBookList(college_slug, token).then(res => {
+        GetSaveBookList(studentLogin?.college_slug, studentLogin?.token).then(res => {
           const booklist = res?.results?.filter(e => e.id === res?.data?.id);
           if (booklist.length > 0) {
             setbookSaveList(true);
@@ -45,22 +42,21 @@ export const Description = () => {
     }
   }, []);
   function readNow(e) {
-    console.log(e,"++++++++++++++++++++++++++++++++++++++++++++++++")
-    sessionStorage.setItem("readme", JSON.stringify(e));
+    localStorage.setItem("readme", JSON.stringify(e));
     navigate("/readbook");
   }
   function saveBook(e) {
-    AddSaveBook(token, e?.slug).then(ele => { 
+    AddSaveBook(studentLogin?.token, e?.slug).then(ele => { 
       // navigate("/Save");
       setbookSaveList(ele.is_added);
     });
     //
   }
   function openReletedBooksList(e) {
-    GetBookListDetails(college_slug, token, e?.slug).then(res => {
+    GetBookListDetails(studentLogin?.college_slug, studentLogin?.token, e?.slug).then(res => {
       setBookDetails(res.data);
     });
-    GetReletedBooksListDetails(college_slug, token, e?.slug).then(resp => {
+    GetReletedBooksListDetails(studentLogin?.college_slug, studentLogin?.token, e?.slug).then(resp => {
       setBooklist(resp?.results);
     });
   }

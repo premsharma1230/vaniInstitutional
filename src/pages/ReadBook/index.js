@@ -11,11 +11,19 @@ export default function ReadBook(props) {
   const [page, setPage] = useState("");
   const renditionRef = useRef(null);
   const tocRef = useRef(null);
+  let navigate = useNavigate();
   const { state } = useLocation();
-  const token = JSON.parse(localStorage.getItem("studentLogin"))?.token;
-  const readme = JSON.parse(sessionStorage.getItem("readme"));
+  const studentLogin = JSON.parse(localStorage.getItem("studentLogin"));
+  const readme = JSON.parse(localStorage.getItem("readme"));
   const [selections, setSelections] = useState([]);
 
+
+  useEffect(() => {
+    if (!studentLogin?.token) {
+      sessionStorage.setItem("navigationStore", JSON.stringify(false))
+      navigate("/");
+    }
+  }, []);
   const locationChanged = epubcifi => {
     if (renditionRef.current && tocRef.current) {
       const { displayed, href } = renditionRef.current.location.start;
@@ -23,7 +31,7 @@ export default function ReadBook(props) {
       setPage(`${displayed.page}`);
       PostContinueReading(
         readme?.slug,
-        token,
+        studentLogin?.token,
         `${displayed.page}`,
         epubcifi
       ).then(res => {});

@@ -10,14 +10,16 @@ import Profile from "../../components/appNavigation/Profile";
 export const ContinueReading = () => {
   let navigate = useNavigate();
   const [continueReading, setContinueReading] = useState([]);
-  const college_slug = JSON.parse(
-    localStorage.getItem("studentLogin")
-  ).college_slug;
-  const token = JSON.parse(localStorage.getItem("studentLogin")).token;
+  const studentLogin = JSON.parse(localStorage.getItem("studentLogin"))
   useEffect(() => {
-    GetContinueReading(college_slug, token).then(res => {
+    if(studentLogin?.token){
+    GetContinueReading(studentLogin?.college_slug, studentLogin?.token).then(res => {
       setContinueReading(res?.results);
     });
+  }else{
+    sessionStorage.setItem("navigationStore", JSON.stringify(true))
+    navigate("/");
+  }
   }, []);
   function readNow(e) {
     sessionStorage.setItem("contingreadme", JSON.stringify(e));
